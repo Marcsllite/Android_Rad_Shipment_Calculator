@@ -3,9 +3,7 @@ dist: trusty
 
 before_install:
  - chmod +x gradlew
-
-jdk: oraclejdk11
-
+ 
 android:
   components:
     # Uncomment the lines below if you want to
