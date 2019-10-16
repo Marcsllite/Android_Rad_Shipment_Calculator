@@ -1,4 +1,3 @@
-
 language: android
 android:
         components:
@@ -8,5 +7,10 @@ android:
                 - extra-android-m2repository
 script:
         - ./gradlew build
+        - ./gradlew jacocoTestReport
+
 before_install:
         - chmod +x gradlew
+
+after_success:
+        — bash <(curl -s https://codecov.io/bash)

@@ -1,8 +1,9 @@
-package android.rad.shipment.calculator;
+package android.rad.shipment;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.rad.shipment.calculator.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,5 +19,6 @@ public class MainActivity extends AppCompatActivity {
          * takes the activity_main layout and sets it to be the CurrentView (what is currently displayed on the screen)
          */
         setContentView(R.layout.activity_main);
+
     }
 }
