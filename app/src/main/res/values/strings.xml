@@ -3,6 +3,8 @@
     <string name="defaultStr">Not Available</string>
     <string name="colorLogo_ContentDescript">UMass Lowell Logo</string>
     <string name="shipmentBtnText">Shipment</string>
+    <string name="referenceBtnText">Reference</string>
+    <string name="menuText">Radiation Safety\nUMass Lowell\nOne University Avenue\nLowell, MA 01854</string>
     <string name="DB_User">superuser</string>
     <string name="DB_Pass">SnayRadiation</string>
     <string name="DB_Name">Shipment_Calculator</string>
