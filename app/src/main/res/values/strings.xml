@@ -8,7 +8,8 @@
     <string name="SingleBox_ContentDescript">Single Box Icon</string>
     <string name="shipmentBtnText">Shipment</string>
     <string name="referenceBtnText">Reference</string>
-    <string name="menuText">Radiation Safety\nUMass Lowell\nOne University Avenue\nLowell, MA 01854</string>
+    <string name="menuText_port">Radiation Safety\nUMass Lowell\nOne University Avenue\nLowell, MA 01854</string>
+    <string name="menuText_land">Radiation Safety | UMass Lowell | One University Avenue | Lowell, MA 01854</string>
     <string name="DB_User">superuser</string>
     <string name="DB_Pass">SnayRadiation</string>
     <string name="DB_Name">Shipment_Calculator</string>

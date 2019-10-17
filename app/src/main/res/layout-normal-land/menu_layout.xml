@@ -1,6 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultBlack">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/defaultBlack">
+
+        <ImageView
+            android:id="@+id/imgViewColorLogo"
+            android:layout_margin="@android:dimen/app_icon_size"
+            android:layout_width="132dp"
+            android:layout_height="164dp"
+            android:background="@color/trueWhite"
+            android:contentDescription="@string/Logo_ContentDescript"
+            app:srcCompat="@drawable/ic_color_umass_logo" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/defaultBlack">
+
+            <TextView
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_marginTop="@android:dimen/app_icon_size"
+                android:drawableLeft="@drawable/ic_grey_single_box"
+                android:drawableStart="@drawable/ic_grey_single_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/shipmentBtnText"
+                android:textColor="@color/defaultGrey" />
+
+            <View
+                android:id="@+id/dividerShipment"
+                android:layout_marginBottom="@android:dimen/app_icon_size"
+                android:layout_marginLeft="@android:dimen/app_icon_size"
+                android:layout_marginRight="@android:dimen/app_icon_size"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/defaultGrey" />
+
+            <TextView
+                style="?android:attr/buttonBarButtonStyle"
+                android:drawableLeft="@drawable/ic_grey_paper"
+                android:drawableStart="@drawable/ic_grey_paper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0000"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/referenceBtnText"
+                android:textColor="@color/defaultGrey"/>
+
+            <View
+            android:id="@+id/dividerReference"
+            android:layout_marginBottom="@android:dimen/app_icon_size"
+            android:layout_marginLeft="@android:dimen/app_icon_size"
+            android:layout_marginRight="@android:dimen/app_icon_size"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/defaultGrey" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtViewMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/menuText_land"
+        android:textAlignment="center"
+        android:textColor="@color/defaultGrey"
+        android:textSize="18sp" />
 
 </LinearLayout>
