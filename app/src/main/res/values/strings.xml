@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">Android_Rad_Shipment_Calculator</string>
     <string name="defaultStr">Not Available</string>
-    <string name="colorLogo_ContentDescript">UMass Lowell Logo</string>
+    <string name="Logo_ContentDescript">UMass Lowell Logo</string>
+    <string name="Home_ContentDescript">Home Icon</string>
+    <string name="MultipleBox_ContentDescript">Multiple Box Icon</string>
+    <string name="Paper_ContentDescript">Paper Icon</string>
+    <string name="SingleBox_ContentDescript">Single Box Icon</string>
     <string name="shipmentBtnText">Shipment</string>
     <string name="referenceBtnText">Reference</string>
     <string name="menuText">Radiation Safety\nUMass Lowell\nOne University Avenue\nLowell, MA 01854</string>
