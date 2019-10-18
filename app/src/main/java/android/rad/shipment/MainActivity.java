@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
          *
          * takes the activity_main layout and sets it to be the CurrentView (what is currently displayed on the screen)
          */
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.reference_layout);
 
     }
 }

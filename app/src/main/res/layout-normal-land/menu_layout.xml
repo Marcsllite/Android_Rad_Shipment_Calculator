@@ -16,9 +16,12 @@
 
         <ImageView
             android:id="@+id/imgViewColorLogo"
-            android:layout_margin="@android:dimen/app_icon_size"
-            android:layout_width="132dp"
-            android:layout_height="164dp"
+            android:layout_width="152dp"
+            android:layout_height="185dp"
+            android:layout_marginLeft="@dimen/normal_vertical_spacing"
+            android:layout_marginStart="@dimen/normal_vertical_spacing"
+            android:layout_marginBottom="@dimen/normal_vertical_spacing"
+            android:layout_marginTop="@dimen/normal_vertical_spacing"
             android:background="@color/trueWhite"
             android:contentDescription="@string/Logo_ContentDescript"
             app:srcCompat="@drawable/ic_color_umass_logo" />
@@ -30,48 +33,50 @@
             android:layout_height="match_parent"
             android:background="@color/defaultBlack">
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 style="?android:attr/buttonBarButtonStyle"
-                android:layout_marginTop="@android:dimen/app_icon_size"
-                android:drawableLeft="@drawable/ic_grey_single_box"
-                android:drawableStart="@drawable/ic_grey_single_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_vertical_spacing"
                 android:background="#0000"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/shipmentBtnText"
-                android:textColor="@color/defaultGrey" />
+                android:textColor="@color/defaultGrey"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/ic_grey_single_box"
+                app:drawableStartCompat="@drawable/ic_grey_single_box" />
 
             <View
                 android:id="@+id/dividerShipment"
-                android:layout_marginBottom="@android:dimen/app_icon_size"
-                android:layout_marginLeft="@android:dimen/app_icon_size"
-                android:layout_marginRight="@android:dimen/app_icon_size"
+                android:layout_marginBottom="@dimen/normal_vertical_spacing"
+                android:layout_marginLeft="@dimen/normal_edge_margin"
+                android:layout_marginRight="@dimen/normal_edge_margin"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/defaultGrey" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 style="?android:attr/buttonBarButtonStyle"
-                android:drawableLeft="@drawable/ic_grey_paper"
-                android:drawableStart="@drawable/ic_grey_paper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
                 android:clickable="true"
                 android:focusable="true"
                 android:text="@string/referenceBtnText"
-                android:textColor="@color/defaultGrey"/>
+                android:textColor="@color/defaultGrey"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/ic_grey_paper"
+                app:drawableStartCompat="@drawable/ic_grey_paper" />
 
             <View
-            android:id="@+id/dividerReference"
-            android:layout_marginBottom="@android:dimen/app_icon_size"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="@android:dimen/app_icon_size"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/defaultGrey" />
+                android:id="@+id/dividerReference"
+                android:layout_marginBottom="@dimen/normal_vertical_spacing"
+                android:layout_marginLeft="@dimen/normal_edge_margin"
+                android:layout_marginRight="@dimen/normal_edge_margin"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/defaultGrey" />
         </LinearLayout>
 
     </LinearLayout>
@@ -83,6 +88,6 @@
         android:text="@string/menuText_land"
         android:textAlignment="center"
         android:textColor="@color/defaultGrey"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
 
 </LinearLayout>
