@@ -1,6 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/defaultGrey">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:gravity="top|center_horizontal"
+        android:layout_height="match_parent"
+        android:background="@color/defaultBlack"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgViewMenuBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/searchBar_edge_margin"
+                android:layout_marginLeft="@dimen/searchBar_edge_margin"
+                android:layout_marginTop="@dimen/searchBar_edge_margin"
+                android:layout_marginBottom="@dimen/searchBar_edge_margin"
+                android:clickable="true"
+                android:contentDescription="@string/MenuLines_ContentDescript"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_grey_menu_lines" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/searchBar_edge_margin"
+                android:layout_marginLeft="@dimen/searchBar_edge_margin"
+                android:layout_marginTop="@dimen/vertical_divider_spacing"
+                android:layout_marginBottom="@dimen/vertical_divider_spacing"
+                android:background="@color/defaultGrey" />
+
+            <TextView
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/searchBar_edge_margin"
+                android:layout_marginLeft="@dimen/searchBar_edge_margin"
+                android:layout_marginEnd="@dimen/searchBar_edge_margin"
+                android:layout_marginRight="@dimen/searchBar_edge_margin"
+                android:background="#0000"
+                android:text="@string/referenceBtnText"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/umlBlue"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_marginLeft="@dimen/searchBar_edge_margin"
+            android:layout_marginRight="@dimen/searchBar_edge_margin"
+            android:background="@color/trueWhite"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="bottom|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgViewColorLogo"
+                android:layout_width="62dp"
+                android:layout_height="78dp"
+                android:background="@color/trueWhite"
+                android:contentDescription="@string/Logo_ContentDescript"
+                app:srcCompat="@drawable/ic_color_umass_logo" />
+
+            <TextView
+                android:id="@+id/txtViewMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/searchBar_edge_margin"
+                android:layout_marginBottom="@dimen/searchBar_edge_margin"
+                android:text="@string/menuText_port"
+                android:textAlignment="center"
+                android:textColor="@color/defaultGrey"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
 
 </LinearLayout>

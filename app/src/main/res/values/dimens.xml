@@ -8,4 +8,5 @@
     <dimen name="large_edge_margin">225dp</dimen>
     <dimen name="normal_edge_margin">96dp</dimen>
     <dimen name="searchBar_edge_margin">20dp</dimen>
+    <dimen name="menuImg_normal_edge_margin">18dp</dimen>
 </resources>
