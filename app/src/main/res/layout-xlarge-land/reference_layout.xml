@@ -7,18 +7,20 @@
     android:layout_height="match_parent"
     android:background="@color/defaultGrey">
 
-    <LinearLayout
-        android:layout_width="320dp"
-        android:gravity="top|center_horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/defaultBlack"
-        android:orientation="vertical">
+        android:background="@color/defaultBlack">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
             android:layout_height="87dp"
             android:gravity="start"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imgViewMenuBtn"
@@ -62,40 +64,33 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/searchBar_edge_margin"
             android:layout_marginRight="@dimen/searchBar_edge_margin"
             android:background="@color/trueWhite"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:gravity="bottom|center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtViewMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/normal_vertical_spacing"
+            android:text="@string/menuText_port"
+            android:textAlignment="center"
+            android:textColor="@color/defaultGrey"
+            android:textSize="24sp"
+            app:drawableTopCompat="@drawable/ic_color_umass_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-            <ImageView
-                android:id="@+id/imgViewColorLogo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/trueWhite"
-                android:contentDescription="@string/Logo_ContentDescript"
-                app:srcCompat="@drawable/ic_color_umass_logo" />
-
-            <TextView
-                android:id="@+id/txtViewMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/searchBar_edge_margin"
-                android:layout_marginBottom="@dimen/normal_vertical_spacing"
-                android:text="@string/menuText_port"
-                android:textAlignment="center"
-                android:textColor="@color/defaultGrey"
-                android:textSize="24sp" />
-        </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"

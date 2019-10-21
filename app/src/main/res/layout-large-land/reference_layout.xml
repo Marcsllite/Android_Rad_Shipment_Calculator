@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:gravity="top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/defaultGrey">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:gravity="top|center_horizontal"
         android:layout_height="match_parent"
-        android:background="@color/defaultBlack"
-        android:orientation="vertical">
+        android:background="@color/defaultBlack">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:gravity="start"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imgViewMenuBtn"
@@ -62,40 +64,32 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="37dp"
-            android:layout_marginLeft="@dimen/searchBar_edge_margin"
-            android:layout_marginRight="@dimen/searchBar_edge_margin"
             android:background="@color/trueWhite"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"
+            android:layout_marginLeft="@dimen/searchBar_edge_margin"
+            android:layout_marginRight="@dimen/searchBar_edge_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:gravity="bottom|center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtViewMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/searchBar_edge_margin"
+            android:text="@string/menuText_port"
+            android:textAlignment="center"
+            android:textColor="@color/defaultGrey"
+            android:textSize="14sp"
+            app:drawableTopCompat="@drawable/ic_color_umass_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
-            <ImageView
-                android:id="@+id/imgViewColorLogo"
-                android:layout_width="62dp"
-                android:layout_height="78dp"
-                android:background="@color/trueWhite"
-                android:contentDescription="@string/Logo_ContentDescript"
-                app:srcCompat="@drawable/ic_color_umass_logo" />
-
-            <TextView
-                android:id="@+id/txtViewMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/searchBar_edge_margin"
-                android:layout_marginBottom="@dimen/searchBar_edge_margin"
-                android:text="@string/menuText_port"
-                android:textAlignment="center"
-                android:textColor="@color/defaultGrey"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
