@@ -1,4 +1,5 @@
 language: android
+jdk: oraclejdk8
 android:
         components:
                 - platform-tools
@@ -7,10 +8,22 @@ android:
                 - extra-android-m2repository
 
 script:
-        - ./gradlew build jacocoTestReport
+        - ./gradlew build jacocoTestReport connectedCheck
 
-before_install:
+before_script:
         - chmod +x gradlew
 
+before_install:
+        - pip install --user codecov    #Install codecov
+
 after_success:
-        — bash <(curl -s https://codecov.io/bash) -t e3d308c9-738d-46fe-a0d0-139f8168c20d
+        - codecov                       #Run codecov
+
+before_cache:
+        - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+cache:
+        directories:      #Cache all dirs under .gradle folder
+                - $HOME/.gradle/daemon      #Cache daemon logs
+                - $HOME/.gradle/native      #Cache library downloaded from the gradle dependency
+                - $HOME/.gradle/wrapper     #Cache the gradle
