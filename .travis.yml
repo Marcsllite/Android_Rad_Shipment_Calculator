@@ -13,4 +13,4 @@ before_install:
         - chmod +x gradlew
 
 after_success:
-        — bash <(curl -s https://codecov.io/bash -t e3d308c9-738d-46fe-a0d0-139f8168c20d)
+        — bash <(curl -s https://codecov.io/bash)
