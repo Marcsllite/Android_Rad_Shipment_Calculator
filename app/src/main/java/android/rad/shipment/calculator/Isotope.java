@@ -35,7 +35,6 @@ public class Isotope {
     private float _ExemptLimit;         // Exempt Limit (Bq)of isotope (from Info table in database)
     private float _HalfLife;            // Halflife (days) of isotope (from Info table in database)
     private float _IALimitedMultiplier; // Instruments/Articles multiplier (see 173.425_Table 4) of isotope (from Info table in database)
-    private float _IAPackageLimit;      // Instruments/Articles package limit multiplier (see 173.425_Table 4) of isotope (from Info table in database)
     private float _LicenseLimit;        // Licensing Limit (microCi) of isotope (from Info table in database)
     private float _LimitedLimit;        // limited Limit (TBq) of isotope (from Info table in database)
     private float _ReportableQuan;      // Reportable Quantity (Ci) of isotope (from Info table in database)
@@ -46,8 +45,10 @@ public class Isotope {
      *
      * @param name the name of the isotope
      * @param A0 the initial activity (microCi) of the isotope
+     * @param state the state (solid, liquid, gas) of the isotope
+     * @param form the form (special, normal) of the isotope
      */
-    Isotope(String name, float A0) throws RuntimeException {
+    Isotope(String name, float A0, String state, String form) throws RuntimeException {
 //        try {
             // getting the values from the database
 //            _A1 = dbEditor.getA1(name);
@@ -56,10 +57,9 @@ public class Isotope {
 //            _ExemptConcentration = dbEditor.getExemptConcentration(name);
 //            _ExemptLimit = dbEditor.getExemptLimit(name);
 //            _HalfLife = dbEditor.getHalfLife(name);
-//            _IALimitedMultiplier = dbEditor.getIALimitedMultiplier(name);
-//            _IAPackageLimit = dbEditor.getIAPackageLimit(name);
+//            _IALimitedMultiplier = dbEditor.getIALimitedMultiplier(state, form);
 //            _LicenseLimit = dbEditor.getLicenseLimit(name);
-//            _LimitedLimit = dbEditor.getLimitedLimit(name);
+//            _LimitedLimit = dbEditor.getLimitedLimit(state, form);
 //            _ReportableQuan = dbEditor.getReportableQuantity(name);
 //        } catch (InvalidParameterException e) {
 //            // TODO: figure out android logging
@@ -323,13 +323,6 @@ public class Isotope {
     public float get_IALimitedMultiplier() { return _IALimitedMultiplier; }
 
     /**
-     * Getter function to get this isotope's instruments/articles package limit (from Info table in database)
-     *
-     * @return the instruments/articles package limit of this isotope (from Info table in database)
-     */
-    public float get_IAPackageLimit() { return _IAPackageLimit; }
-
-    /**
      * Getter function to get this isotope's license limit (from Info table in database)
      *
      * @return the license limit of this isotope (from Info table in database)
@@ -539,13 +532,6 @@ public class Isotope {
      * @param IAMult the new instruments/articles limited limit of this isotope (from Info table in database)
      */
     public void set_IALimitedMultiplier(float IAMult) { _IALimitedMultiplier = IAMult; }
-
-    /**
-     * Setter function to set this isotope's instruments/articles package limit (from Info table in database)
-     *
-     * @param IAPLim the new instruments/articles package limit of this isotope (from Info table in database)
-     */
-    public void set_IAPackageLimit(float IAPLim) { _IAPackageLimit = IAPLim; }
 
     /**
      * Setter function to set this isotope's license limit (from Info table in database)

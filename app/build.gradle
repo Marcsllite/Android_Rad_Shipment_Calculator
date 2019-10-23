@@ -18,7 +18,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
+
     lintOptions{
         disable 'GoogleAppIndexingWarning'
         disable 'AllowBackup'
@@ -39,6 +43,12 @@ buildscript {
 
 jacoco {
     toolVersion = "0.8.3"
+}
+
+jacocoAndroidUnitTestReport {
+    csv.enabled false
+    html.enabled true
+    xml.enabled true
 }
 
 dependencies {
