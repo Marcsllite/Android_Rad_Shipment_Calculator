@@ -22,7 +22,13 @@ android {
             testCoverageEnabled true
         }
     }
-
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
     lintOptions{
         disable 'GoogleAppIndexingWarning'
         disable 'AllowBackup'
