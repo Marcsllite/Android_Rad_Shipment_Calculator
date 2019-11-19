@@ -1,23 +1,26 @@
 <resources>
     <string name="app_name">Rad Shipment Calculator</string>
     <string name="defaultStr">Not Available</string>
-    <string name="Logo_ContentDescript">UMass Lowell Logo</string>
-    <string name="Home_ContentDescript">Home Icon</string>
-    <string name="MultipleBox_ContentDescript">Multiple Box Icon</string>
-    <string name="Paper_ContentDescript">Paper Icon</string>
-    <string name="SingleBox_ContentDescript">Single Box Icon</string>
-    <string name="MenuLines_ContentDescript">Menu Icon</string>
+    <string name="logo_ContentDescript">UMass Lowell Logo</string>
+    <string name="home_ContentDescript">Home Icon</string>
+    <string name="multipleBox_ContentDescript">Multiple Box Icon</string>
+    <string name="paper_ContentDescript">Paper Icon</string>
+    <string name="singleBox_ContentDescript">Single Box Icon</string>
+    <string name="menuLines_ContentDescript">Menu Icon</string>
     <string name="shipmentBtnText">Shipment</string>
     <string name="referenceBtnText">Reference</string>
     <string name="menuText_port">Radiation Safety\nUMass Lowell\nOne University Avenue\nLowell, MA 01854</string>
     <string name="menuText_land">Radiation Safety | UMass Lowell | One University Avenue | Lowell, MA 01854</string>
     <string name="menuText_small_land">Radiation Safety | UMass Lowell |\nOne University Avenue | Lowell, MA 01854</string>
+    <string name="dateFileNameFormat">MMddyyyy_HH-mm-ss</string>
+
     <string name="DB_User">superuser</string>
     <string name="DB_Pass">SnayRadiation</string>
     <string name="DB_Name">Shipment_Calculator</string>
     <string name="DB_NameCol">Name</string>
     <string name="DB_AbbrCol">Abbr</string>
     <string name="DB_ValueCol">Value</string>
+
     <string-array name="isotopesTable_array">
         <item name="tableName">Isotopes</item>
         <item name="tableQuery">select * from Isotopes</item>

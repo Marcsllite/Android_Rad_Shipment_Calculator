@@ -12,10 +12,11 @@
         android:layout_width="146dp"
         android:layout_height="177dp"
         android:background="@color/trueWhite"
-        android:contentDescription="@string/Logo_ContentDescript"
+        android:contentDescription="@string/logo_ContentDescript"
         app:srcCompat="@drawable/ic_color_umass_logo" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnShipment"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,6 +40,7 @@
         android:background="@color/defaultGrey" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnReference"
         style="?android:attr/buttonBarButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

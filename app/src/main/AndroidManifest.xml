@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_uml_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="android.rad.shipment.MainActivity">
+        <activity android:name="android.rad.shipment.calculator.view.MenuActivityView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

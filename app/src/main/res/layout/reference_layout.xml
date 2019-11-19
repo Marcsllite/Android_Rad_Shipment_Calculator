@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/defaultGrey">
+    android:background="@color/lightGrey"
+    android:gravity="top"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
                 android:layout_marginTop="@dimen/menuImg_normal_edge_margin"
                 android:layout_marginBottom="@dimen/menuImg_normal_edge_margin"
                 android:clickable="true"
-                android:contentDescription="@string/MenuLines_ContentDescript"
+                android:contentDescription="@string/menuLines_ContentDescript"
                 android:focusable="true"
                 app:srcCompat="@drawable/ic_grey_menu_lines" />
 
@@ -70,21 +70,22 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:gravity="start"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

@@ -32,7 +32,7 @@
                 android:layout_marginTop="@dimen/searchBar_edge_margin"
                 android:layout_marginBottom="@dimen/searchBar_edge_margin"
                 android:clickable="true"
-                android:contentDescription="@string/MenuLines_ContentDescript"
+                android:contentDescription="@string/menuLines_ContentDescript"
                 android:focusable="true"
                 app:srcCompat="@drawable/ic_grey_menu_lines" />
 
