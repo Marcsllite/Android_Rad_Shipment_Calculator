@@ -12,7 +12,7 @@ public class ReferencePresenter  extends BasePresenter {
     private final TaskExecutor mTaskExecutor;
     //TODO: figure out database model
 
-    public ReferencePresenter(@NonNull final ReferenceActivityView view, @NonNull final TaskExecutor taskExecutor,
+    public ReferencePresenter(@NonNull final ReferenceActivityView view, @NonNull final TaskExecutor taskExecutor
                               //FIXME: add database model to Reference presenter constructor
     ){
         mTaskExecutor = taskExecutor;
