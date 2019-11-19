@@ -1,6 +1,7 @@
 package android.rad.shipment.calculator.task;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by renarosantos on 20/02/16.

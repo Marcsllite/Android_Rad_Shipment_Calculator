@@ -41,8 +41,7 @@ public class MenuActivityView extends BaseActivity<MenuPresenter> implements Men
     }
 
     private class OnMenuButtonsClicked implements View.OnClickListener {
-        @Override
-        public void onClick(final View view) {
+        @Override public void onClick(final View view) {
             switch (view.getId()) {
                 case R.id.imgViewColorLogo:
                     mPresenter.onLogoClicked();

@@ -1,6 +1,6 @@
 package android.rad.shipment.calculator.task;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public interface AppTask<T> {
 
