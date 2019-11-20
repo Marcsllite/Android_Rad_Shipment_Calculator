@@ -7,6 +7,7 @@ android {
     useLibrary 'android.test.runner'
     useLibrary 'android.test.base'
     useLibrary 'android.test.mock'
+
     defaultConfig {
         applicationId "android.rad.shipment.calculator"
         minSdkVersion 14
@@ -16,6 +17,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -68,6 +70,22 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 //    androidTestImplementation 'androidx.test:runner:1.2.0'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Navigation Support
+    def nav_version = "2.1.0"
+
+    // Java language implementation
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
+
+    // Room dependencies
+    def room_version = "2.2.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-guava:$room_version"  // optional - Guava support for Room, including Optional and ListenableFuture
+
+    // Test helpers
+    testImplementation "androidx.room:room-testing:$room_version"
 
     // Core library
     androidTestImplementation 'androidx.test:core:1.2.0'
