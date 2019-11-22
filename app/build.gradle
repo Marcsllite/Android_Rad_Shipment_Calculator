@@ -71,12 +71,11 @@ dependencies {
 //    androidTestImplementation 'androidx.test:runner:1.2.0'
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    // Navigation Support
-    def nav_version = "2.1.0"
-
-    // Java language implementation
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
+//    // Navigation Support
+//    def nav_version = "2.1.0"
+//    // Java language implementation
+//    implementation "androidx.navigation:navigation-fragment:$nav_version"
+//    implementation "androidx.navigation:navigation-ui:$nav_version"
 
     // Room dependencies
     def room_version = "2.2.1"
