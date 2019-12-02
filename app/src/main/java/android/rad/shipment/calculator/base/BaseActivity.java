@@ -3,6 +3,7 @@ package android.rad.shipment.calculator.base;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -59,4 +60,14 @@ public abstract class  BaseActivity<Presenter extends BasePresenter> extends App
         mPresenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+    public void launchActivity(Context context, Class goTo) {
+        Intent intent = new Intent(context, goTo);
+        startActivity(intent);
+    }
+
+    public void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void leaveActivity() { finish(); }
 }

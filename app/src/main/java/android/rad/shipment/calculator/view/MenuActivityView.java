@@ -7,7 +7,6 @@ import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.presenter.MenuPresenter;
 import android.rad.shipment.calculator.view.interfaces.MenuActivityViewInterface;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -45,15 +44,12 @@ public class MenuActivityView extends BaseActivity<MenuPresenter> implements Men
             switch (view.getId()) {
                 case R.id.imgViewColorLogo:
                     mPresenter.onLogoClicked();
-                    Toast.makeText(getApplicationContext(), "User clicked the UMass Lowell logo", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.btnShipment:
                     mPresenter.onShipmentButtonClicked();
-                    Toast.makeText(getApplicationContext(), "User clicked the Shipment button", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.btnReference:
                     mPresenter.onReferenceButtonClicked();
-                    Toast.makeText(getApplicationContext(), "User clicked the Reference button", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

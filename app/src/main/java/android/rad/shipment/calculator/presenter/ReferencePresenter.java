@@ -1,6 +1,7 @@
 package android.rad.shipment.calculator.presenter;
 
 import android.rad.shipment.calculator.base.BasePresenter;
+import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
 import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.view.ReferenceActivityView;
 
@@ -10,14 +11,13 @@ public class ReferencePresenter  extends BasePresenter {
 
     private final ReferenceActivityView mView;
     private final TaskExecutor mTaskExecutor;
-    //TODO: figure out database model
+    private final ShipmentCalculatorDataSource mShipmentCalculatorDB;
 
-    public ReferencePresenter(@NonNull final ReferenceActivityView view, @NonNull final TaskExecutor taskExecutor
-                              //FIXME: add database model to Reference presenter constructor
-    ){
+    public ReferencePresenter(@NonNull final ReferenceActivityView view, @NonNull final TaskExecutor taskExecutor, ShipmentCalculatorDataSource db){
         mTaskExecutor = taskExecutor;
         mView = view;
+        mShipmentCalculatorDB = db;
     }
 
-    //TODO: create query db task
+    public void onMenuButtonClicked() { mView.leaveActivity(); }
 }

@@ -33,7 +33,7 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Isotopes.class, A1.class, A2.class, DecayConstant.class,
         ExemptConcentration.class, ExemptLimit.class, HalfLife.class, IALimitedLimit.class,
         IAPackageLimit.class, LicensingLimit.class, LimitedLimit.class, ReportableQuantity.class},
-        version = 1)
+        version = 1, exportSchema = false)
 public abstract class ShipmentCalculatorLocalDB extends RoomDatabase {
     private static volatile ShipmentCalculatorLocalDB INSTANCE;
 

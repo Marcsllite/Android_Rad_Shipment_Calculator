@@ -15,13 +15,15 @@
         android:roundIcon="@mipmap/ic_launcher_uml_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="android.rad.shipment.calculator.view.MenuActivityView">
+        <activity android:name=".view.MenuActivityView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.ReferenceActivityView" />
+        <activity android:name=".view.ShipmentActivityView" />
     </application>
 
 </manifest>

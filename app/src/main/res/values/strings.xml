@@ -4,6 +4,7 @@
     <string name="logo_ContentDescript">UMass Lowell Logo</string>
     <string name="home_ContentDescript">Home Icon</string>
     <string name="multipleBox_ContentDescript">Multiple Box Icon</string>
+    <string name="add_ContentDescript">Add Icon</string>
     <string name="paper_ContentDescript">Paper Icon</string>
     <string name="singleBox_ContentDescript">Single Box Icon</string>
     <string name="menuLines_ContentDescript">Menu Icon</string>
@@ -16,69 +17,5 @@
 
     <string name="DB_User">superuser</string>
     <string name="DB_Pass">SnayRadiation</string>
-    <string name="DB_Name">Shipment_Calculator</string>
-    <string name="DB_NameCol">Name</string>
-    <string name="DB_AbbrCol">Abbr</string>
-    <string name="DB_ValueCol">Value</string>
 
-    <string-array name="isotopesTable_array">
-        <item name="tableName">Isotopes</item>
-        <item name="tableQuery">select * from Isotopes</item>
-        <item name="tableCreate">create table if not exists Isotopes (Name varchar(255) not null, Abbr char(10) not null)</item>
-    </string-array>
-    <string-array name="A1Table_array">
-        <item name="tableName">A1</item>
-        <item name="tableQuery">select * from A1</item>
-        <item name="tableCreate">create table if not exists A1 (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="A2Table_array">
-        <item name="tableName">A2</item>
-        <item name="tableQuery">select * from A2</item>
-        <item name="tableCreate">create table if not exists A2 (Abbr char(10) not null, Value real))</item>
-    </string-array>
-    <string-array name="decayConTable_array">
-        <item name="tableName">Decay_Constant</item>
-        <item name="tableQuery">select * from Decay_Constant</item>
-        <item name="tableCreate">create table if not exists Decay_Constant (Abbr char(10) not null, Value real))</item>
-    </string-array>
-    <string-array name="exemptConTable_array">
-        <item name="tableName">Exempt_Concentration</item>
-        <item name="tableQuery">select * from Exempt_Concentration</item>
-        <item name="tableCreate">create table if not exists Exempt_Concentration (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="exemptLimTable_array">
-        <item name="tableName">Exempt_Limit</item>
-        <item name="tableQuery">select * from Exempt_Limit</item>
-        <item name="tableCreate">create table if not exists Exempt_Limit (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="halfLifeTable_array">
-        <item name="tableName">HalfLife</item>
-        <item name="tableQuery">select * from HalfLife</item>
-        <item name="tableCreate">create table if not exists HalfLife (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="instrArtLimLimTable_array">
-        <item name="tableName">Instr_Art_Limited_Limit</item>
-        <item name="tableQuery">select * from Instr_Art_Limited_Limit</item>
-        <item name="tableCreate">create table if not exists Instr_Art_Limited_Limit (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="instrArtPackageLimTable_array">
-        <item name="tableName">Instr_Art_Package_Limit</item>
-        <item name="tableQuery">select * from Instr_Art_Package_Limit</item>
-        <item name="tableCreate">create table if not exists Instr_Art_Package_Limit (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="licensingLimTable_array">
-        <item name="tableName">Licensing_Limit</item>
-        <item name="tableQuery">select * from Licensing_Limit</item>
-        <item name="tableCreate">create table if not exists Licensing_Limit (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="limitedLimTable_array">
-        <item name="tableName">Limited_Limit</item>
-        <item name="tableQuery">select * from Limited_Limit</item>
-        <item name="tableCreate">create table if not exists Limited_Limit (Abbr char(10) not null, Value real)</item>
-    </string-array>
-    <string-array name="reportQTable_array">
-        <item name="tableName">Reportable_Quantity</item>
-        <item name="tableQuery">select * from Reportable_Quantity</item>
-        <item name="tableCreate">create table if not exists Reportable_Quantity (Abbr char(10) not null, Value real)</item>
-    </string-array>
 </resources>
