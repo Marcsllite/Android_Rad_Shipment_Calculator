@@ -5,12 +5,12 @@
     android:gravity="top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/defaultGrey">
+    android:background="@color/lightGrey">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/defaultBlack">
+        android:background="@color/darkColor">
 
         <LinearLayout
             android:id="@+id/linearLayout4"
@@ -27,10 +27,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/searchBar_edge_margin"
-                android:layout_marginLeft="@dimen/searchBar_edge_margin"
-                android:layout_marginTop="@dimen/searchBar_edge_margin"
-                android:layout_marginBottom="@dimen/searchBar_edge_margin"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingTop="@dimen/searchBar_edge_margin"
+                android:paddingBottom="@dimen/searchBar_edge_margin"
                 android:clickable="true"
                 android:contentDescription="@string/menuLines_ContentDescript"
                 android:focusable="true"
@@ -40,8 +40,8 @@
                 android:id="@+id/divider"
                 android:layout_width="5dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/searchBar_edge_margin"
-                android:layout_marginLeft="@dimen/searchBar_edge_margin"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
                 android:layout_marginTop="@dimen/vertical_divider_spacing"
                 android:layout_marginBottom="@dimen/vertical_divider_spacing"
                 android:background="@color/defaultGrey" />
@@ -50,10 +50,10 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/searchBar_edge_margin"
-                android:layout_marginLeft="@dimen/searchBar_edge_margin"
-                android:layout_marginEnd="@dimen/searchBar_edge_margin"
-                android:layout_marginRight="@dimen/searchBar_edge_margin"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingLeft="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingRight="@dimen/searchBar_edge_margin"
                 android:background="#0000"
                 android:text="@string/shipmentBtnText"
                 android:textAlignment="center"
@@ -66,10 +66,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="@dimen/searchBar_edge_margin"
-                android:layout_marginRight="@dimen/searchBar_edge_margin"
-                android:layout_marginTop="@dimen/searchBar_edge_margin"
-                android:layout_marginBottom="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingRight="@dimen/searchBar_edge_margin"
+                android:paddingTop="@dimen/searchBar_edge_margin"
+                android:paddingBottom="@dimen/searchBar_edge_margin"
                 android:clickable="true"
                 android:contentDescription="@string/add_ContentDescript"
                 android:focusable="true"
@@ -80,7 +80,7 @@
             android:id="@+id/txtViewMenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/normal_vertical_spacing"
+            android:paddingBottom="@dimen/normal_vertical_spacing"
             android:text="@string/menuText_port"
             android:textAlignment="center"
             android:textColor="@color/defaultGrey"
@@ -92,14 +92,37 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="1dp"
+            android:padding="10dp" >
+        </ListView>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/txtViewEmptyShipment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/emptyShipment" />
 
-    </ScrollView>
+        <Button
+            android:id="@+id/btnCalculate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/calculateBtnText"
+            android:background="@color/umlBlue"
+            android:textColor="@color/trueWhite" />
+
+    </RelativeLayout>
 
 </LinearLayout>

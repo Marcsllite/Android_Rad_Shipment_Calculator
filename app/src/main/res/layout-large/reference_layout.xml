@@ -5,12 +5,12 @@
     android:gravity="top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/defaultGrey">
+    android:background="@color/lightGrey">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="138dp"
-        android:background="@color/defaultBlack"
+        android:background="@color/darkColor"
         android:orientation="vertical">
 
 
@@ -25,10 +25,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/searchBar_edge_margin"
-                android:layout_marginLeft="@dimen/searchBar_edge_margin"
-                android:layout_marginTop="@dimen/searchBar_edge_margin"
-                android:layout_marginBottom="@dimen/searchBar_edge_margin"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingTop="@dimen/searchBar_edge_margin"
+                android:paddingBottom="@dimen/searchBar_edge_margin"
                 android:clickable="true"
                 android:contentDescription="@string/menuLines_ContentDescript"
                 android:focusable="true"
@@ -38,8 +38,6 @@
                 android:id="@+id/divider"
                 android:layout_width="3dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/searchBar_edge_margin"
-                android:layout_marginLeft="@dimen/searchBar_edge_margin"
                 android:layout_marginTop="@dimen/vertical_divider_spacing"
                 android:layout_marginBottom="@dimen/vertical_divider_spacing"
                 android:background="@color/defaultGrey" />

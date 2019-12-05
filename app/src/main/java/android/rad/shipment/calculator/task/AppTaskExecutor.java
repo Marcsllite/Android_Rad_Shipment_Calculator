@@ -7,7 +7,7 @@ import java.lang.ref.WeakReference;
 
 import androidx.annotation.NonNull;
 
-public class AppTaskExecutor implements TaskExecutor {
+public class AppTaskExecutor implements TaskExecutor{
 
     private final WeakReference<Activity> mActivityWeakReference;
 

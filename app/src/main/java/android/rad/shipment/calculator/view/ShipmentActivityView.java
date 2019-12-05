@@ -1,21 +1,33 @@
 package android.rad.shipment.calculator.view;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
 import android.rad.shipment.calculator.presenter.ShipmentPresenter;
 import android.rad.shipment.calculator.task.AppTaskExecutor;
-import android.rad.shipment.calculator.view.interfaces.ShipmentActivityViewInterface;
+import android.rad.shipment.calculator.utils.IsotopeAdapter;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 
-public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> implements ShipmentActivityViewInterface {
+public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
+    // Declaring variables
+    private static IsotopeAdapter isotopeAdapter;
+    private View menuBtn;
+    private View addBtn;
+    private ListView listView;
+    private View calculateBtn;
+
     @NonNull @Override
     protected ShipmentPresenter createPresenter(@NonNull Context context) {
-        return new ShipmentPresenter(this,  new AppTaskExecutor(this), new ShipmentCalculatorDataSource(this));
+        ShipmentCalculatorDataSource db = new ShipmentCalculatorDataSource(this);
+        new initDBAsyncTask(this, db.getInstance()).execute();
+        return new ShipmentPresenter(this,  new AppTaskExecutor(this), db);
     }
 
     @Override protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +43,52 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> implem
          */
         setContentView(R.layout.shipment_layout);
 
-        final View menuBtn = findViewById(R.id.imgViewMenuBtn);
-        final View addBtn = findViewById(R.id.imgViewAddBtn);
+        menuBtn = findViewById(R.id.imgViewMenuBtn);
+        addBtn = findViewById(R.id.imgViewAddBtn);
+        listView = findViewById(R.id.listView);
+        calculateBtn = findViewById(R.id.btnCalculate);
 
+        listView.setEmptyView(findViewById(R.id.txtViewEmptyShipment));
+
+        isotopeAdapter = new IsotopeAdapter(this, BaseActivity.getShipment().getIsotopes());
+        listView.setAdapter(isotopeAdapter);
+
+        OnListChanged onListChanged = new OnListChanged();
         OnShipmentButtonsClicked onShipmentButtonsClicked = new OnShipmentButtonsClicked();
+        AdapterView.OnItemClickListener onItemClickListener = new OnShipmentIsotopeClicked();
+
+        isotopeAdapter.registerDataSetObserver(onListChanged);
 
         menuBtn.setOnClickListener(onShipmentButtonsClicked);
         addBtn.setOnClickListener(onShipmentButtonsClicked);
+        listView.setOnItemClickListener(onItemClickListener);
+        calculateBtn.setOnClickListener(onShipmentButtonsClicked);
+
+        disableCalculateButton();
+    }
+
+    public void enableCalculateButton() {
+        calculateBtn.setEnabled(true);
+        calculateBtn.setVisibility(View.VISIBLE);
+    }
+    
+    public void disableCalculateButton() {
+        calculateBtn.setEnabled(false);
+        calculateBtn.setVisibility(View.INVISIBLE);
+    }
+
+    public static IsotopeAdapter getIsotopeAdapter() { return isotopeAdapter; }
+
+    private class OnListChanged extends DataSetObserver {
+        @Override public void onChanged() {
+            mPresenter.onListChanged();
+        }
+    }
+
+    private class OnShipmentIsotopeClicked implements AdapterView.OnItemClickListener {
+        @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            mPresenter.onShipmentIsotopeClicked(i);
+        }
     }
 
     private class OnShipmentButtonsClicked implements View.OnClickListener {
@@ -48,6 +99,9 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> implem
                     break;
                 case R.id.imgViewAddBtn:
                     mPresenter.onAddButtonClicked();
+                    break;
+                case R.id.btnCalculate:
+                    mPresenter.onCalculateButtonClicked();
                     break;
             }
         }

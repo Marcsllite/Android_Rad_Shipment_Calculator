@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <EditText
+            android:id="@+id/editTxtIsoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/isoNamePrompt"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/darkColor"
+            android:textColorHighlight="@color/umlBlue">
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextInitialActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTxtIsoName"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:hint="@string/isoA0Prompt"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textColor="@color/darkColor"
+            android:textColorHighlight="@color/umlBlue" />
+
+        <Spinner
+            android:id="@+id/spinnerA0Units_SI"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editTextInitialActivity"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <Spinner
+            android:id="@+id/spinnerA0Units_Name"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/spinnerA0Units_SI"
+            android:layout_toRightOf="@+id/spinnerA0Units_SI"
+            android:layout_below="@+id/editTextInitialActivity"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAddInfoTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_below="@+id/spinnerA0Units_SI"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true">
+
+            <TextView
+                android:id="@+id/txtViewAdditionalInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/additionalInfoText"/>
+
+            <View
+                android:id="@+id/dividerAddInfoTop"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_height="2dp"
+                android:background="@color/defaultGrey" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAddInfoMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayoutAddInfoTop"
+            android:paddingBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radioGrpShortLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <RadioButton
+                    android:id="@+id/radioBtnShortLived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/shortLong_1"
+                    android:textColor="@color/darkColor"
+                    android:textColorHighlight="@color/umlBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioBtnLongLived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/shortLong_2"
+                    android:textColor="@color/darkColor"
+                    android:textColorHighlight="@color/umlBlue" />
+            </RadioGroup>
+
+            <View
+                android:id="@+id/dividerAddInfoMiddle"
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@color/defaultGrey" />
+
+            <RadioGroup
+                android:id="@+id/radioGrpLungAbs"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioBtnSlowLungAbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/lungAbs_1"
+                    android:textColor="@color/darkColor"
+                    android:textColorHighlight="@color/umlBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioBtnMediumLungAbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/lungAbs_2"
+                    android:textColor="@color/darkColor"
+                    android:textColorHighlight="@color/umlBlue" />
+
+                <RadioButton
+                    android:id="@+id/radioBtnFastLungAbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:text="@string/lungAbs_3"
+                    android:textColor="@color/darkColor"
+                    android:textColorHighlight="@color/umlBlue" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/dividerAddInfoBottom"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/defaultGrey"
+            android:layout_below="@+id/linearLayoutAddInfoMiddle"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <EditText
+            android:id="@+id/editTxtMass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/massPrompt"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:layout_below="@+id/dividerAddInfoBottom"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/spinnerMassUnits_SI"
+            android:layout_toStartOf="@id/spinnerMassUnits_SI"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerMassUnits_SI"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/spinnerMassUnits_Name"
+            android:layout_toStartOf="@id/spinnerMassUnits_Name"
+            android:layout_above="@+id/chckBoxSameMass"/>
+
+        <Spinner
+            android:id="@+id/spinnerMassUnits_Name"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/chckBoxSameMass"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+        <CheckBox
+            android:id="@+id/chckBoxSameMass"
+            android:layout_below="@+id/editTxtMass"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sameMassChckBox"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <TextView
+            android:id="@+id/txtViewNature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/chckBoxSameMass"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/naturePrompt"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerNature"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtViewState"
+            android:layout_toRightOf="@+id/txtViewNature"
+            android:layout_toEndOf="@+id/txtViewNature"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/txtViewState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/txtViewNature"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/statePrompt"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerState"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txtViewForm"
+            android:layout_toRightOf="@+id/txtViewState"
+            android:layout_toEndOf="@+id/txtViewState"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/txtViewForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/txtViewState"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/formPrompt"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerForm"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/chckBoxSameNSF"
+            android:layout_toRightOf="@+id/txtViewForm"
+            android:layout_toEndOf="@+id/txtViewForm"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"/>
+
+        <CheckBox
+            android:id="@+id/chckBoxSameNSF"
+            android:layout_below="@+id/txtViewForm"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sameNSFChckBox"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAddButtons"
+            android:layout_below="@+id/chckBoxSameNSF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancel"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/umlBlue"
+                android:text="@string/cancelBtn"
+                android:textColor="@color/trueWhite" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/umlBlue"
+                android:text="@string/deleteBtn"
+                android:textColor="@color/trueWhite" />
+
+            <Button
+                android:id="@+id/btnEdit"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/umlBlue"
+                android:text="@string/editBtn"
+                android:textColor="@color/trueWhite" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>

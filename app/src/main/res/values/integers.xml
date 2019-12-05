@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="defaultInt">-2</integer>
+    <integer name="yottaIndex">0</integer>
+    <integer name="zettaIndex">1</integer>
+    <integer name="exaIndex">2</integer>
+    <integer name="petaIndex">3</integer>
+    <integer name="teraIndex">4</integer>
+    <integer name="gigaIndex">5</integer>
+    <integer name="megaIndex">6</integer>
+    <integer name="kiloIndex">7</integer>
+    <integer name="hectoIndex">8</integer>
+    <integer name="dekaIndex">9</integer>
+    <integer name="baseIndex">10</integer>
+    <integer name="deciIndex">11</integer>
+    <integer name="centiIndex">12</integer>
+    <integer name="milliIndex">13</integer>
+    <integer name="microIndex">14</integer>
+    <integer name="nanoIndex">15</integer>
+    <integer name="picoIndex">16</integer>
+    <integer name="femtoIndex">17</integer>
+    <integer name="attoIndex">18</integer>
+    <integer name="zeptoIndex">19</integer>
+    <integer name="yoctoIndex">20</integer>
+
+    <integer name="becquerelIndex">0</integer>
+    <integer name="curieIndex">1</integer>
+
+    <integer name="gramsIndex">0</integer>
+    <integer name="litersIndex">1</integer>
+
+    <integer name="regularIndex">0</integer>
+    <integer name="instrumentIndex">1</integer>
+    <integer name="articleIndex">2</integer>
+
+    <integer name="solidIndex">0</integer>
+    <integer name="liquidIndex">1</integer>
+    <integer name="gasIndex">2</integer>
+
+    <integer name="specialIndex">0</integer>
+    <integer name="normalIndex">1</integer>
 </resources>

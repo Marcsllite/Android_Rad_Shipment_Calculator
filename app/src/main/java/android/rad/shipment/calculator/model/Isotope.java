@@ -6,7 +6,7 @@ public class Isotope {
     // Declaring Variables
     private int defaultVal = R.integer.defaultInt;
     private String _Name;                   // The name of the isotope
-    private float _A0;                      // Initial Activity (microCi) of isotope
+    private float _A0;                      // Initial Activity (microCuries) of isotope
     private float _Mass;                    // the mass of the isotope (grams for solids, liters for liquids)
     private String _Nature;                 // the nature (regular, special) of the isotope
     private String _State;                  // the state (solid, liquid, gas) of the isotope
@@ -90,6 +90,50 @@ public class Isotope {
         _LungAbs = lungAbs;
         _LongShort = "";
         _IsotopeClass = defaultVal;
+    }
+
+    /**
+     * Copy Constructor
+     *
+     * @param newIso the isotope to copy all the information from
+     */
+    public Isotope(Isotope newIso) {
+        _Name = newIso._Name;                 
+        _A0 = newIso._A0;
+        _Mass = newIso._Mass;
+        _Nature = newIso._Nature;
+        _State = newIso._State;
+        _Form = newIso._Form;
+        _LongShort = newIso._LongShort;
+        _LungAbs = newIso._LungAbs;
+        _IsotopeClass = newIso._IsotopeClass;
+    } 
+    
+    @Override public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+
+        result = prime * result + ((_Name == null) ? 0 : _Name.hashCode()) +
+                                ((_Nature == null) ? 0 : _Nature.hashCode()) +
+                                ((_State == null) ? 0 : _State.hashCode()) +
+                                ((_Form == null) ? 0 : _Form.hashCode()) +
+                                ((int)_A0) + ((int)_Mass);
+        return result;
+    }
+
+    @Override public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+
+        Isotope other = (Isotope) obj;
+
+        return other._Name.equals(this._Name) &&
+                other._A0 == this._A0 &&
+                other._Mass == this._Mass &&
+                other._Nature.equals(this._Nature) &&
+                other._State.equals(this._State) &&
+                other._Form.equals(this._Form);
     }
 
     /*/////////////////////////////////////////////////// GETTERS ////////////////////////////////////////////////////*/

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Rad Shipment Calculator</string>
+    <string name="umlURL">https://www.uml.edu</string>
     <string name="defaultStr">Not Available</string>
     <string name="logo_ContentDescript">UMass Lowell Logo</string>
     <string name="home_ContentDescript">Home Icon</string>
@@ -10,12 +11,88 @@
     <string name="menuLines_ContentDescript">Menu Icon</string>
     <string name="shipmentBtnText">Shipment</string>
     <string name="referenceBtnText">Reference</string>
+    <string name="calculateBtnText">Calculate</string>
     <string name="menuText_port">Radiation Safety\nUMass Lowell\nOne University Avenue\nLowell, MA 01854</string>
     <string name="menuText_land">Radiation Safety | UMass Lowell | One University Avenue | Lowell, MA 01854</string>
     <string name="menuText_small_land">Radiation Safety | UMass Lowell |\nOne University Avenue | Lowell, MA 01854</string>
     <string name="dateFileNameFormat">MMddyyyy_HH-mm-ss</string>
+    <string name="emptyShipment">No Isotopes in Shipment</string>
+    <string name="addTitle">Add Isotope</string>
+    <string name="editTitle">Edit Isotope</string>
+    <string name="isoNamePrompt">Isotope Name</string>
+    <string name="isoA0Prompt">Initial Activity</string>
+    <string name="additionalInfoText">additional info</string>
+    <string name="massPrompt">Mass</string>
+    <string name="sameMassChckBox">Mass is consistent</string>
+    <string name="sameNSFChckBox">Nature, State, Form is consistent</string>
+    <string name="cancelBtn">Cancel</string>
+    <string name="addBtn">Add</string>
+    <string name="editBtn">Update</string>
+    <string name="deleteBtn">Delete</string>
 
-    <string name="DB_User">superuser</string>
-    <string name="DB_Pass">SnayRadiation</string>
+    <string name="naturePrompt">Nature:</string>
+    <string-array name="NatureUnits">
+        <item name="NatureUnit_1">Regular</item>
+        <item name="NatureUnit_2">Instrument</item>
+        <item name="NatureUnit_3">Article</item>
+    </string-array>
 
+    <string name="statePrompt">State:</string>
+    <string-array name="StateUnits">
+        <item name="StateUnit_1">Solid</item>
+        <item name="StateUnit_2">Liquid</item>
+        <item name="StateUnit_3">Gas</item>
+    </string-array>
+
+    <string name="formPrompt">Form:</string>
+    <string-array name="FormUnits">
+        <item name="FormUnit_1">Special</item>
+        <item name="FormUnit_2">Normal</item>
+    </string-array>
+
+    <string name="isoShortTxt"> (short)</string>
+    <string name="isoLongTxt"> (long)</string>
+
+    <string name="shortLong_1">Short Lived</string>
+    <string name="shortLong_2">Long Lived</string>
+
+    <string name="lungAbs_1">Slow Lung Absorption</string>
+    <string name="lungAbs_2">Medium Lung Absorption</string>
+    <string name="lungAbs_3">Fast Lung Absorption</string>
+
+    <string name="baseSi">----</string>
+
+    <string-array name="Units_SI">
+        <item>Yotta (Y)</item>
+        <item>Zetta (Z)</item>
+        <item>Exa (E)</item>
+        <item>Peta (P)</item>
+        <item>Tera (T)</item>
+        <item>Giga (G)</item>
+        <item>Mega (M)</item>
+        <item>Kilo (k)</item>
+        <item>Hecto (h)</item>
+        <item>Deka (da)</item>
+        <item>----</item>
+        <item>Deci (d)</item>
+        <item>Centi (c)</item>
+        <item>Milli (m)</item>
+        <item>Micro (&#xb5;)</item>
+        <item>Nano (n)</item>
+        <item>Pico (p)</item>
+        <item>Femto (f)</item>
+        <item>Atto (a)</item>
+        <item>Zepto (z)</item>
+        <item>Yocto (y)</item>
+    </string-array>
+
+    <string-array name="AOUnits_Name">
+        <item>Becquerel (Bq)</item>
+        <item>Curie (Ci)</item>
+    </string-array>
+
+    <string-array name="MassUnits_Name">
+        <item>grams</item>\
+        <item>liters</item>
+    </string-array>
 </resources>

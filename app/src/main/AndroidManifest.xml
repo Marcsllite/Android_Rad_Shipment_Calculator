@@ -9,7 +9,7 @@
         android:smallScreens="true" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher_uml_logo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_uml_logo_round"
@@ -24,6 +24,10 @@
         </activity>
         <activity android:name=".view.ReferenceActivityView" />
         <activity android:name=".view.ShipmentActivityView" />
+        <activity android:name=".view.AddActivityView"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+        <activity android:name=".view.EditActivityView"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
     </application>
 
 </manifest>

@@ -7,9 +7,6 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/**
- * Created by renarosantos on 08/08/16.
- */
 @SuppressWarnings({"UnusedParameters", "unused"})
 public abstract class BasePresenter {
 

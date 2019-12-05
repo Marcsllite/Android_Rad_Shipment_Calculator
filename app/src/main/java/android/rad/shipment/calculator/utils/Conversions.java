@@ -1,4 +1,4 @@
-package android.rad.shipment.calculator.model;
+package android.rad.shipment.calculator.utils;
 
 /* source: REMM(Radiation Emergency Medical Management) https://www.remm.nlm.gov/radmeasurement.htm
  * #################|           SI Units            |      Common Units     |
