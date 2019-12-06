@@ -1,6 +1,9 @@
 package android.rad.shipment.calculator.utils;
 
-/* source: REMM(Radiation Emergency Medical Management) https://www.remm.nlm.gov/radmeasurement.htm
+/**
+ * Class to do conversions listed below
+ *
+ * source: REMM(Radiation Emergency Medical Management) https://www.remm.nlm.gov/radmeasurement.htm
  * #################|           SI Units            |      Common Units     |
  * Radioactivity    |   becquerel           (Bq)    |   curie       (Ci)    |
  * Absorbed Dose    |   gray                (Gy)    |   rad                 |
@@ -8,9 +11,8 @@ package android.rad.shipment.calculator.utils;
  * Exposure         |   coulomb/kilogram    (C/kg)  |   roentgen    (R)     |
  * ##########################################################################
  */
-
 public class Conversions {
-    // Declaring variables
+    // Declaring final SI units
     private static final int _BASE = 10;
     private static final float YOTTA = (float)Math.pow(_BASE, 24);   // Y
     private static final float ZETTA = (float)Math.pow(_BASE, 21);   // Z
