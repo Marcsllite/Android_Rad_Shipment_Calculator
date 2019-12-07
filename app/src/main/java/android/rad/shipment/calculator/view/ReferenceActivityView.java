@@ -48,10 +48,12 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
      */
     private class OnReferenceButtonsClicked implements View.OnClickListener {
         @Override public void onClick(final View view) {
-            switch (view.getId()) {
-                case R.id.imgViewMenuBtn:
-                    mPresenter.onMenuButtonClicked();
-                    break;
+            if(view != null) {
+                switch (view.getId()) {
+                    case R.id.imgViewMenuBtn:
+                        mPresenter.onMenuButtonClicked();
+                        break;
+                }
             }
         }
     }

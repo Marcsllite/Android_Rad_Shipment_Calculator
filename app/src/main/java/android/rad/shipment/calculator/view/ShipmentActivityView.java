@@ -116,16 +116,18 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
      */
     private class OnShipmentButtonsClicked implements View.OnClickListener {
         @Override public void onClick(final View view) {
-            switch (view.getId()) {
-                case R.id.imgViewMenuBtn:
-                    mPresenter.onMenuButtonClicked();
-                    break;
-                case R.id.imgViewAddBtn:
-                    mPresenter.onAddButtonClicked();
-                    break;
-                case R.id.btnCalculate:
-                    mPresenter.onCalculateButtonClicked();
-                    break;
+            if(view != null) {
+                switch (view.getId()) {
+                    case R.id.imgViewMenuBtn:
+                        mPresenter.onMenuButtonClicked();
+                        break;
+                    case R.id.imgViewAddBtn:
+                        mPresenter.onAddButtonClicked();
+                        break;
+                    case R.id.btnCalculate:
+                        mPresenter.onCalculateButtonClicked();
+                        break;
+                }
             }
         }
     }

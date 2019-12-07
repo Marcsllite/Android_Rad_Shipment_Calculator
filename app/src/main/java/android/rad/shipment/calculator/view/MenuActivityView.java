@@ -40,16 +40,18 @@ public class MenuActivityView extends BaseActivity<MenuPresenter> {
      */
     private class OnMenuButtonsClicked implements View.OnClickListener {
         @Override public void onClick(final View view) {
-            switch (view.getId()) {
-                case R.id.imgViewColorLogo:
-                    mPresenter.onLogoClicked();
-                    break;
-                case R.id.btnShipment:
-                    mPresenter.onShipmentButtonClicked();
-                    break;
-                case R.id.btnReference:
-                    mPresenter.onReferenceButtonClicked();
-                    break;
+            if(view != null) {
+                switch (view.getId()) {
+                    case R.id.imgViewColorLogo:
+                        mPresenter.onLogoClicked();
+                        break;
+                    case R.id.btnShipment:
+                        mPresenter.onShipmentButtonClicked();
+                        break;
+                    case R.id.btnReference:
+                        mPresenter.onReferenceButtonClicked();
+                        break;
+                }
             }
         }
     }

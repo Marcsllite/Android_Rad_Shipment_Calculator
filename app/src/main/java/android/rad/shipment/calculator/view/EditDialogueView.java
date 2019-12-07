@@ -431,29 +431,28 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
     private class OnSpinnerItemSelected implements AdapterView.OnItemSelectedListener {
         @Override public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             // passing the index of the selected item to the presenter
-            switch (view.getId()) {
-                case R.id.spinnerMassUnits_SI:
-                    mPresenter.onMassUnitSISelected();
-                    break;
-                case R.id.spinnerMassUnits_Name:
-                    mPresenter.onMassUnitNameSelected(i);
-                    break;
-                case R.id.spinnerNature:
-                    mPresenter.onNatureSelected();
-                    break;
-                case R.id.spinnerState:
-                    mPresenter.onStateSelected(i);
-                    break;
-                case R.id.spinnerForm:
-                    mPresenter.onFormSelected();
-                    break;
+            if(view != null) {
+                switch (view.getId()) {
+                    case R.id.spinnerMassUnits_SI:
+                        mPresenter.onMassUnitSISelected();
+                        break;
+                    case R.id.spinnerMassUnits_Name:
+                        mPresenter.onMassUnitNameSelected(i);
+                        break;
+                    case R.id.spinnerNature:
+                        mPresenter.onNatureSelected();
+                        break;
+                    case R.id.spinnerState:
+                        mPresenter.onStateSelected(i);
+                        break;
+                    case R.id.spinnerForm:
+                        mPresenter.onFormSelected();
+                        break;
+                }
             }
         }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> adapterView) {
-
-        }
+        @Override public void onNothingSelected(AdapterView<?> adapterView) { }
     }
 
     /**
@@ -464,7 +463,7 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
 
         @Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
-        @Override public void afterTextChanged(Editable editable) { mPresenter.onNameTextChanged(editable.toString()); }
+        @Override public void afterTextChanged(Editable editable) { if(!"".equals(editable.toString())) mPresenter.onNameTextChanged(editable.toString()); }
     }
 
     /**
@@ -475,7 +474,7 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
 
         @Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
-        @Override public void afterTextChanged(Editable editable) { mPresenter.onA0TextChanged(editable.toString()); }
+        @Override public void afterTextChanged(Editable editable) { if(!"".equals(editable.toString())) mPresenter.onA0TextChanged(editable.toString()); }
     }
 
     /**
@@ -486,7 +485,7 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
 
         @Override public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
 
-        @Override public void afterTextChanged(Editable editable) { mPresenter.onMassTextChanged(editable.toString()); }
+        @Override public void afterTextChanged(Editable editable) { if(!"".equals(editable.toString())) mPresenter.onMassTextChanged(editable.toString()); }
     }
 
     /**
@@ -495,29 +494,31 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
      */
     private class OnEditButtonsClicked implements View.OnClickListener {
         @Override public void onClick(final View view) {
-            switch (view.getId()) {
-                case R.id.chckBoxSameMass:
-                    mPresenter.onChckBoxSameMassClicked();
-                    break;
-                case R.id.chckBoxSameNSF:
-                    mPresenter.onChckBoxSameNSFClicked();
-                    break;
-                case R.id.btnCancel:
-                    mPresenter.onBtnCancelClicked();
-                    break;
-                case R.id.btnDelete:
-                    mPresenter.onBtnDeleteClicked();
-                    break;
-                case R.id.btnEdit:
-                    mPresenter.onBtnEditClicked();
-                    break;
-                case R.id.radioBtnShortLived:
-                case R.id.radioBtnLongLived:
-                case R.id.radioBtnSlowLungAbs:
-                case R.id.radioBtnMediumLungAbs:
-                case R.id.radioBtnFastLungAbs:
-                    mPresenter.onRadioBtnClicked();
-                    break;
+            if(view != null) {
+                switch (view.getId()) {
+                    case R.id.chckBoxSameMass:
+                        mPresenter.onChckBoxSameMassClicked();
+                        break;
+                    case R.id.chckBoxSameNSF:
+                        mPresenter.onChckBoxSameNSFClicked();
+                        break;
+                    case R.id.btnCancel:
+                        mPresenter.onBtnCancelClicked();
+                        break;
+                    case R.id.btnDelete:
+                        mPresenter.onBtnDeleteClicked();
+                        break;
+                    case R.id.btnEdit:
+                        mPresenter.onBtnEditClicked();
+                        break;
+                    case R.id.radioBtnShortLived:
+                    case R.id.radioBtnLongLived:
+                    case R.id.radioBtnSlowLungAbs:
+                    case R.id.radioBtnMediumLungAbs:
+                    case R.id.radioBtnFastLungAbs:
+                        mPresenter.onRadioBtnClicked();
+                        break;
+                }
             }
         }
     }
