@@ -53,7 +53,7 @@ public class AddPresenter extends BasePresenter {
             // make sure the units are in microCuries (unit value gets saved to in Isotope object)
             mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.baseIndex));
             // setting the form index based on hte previous isotope's value
-            switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_MassUnit()) {
+            switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_MassUnit()) {
                 case "grams":
                     mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.gramsIndex));
                     break;

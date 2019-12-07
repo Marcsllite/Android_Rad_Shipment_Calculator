@@ -159,6 +159,18 @@ public class Isotope {
      * @param lungAbs the new lung absorption rate for this isotope (slow/medium/fast)
      */
     public void set_LungAbs(String lungAbs) { _LungAbs = lungAbs; }
+
+    /**
+     * Setter function to set this isotope's classification as an integer
+     *  0 = Exempt Classification
+     *  1 = Excepted/Limited Classification
+     *  2 = Type A Classification
+     *  4 = Type B Classification
+     *  8 = Type B: Highway Route Control Classification
+     *
+     * @param isotopeClass the new classification of this isotope as an integer
+     */
+    public void set_IsotopeClass(int isotopeClass) { _IsotopeClass = isotopeClass; }
     
     /*/////////////////////////////////////////////////// GETTERS ////////////////////////////////////////////////////*/
 

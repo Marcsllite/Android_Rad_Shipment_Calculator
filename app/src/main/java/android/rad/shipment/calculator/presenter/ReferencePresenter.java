@@ -34,49 +34,6 @@ public class ReferencePresenter  extends BasePresenter {
         mShipmentCalculatorDB = db;
     }
 
-    @Override
-    public void onCreate(@Nullable final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mView.showToast("Ref onCreate");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mView.showToast("Ref onResume");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mView.showToast("Ref onPause");
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull final Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mView.showToast("Ref onSaveInstanceState");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mView.showToast("Ref onDestroy");
-    }
-
-    @Override
-    public void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mView.showToast("Ref onActivityResult");
-    }
-
-    @Override
-    public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions,
-                                           @NonNull final int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        mView.showToast("Ref onRequestPermissionsResult");
-    }
-
     /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
 
     /**

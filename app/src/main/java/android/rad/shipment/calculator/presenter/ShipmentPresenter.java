@@ -26,42 +26,6 @@ public class ShipmentPresenter extends BasePresenter {
         super.onCreate(savedInstanceState);
         mView.showToast("Ship onCreate");
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mView.hideLoading();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull final Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mView.showToast("Ship onSaveInstanceState");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mView.showToast("Ship onDestroy");
-    }
-
-    @Override
-    public void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        mView.showToast("Ship onActivityResult");
-    }
-
-    @Override
-    public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions,
-                                           @NonNull final int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        mView.showToast("Ship onRequestPermissionsResult");
-    }
     
     /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
     /**

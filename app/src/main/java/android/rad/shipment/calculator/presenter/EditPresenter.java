@@ -327,7 +327,7 @@ public class EditPresenter extends BasePresenter {
             if (BaseActivity.getShipment().getMassConsistent()) {
                 mView.getEditTxtMass().setText(Float.toString(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
                 mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.baseIndex));
-                switch(mView.getMassUnit()){
+                switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Nature()){
                     case "grams":
                         mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.gramsIndex));
                         break;
@@ -423,6 +423,7 @@ public class EditPresenter extends BasePresenter {
             else if(mView.isLungAbsEnabled()) isotope.set_LungAbs(mView.getLungAbs());  // creating a new isotope
 
             BaseActivity.getShipment().updateIsotope(mView.getIndex(), isotope);
+            mView.leaveActivity();
         }
     }
 

@@ -14,12 +14,18 @@ public class Shipment {
     private boolean isMassConsistent, isNSFConsistent;      // variables to know if the user wants
                                                             // the same mass and nature/state/form
                                                             // values as the last added isotope
-    private int consistentMassIndex;                        // variable to hold the index of the last
-                                                            // added isotope where the consistent mass
-                                                            // checkbox was checked
-    private int consistentNSFIndex;                         // variable to hold the index of the last
-                                                            // added isotope where the consistent 
-                                                            // nature/state/form checkbox was checked
+    private int consistentMassIndex;        // variable to hold the index of the last
+                                            // added isotope where the consistent mass
+                                            // checkbox was checked
+    private int consistentNSFIndex;     // variable to hold the index of the last
+                                        // added isotope where the consistent
+                                        // nature/state/form checkbox was checked
+    private int _ShipmentClass;     // Classification of isotope as an integer
+                                    // (0 = Exempt,
+                                    // 1 = Excepted,
+                                    // 2 = Type A,
+                                    // 4 = Type B,
+                                    // 8 = Type B: Highway Route Control)
 
     /*/////////////////////////////////////////////////// SHIPMENT ///////////////////////////////////////////////////*/
     /**
@@ -31,6 +37,8 @@ public class Shipment {
         isNSFConsistent = false;
         consistentMassIndex = defaultInt;
         consistentNSFIndex = defaultInt;
+
+        _ShipmentClass = defaultInt;
     }
 
     /**
@@ -46,6 +54,33 @@ public class Shipment {
         consistentNSFIndex = defaultInt;
         
         addIsotopes(isotopes);
+
+        _ShipmentClass = defaultInt;
+    }
+
+    @Override public int hashCode() {
+        final int prime = 31;
+        int result = prime * 1;
+
+        for (Isotope iso: isotopes) { result += iso.hashCode(); }
+
+        return result;
+    }
+
+    @Override public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+
+        Shipment other = (Shipment) obj;
+
+        if(other.isotopes.size() == this.isotopes.size()) {
+            for (int i = 0; i < other.isotopes.size(); i++) {
+                if(!other.isotopes.get(i).equals(this.isotopes.get(i))) return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     /*///////////////////////////////////////// HELPERS //////////////////////////////////////////*/
@@ -222,6 +257,18 @@ public class Shipment {
      */
     public int getConsistentNSFIndex() { return consistentNSFIndex; }
 
+    /**
+     * Getter function to get this shipment's classification as an integer
+     *  0 = Exempt Classification
+     *  1 = Excepted/Limited Classification
+     *  2 = Type A Classification
+     *  4 = Type B Classification
+     *  8 = Type B: Highway Route Control Classification
+     *
+     * @return the classification of this shipment as an integer
+     */
+    public int get_ShipmentClass() { return _ShipmentClass; }
+
     /*///////////////////////////////////////// SETTERS //////////////////////////////////////////*/
     /**
      * Setter function to set the isotopes in the shipment
@@ -267,4 +314,16 @@ public class Shipment {
     public void setConsistentNSFIndex(int index) {
         if(index >= 0 && index <= isotopes.size() && consistentNSFIndex == R.integer.defaultInt) consistentNSFIndex = index;
     }
+
+    /**
+     * Setter function to set this shipment's classification as an integer
+     *  0 = Exempt Classification
+     *  1 = Excepted/Limited Classification
+     *  2 = Type A Classification
+     *  4 = Type B Classification
+     *  8 = Type B: Highway Route Control Classification
+     *
+     * @param shipmentClass the new classification of this shipment as an integer
+     */
+    public void set_ShipmentClass(int shipmentClass) { _ShipmentClass = shipmentClass; }
 }
