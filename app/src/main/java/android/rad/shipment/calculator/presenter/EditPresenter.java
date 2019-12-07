@@ -1,5 +1,7 @@
 package android.rad.shipment.calculator.presenter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
@@ -15,6 +17,7 @@ import android.rad.shipment.calculator.view.ShipmentActivityView;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class EditPresenter extends BasePresenter {
     private final EditDialogueView mView;  // connection to the reference activity view
@@ -49,8 +52,16 @@ public class EditPresenter extends BasePresenter {
             mView.getEditTxtMass().setText(Float.toString(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
 
             // make sure the units are in microCuries (unit value gets saved to in Isotope object)
-            mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.microIndex));
-            mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.curieIndex));
+            mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.baseIndex));
+            // setting the form index based on hte previous isotope's value
+            switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_MassUnit()) {
+                case "grams":
+                    mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.gramsIndex));
+                    break;
+                case "liters":
+                    mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.litersIndex));
+                    break;
+            }
             return true;  // returning tru to note that checkBox should be selected
         } else { return false; }
     }
@@ -83,23 +94,23 @@ public class EditPresenter extends BasePresenter {
             // setting the state index based on hte previous isotope's value
             switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_State()) {
                 case "Solid":
-                    natureIndex = 0;
+                    stateIndex = 0;
                     break;
                 case "Liquid":
-                    natureIndex = 1;
+                    stateIndex = 1;
                     break;
                 case "Gas":
-                    natureIndex = 2;
+                    stateIndex = 2;
                     break;
             }
 
             // setting the form index based on hte previous isotope's value
             switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_Form()) {
                 case "Special":
-                    natureIndex = 0;
+                    formIndex = 0;
                     break;
                 case "Normal":
-                    natureIndex = 1;
+                    formIndex = 1;
                     break;
             }
 
@@ -202,29 +213,19 @@ public class EditPresenter extends BasePresenter {
         if(!isValidIso) {
             mView.setError(mView.getEditTxtIsoName(), "Invalid Isotope");
             errors++;
-        } else {
-            if(--errors < 0) errors = 0;
-            mView.setError(mView.getEditTxtIsoName(),null);
-        }
+        } else { mView.setError(mView.getEditTxtIsoName(),null); }
 
         if(mView.showAdditionalInfoError()) errors++;
-        else if(--errors < 0) errors = 0;
 
         if(mView.getEditTxtA0().getText().toString().equals("")) {
             mView.setError(mView.getEditTxtA0(),"Invalid Initial Activity");
             errors++;
-        } else {
-            if(--errors < 0) errors = 0;
-            mView.setError(mView.getEditTxtA0(),null);
-        }
+        } else { mView.setError(mView.getEditTxtA0(),null); }
 
         if(mView.getEditTxtMass().getText().toString().equals("") && !mView.getChckBoxSameMass().isChecked()) {
             mView.setError(mView.getEditTxtMass(),"Invalid Mass");
             errors++;
-        } else {
-            if(--errors < 0) errors = 0;
-            mView.setError(mView.getEditTxtMass(),null);
-        }
+        } else { mView.setError(mView.getEditTxtMass(),null); }
 
         return errors == 0;
     }
@@ -403,12 +404,17 @@ public class EditPresenter extends BasePresenter {
      */
     public void onBtnEditClicked() {
         if(isValidForm()) {
-            Isotope isotope = new Isotope(mView.getIsoName(),
+            Isotope isotope = new Isotope(mView.getName(),
                     convertToMicroCurie(mView.getInitialActivity()),
                     convertToBase(mView.getMass(), mView.getSpinnerMassUnits_SI().getSelectedItemPosition()),
+                    mView.getMassUnit(),
                     mView.getNature(),
                     mView.getState(),
                     mView.getForm());  // creating a new isotope
+
+            if(mView.isShortLongEnabled())  isotope.set_MassUnit(mView.getShortLong());  // creating a new isotope
+            else if(mView.isLungAbsEnabled()) isotope.set_MassUnit(mView.getLungAbs());  // creating a new isotope
+
             BaseActivity.getShipment().updateIsotope(mView.getIndex(), isotope);
         }
     }

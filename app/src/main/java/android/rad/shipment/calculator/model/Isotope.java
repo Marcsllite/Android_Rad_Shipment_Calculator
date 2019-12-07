@@ -6,13 +6,15 @@ public class Isotope {
     // Declaring Variables
     private int defaultVal = R.integer.defaultInt;
     private String _Name;                   // The name of the isotope
+    private String _DBName;                 // The database search name of the isotope (including short/long or lung absorption)
     private float _A0;                      // Initial Activity (microCuries) of isotope
     private float _Mass;                    // the mass of the isotope (grams for solids, liters for liquids)
+    private String _MassUnit;               // the mass unit for the isotope (grams or liter)
     private String _Nature;                 // the nature (regular, special) of the isotope
     private String _State;                  // the state (solid, liquid, gas) of the isotope
     private String _Form;                   // the form (normal, special) of the isotope
     private String _LongShort;              // for isotopes with different half lives
-    private char _LungAbs;                  // the lung absorption speed if the isotope is Uranium (f = fast, m = medium, s = slow)
+    private String _LungAbs;                  // the lung absorption speed if the isotope is Uranium (f = fast, m = medium, s = slow)
 
     private int _IsotopeClass;              // Classification of isotope as an integer
                                             // (0 = Exempt, 1 = Excepted, 2 = Type A, 4 = Type B, 8 = Type B: Highway Route Control)
@@ -27,67 +29,18 @@ public class Isotope {
      * @param state the state (solid, liquid, gas) of the isotope
      * @param form the form (special, normal) of the isotope
      */
-    public Isotope(String name, float A0, float mass, String nature, String state, String form) {
+    public Isotope(String name, float A0, float mass, String massUnit, String nature, String state, String form) {
         // Saving values
         _Name = name;
+        _DBName = name;
         _A0 = A0;
         _Mass = mass;
+        _MassUnit = massUnit;
         _Nature = nature;
         _State = state;
         _Form = form;
 
-        _LungAbs = '\0';
-        _LongShort = "";
-        _IsotopeClass = defaultVal;
-    }
-
-    /**
-     * Constructs an Isotope object with the given name and initial activity
-     *
-     * @param name the name of the isotope
-     * @param A0 the initial activity (microCi) of the isotope
-     * @param mass the mass (grams/liters) of the isotope
-     * @param nature the nature (special, regular) of the isotope
-     * @param state the state (solid, liquid, gas) of the isotope
-     * @param form the form (special, normal) of the isotope
-     * @param longShort whether this is the isotope with the longer or shorter halflife (only for isotopes with multiple halflives)
-     */
-    public Isotope(String name, float A0, float mass, String nature, String state, String form, String longShort) {
-        // Saving values
-        _Name = name;
-        _A0 = A0;
-        _Mass = mass;
-        _Nature = nature;
-        _State = state;
-        _Form = form;
-
-        _LungAbs = '\0';
-        _LongShort = longShort;
-        _IsotopeClass = defaultVal;
-    }
-
-    /**
-     * Constructs an Isotope object with the given name and initial activity
-     *
-     * @param name the name of the isotope
-     * @param A0 the initial activity (microCi) of the isotope
-     * @param mass the mass (grams/liters) of the isotope
-     * @param nature the nature (special, regular) of the isotope
-     * @param state the state (solid, liquid, gas) of the isotope
-     * @param form the form (special, normal) of the isotope
-     * @param lungAbs the lung absorption rate of the isotope 
-     *                  f = fast, m = medium, s = slow
-     */
-    public Isotope(String name, float A0, float mass, String nature, String state, String form, char lungAbs) {
-        // Saving values
-        _Name = name;
-        _A0 = A0;
-        _Mass = mass;
-        _Nature = nature;
-        _State = state;
-        _Form = form;
-
-        _LungAbs = lungAbs;
+        _LungAbs = "";
         _LongShort = "";
         _IsotopeClass = defaultVal;
     }
@@ -136,6 +89,63 @@ public class Isotope {
                 other._Form.equals(this._Form);
     }
 
+    /*/////////////////////////////////////////////////// SETTERS ////////////////////////////////////////////////////*/
+    /**
+     * Setter function to set this isotope's name
+     *
+     * @param name the new name of the isotope
+     */
+    public void set_Name(String name) { _Name = name; }
+
+    /**
+     * Setter function to set this isotope's name
+     *
+     * @param dbName the new name of the isotope
+     */
+    public void set_DBName(String dbName) { _DBName = dbName; }
+
+    /**
+     * Setter function to set this isotope's initial activity in microCi
+     *
+     * @param A0 the new initial activity of the isotope in microCi
+     */
+    public void set_A0(float A0) { _A0 = A0; }
+
+    /**
+     * Setter function to set this isotope's mass in grams for solids and liters for liquids
+     *
+     * @param mass the new mass of the isotope 
+     */
+    public void set_Mass(float mass) { _Mass = mass; }
+
+    /**
+     * Setter function to set this isotope's mass unit
+     *
+     * @param massUnit the new mass unig (grams/liters) of this isotope
+     */
+    public void set_MassUnit(String massUnit) { _MassUnit = massUnit; }
+
+    /**
+     * Setter function to set this isotope's nature (regular/special)
+     *
+     * @param nature the new nature of this isotope
+     */
+    public void set_Nature(String nature) { _Nature = nature; }
+
+    /**
+     * Setter function to set this isotope's state (solid/liquid/gas)
+     *
+     * @param state the new state of this isotope
+     */
+    public void set_State(String state) { _State = state; }
+
+    /**
+     * Setter function to set this isotope's form (normal/special)
+     *
+     * @param form the new form of this isotope
+     */
+    public void set_Form(String form) { _Form = form; }
+    
     /*/////////////////////////////////////////////////// GETTERS ////////////////////////////////////////////////////*/
 
     /**
@@ -144,6 +154,13 @@ public class Isotope {
      * @return the name of this isotope
      */
     public String get_Name() { return _Name; }
+
+    /**
+     * Getter function to get this isotope's database search name
+     *
+     * @return the database search name of this isotope
+     */
+    public String get_DBName() { return _DBName; }
 
     /**
      * Getter function to get this isotope's initial activity in microCi
@@ -158,6 +175,13 @@ public class Isotope {
      * @return the mass of this isotope in (grams/liters)
      */
     public float get_Mass() { return _Mass; }
+
+    /**
+     * Getter function to get this isotope's mass unit
+     *
+     * @return the mass unit of this isotope either grams or liters
+     */
+    public String get_MassUnit() { return _MassUnit; }
     
     /**
      * Getter function to get this isotope's nature (regular/special)
@@ -192,7 +216,7 @@ public class Isotope {
      *
      * @return this isotope's lung absorption rate
      */
-    public char get_LungAbs() { return _LungAbs; }
+    public String get_LungAbs() { return _LungAbs; }
 
     /**
      * Getter function to get this isotope's classification as an integer

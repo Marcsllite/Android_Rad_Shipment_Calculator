@@ -1,6 +1,7 @@
 package android.rad.shipment.calculator.presenter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
 import android.rad.shipment.calculator.view.AddDialogueView;
@@ -8,6 +9,7 @@ import android.rad.shipment.calculator.view.EditDialogueView;
 import android.rad.shipment.calculator.view.ShipmentActivityView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class ShipmentPresenter extends BasePresenter {
     private final ShipmentActivityView mView;  // connection to the reference activity view
@@ -19,6 +21,47 @@ public class ShipmentPresenter extends BasePresenter {
      */
     public ShipmentPresenter(@NonNull final ShipmentActivityView view){ mView = view; }
 
+    @Override
+    public void onCreate(@Nullable final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mView.showToast("Ship onCreate");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mView.hideLoading();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull final Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mView.showToast("Ship onSaveInstanceState");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mView.showToast("Ship onDestroy");
+    }
+
+    @Override
+    public void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mView.showToast("Ship onActivityResult");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions,
+                                           @NonNull final int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        mView.showToast("Ship onRequestPermissionsResult");
+    }
     
     /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
     /**
@@ -29,7 +72,10 @@ public class ShipmentPresenter extends BasePresenter {
     /**
      * Listener function that is called when the add button is clicked 
      */
-    public void onAddButtonClicked() { mView.launchActivity(mView.getApplicationContext(), AddDialogueView.class); }
+    public void onAddButtonClicked() {
+        mView.showLoading();
+        mView.launchActivity(mView.getApplicationContext(), AddDialogueView.class);
+    }
 
     /**
      * Listener function that is called when the calculate button is clicked 

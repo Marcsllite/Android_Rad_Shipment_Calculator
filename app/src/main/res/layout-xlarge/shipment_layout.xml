@@ -1,103 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="top"
+    android:background="@color/lightGrey"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lightGrey">
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminate="true" />
 
     <LinearLayout
+        android:orientation="vertical"
+        android:gravity="top"
         android:layout_width="match_parent"
-        android:layout_height="102dp"
-        android:gravity="start"
-        android:background="@color/darkColor"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgViewMenuBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingStart="@dimen/searchBar_edge_margin"
-            android:paddingEnd="@dimen/searchBar_edge_margin"
-            android:paddingTop="@dimen/searchBar_edge_margin"
-            android:paddingBottom="@dimen/searchBar_edge_margin"
-            android:clickable="true"
-            android:contentDescription="@string/menuLines_ContentDescript"
-            android:focusable="true"
-            app:srcCompat="@drawable/ic_grey_menu_lines" />
-
-        <View
-            android:id="@+id/divider"
-            android:layout_width="5dp"
-            android:layout_height="match_parent"
-            android:paddingStart="@dimen/searchBar_edge_margin"
-            android:paddingEnd="@dimen/searchBar_edge_margin"
-            android:layout_marginTop="@dimen/vertical_divider_spacing"
-            android:layout_marginBottom="@dimen/vertical_divider_spacing"
-            android:background="@color/defaultGrey" />
-
-        <TextView
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#0000"
-            android:text="@string/shipmentBtnText"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/umlBlue"
-            android:textSize="50sp" />
-
-        <ImageView
-            android:id="@+id/imgViewAddBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingStart="@dimen/searchBar_edge_margin"
-            android:paddingLeft="@dimen/searchBar_edge_margin"
-            android:paddingEnd="@dimen/searchBar_edge_margin"
-            android:paddingRight="@dimen/searchBar_edge_margin"
-            android:paddingTop="@dimen/searchBar_edge_margin"
-            android:paddingBottom="@dimen/searchBar_edge_margin"
-            android:clickable="true"
-            android:contentDescription="@string/add_ContentDescript"
-            android:focusable="true"
-            app:srcCompat="@drawable/ic_grey_plus" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <ListView
-            android:id="@+id/listView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:dividerHeight="1dp"
-            android:padding="10dp" >
-        </ListView>
+            android:layout_height="102dp"
+            android:gravity="start"
+            android:background="@color/darkColor"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txtViewEmptyShipment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/emptyShipment" />
+            <ImageView
+                android:id="@+id/imgViewMenuBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingTop="@dimen/searchBar_edge_margin"
+                android:paddingBottom="@dimen/searchBar_edge_margin"
+                android:clickable="true"
+                android:contentDescription="@string/menuLines_ContentDescript"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_grey_menu_lines" />
 
-        <Button
-            android:id="@+id/btnCalculate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/calculateBtnText"
-            android:background="@color/umlBlue"
-            android:textColor="@color/trueWhite" />
+            <View
+                android:id="@+id/divider"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:layout_marginTop="@dimen/vertical_divider_spacing"
+                android:layout_marginBottom="@dimen/vertical_divider_spacing"
+                android:background="@color/defaultGrey" />
 
-    </RelativeLayout>
+            <TextView
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:text="@string/shipmentBtnText"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/umlBlue"
+                android:textSize="50sp" />
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/imgViewAddBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingLeft="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingRight="@dimen/searchBar_edge_margin"
+                android:paddingTop="@dimen/searchBar_edge_margin"
+                android:paddingBottom="@dimen/searchBar_edge_margin"
+                android:clickable="true"
+                android:contentDescription="@string/add_ContentDescript"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_grey_plus" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:dividerHeight="1dp"
+                android:padding="10dp" >
+            </ListView>
+
+            <TextView
+                android:id="@+id/txtViewEmptyShipment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/emptyShipment" />
+
+            <Button
+                android:id="@+id/btnCalculate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/calculateBtnText"
+                android:background="@color/umlBlue"
+                android:textColor="@color/trueWhite" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

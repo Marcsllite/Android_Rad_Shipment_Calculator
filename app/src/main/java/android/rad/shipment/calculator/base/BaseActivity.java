@@ -42,7 +42,6 @@ public abstract class  BaseActivity<Presenter extends BasePresenter> extends App
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
-        showToast("onCreate was called");
         super.onCreate(savedInstanceState);
         mPresenter = createPresenter(this);
         mPresenter.onCreate(savedInstanceState);
@@ -50,35 +49,30 @@ public abstract class  BaseActivity<Presenter extends BasePresenter> extends App
 
     @Override
     public void onResume() {
-        showToast("onResume was called");
         super.onResume();
         mPresenter.onResume();
     }
 
     @Override
     public void onDestroy() {
-        showToast("onDestroy was called");
         super.onDestroy();
         mPresenter.onDestroy();
     }
 
     @Override
     public void onSaveInstanceState(final Bundle outState) {
-        showToast("onSaveInstanceState was called");
         super.onSaveInstanceState(outState);
         mPresenter.onSaveInstanceState(outState);
     }
 
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
-        showToast("onActivityResult was called");
         super.onActivityResult(requestCode, resultCode, data);
         mPresenter.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onPause() {
-        showToast("onPause was called");
         super.onPause();
         mPresenter.onPause();
     }

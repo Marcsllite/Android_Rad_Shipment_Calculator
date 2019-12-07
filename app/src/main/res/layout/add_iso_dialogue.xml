@@ -18,13 +18,15 @@
             android:importantForAutofill="no"
             android:inputType="text"
             android:textColor="@color/darkColor"
-            android:textColorHighlight="@color/umlBlue">
-
+            android:textColorHighlight="@color/umlBlue"
+            android:nextFocusForward="@id/editTxtInitialActivity"
+            android:nextFocusRight="@id/editTxtInitialActivity"
+            android:nextFocusDown="@id/editTxtInitialActivity">
             <requestFocus />
         </EditText>
 
         <EditText
-            android:id="@+id/editTextInitialActivity"
+            android:id="@+id/editTxtInitialActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editTxtIsoName"
@@ -34,16 +36,26 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:textColor="@color/darkColor"
-            android:textColorHighlight="@color/umlBlue" />
+            android:textColorHighlight="@color/umlBlue"
+            android:nextFocusForward="@+id/spinnerA0Units_SI"
+            android:nextFocusRight="@+id/spinnerA0Units_SI"
+            android:nextFocusDown="@+id/spinnerA0Units_SI"
+            android:nextFocusLeft="@+id/editTxtIsoName"
+            android:nextFocusUp="@+id/editTxtIsoName"/>
 
         <Spinner
             android:id="@+id/spinnerA0Units_SI"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextInitialActivity"
+            android:layout_below="@+id/editTxtInitialActivity"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:nextFocusForward="@+id/spinnerA0Units_Name"
+            android:nextFocusRight="@+id/spinnerA0Units_Name"
+            android:nextFocusDown="@+id/spinnerA0Units_Name"
+            android:nextFocusLeft="@+id/editTxtInitialActivity"
+            android:nextFocusUp="@+id/editTxtInitialActivity"/>
 
         <Spinner
             android:id="@+id/spinnerA0Units_Name"
@@ -52,7 +64,12 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/spinnerA0Units_SI"
             android:layout_toRightOf="@+id/spinnerA0Units_SI"
-            android:layout_below="@+id/editTextInitialActivity"/>
+            android:layout_below="@+id/editTxtInitialActivity"
+            android:nextFocusForward="@id/linearLayoutAddInfoMiddle"
+            android:nextFocusRight="@id/linearLayoutAddInfoMiddle"
+            android:nextFocusDown="@id/linearLayoutAddInfoMiddle"
+            android:nextFocusLeft="@+id/spinnerA0Units_SI"
+            android:nextFocusUp="@+id/spinnerA0Units_SI"/>
 
         <LinearLayout
             android:id="@+id/linearLayoutAddInfoTop"

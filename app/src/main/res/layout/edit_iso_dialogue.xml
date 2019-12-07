@@ -24,7 +24,7 @@
         </EditText>
 
         <EditText
-            android:id="@+id/editTextInitialActivity"
+            android:id="@+id/editTxtInitialActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editTxtIsoName"
@@ -41,7 +41,7 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTextInitialActivity"
+            android:layout_below="@+id/editTxtInitialActivity"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"/>
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/spinnerA0Units_SI"
             android:layout_toRightOf="@+id/spinnerA0Units_SI"
-            android:layout_below="@+id/editTextInitialActivity"/>
+            android:layout_below="@+id/editTxtInitialActivity"/>
 
         <LinearLayout
             android:id="@+id/linearLayoutEditInfoTop"

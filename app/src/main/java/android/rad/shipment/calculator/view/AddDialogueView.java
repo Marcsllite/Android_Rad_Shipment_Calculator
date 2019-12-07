@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -53,12 +54,12 @@ public class AddDialogueView extends BaseActivity<AddPresenter> {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setTitle(R.string.addTitle);  // setting the title for the dialogue page
-        setContentView(R.layout.add_iso_layout);  // showing the add dialogue
+        setTitle(R.string.addTitle);  // setting the title for the add dialogue
+        setContentView(R.layout.add_iso_dialogue);  // showing the add dialogue
 
         // getting all the views from the add dialogue that need to be programmed
         editTxtIsoName = findViewById(R.id.editTxtIsoName);
-        editTxtInitialActivity = findViewById(R.id.editTextInitialActivity);
+        editTxtInitialActivity = findViewById(R.id.editTxtInitialActivity);
         spinnerA0Units_SI = findViewById(R.id.spinnerA0Units_SI);
         spinnerA0Units_Name = findViewById(R.id.spinnerA0Units_Name);
         radioGrpShortLong = findViewById(R.id.radioGrpShortLong);
@@ -155,6 +156,46 @@ public class AddDialogueView extends BaseActivity<AddPresenter> {
         spinnerForm.setSelection(getResources().getInteger(R.integer.normalIndex));
     }
 
+    /**
+     * Helper function to get the isotope's database search name including any additional information
+     *
+     * @return the isotope's database search name
+     */
+    public String getDBName() {
+        if(isShortLongEnabled) {
+            switch (((RadioGroup) radioGrpShortLong).getCheckedRadioButtonId()) {
+                case R.id.radioBtnShortLived:
+                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoShortTxt);
+                case R.id.radioBtnLongLived:
+                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoLongTxt);
+            }
+        } else if (isLungAbsEnabled) {
+            switch (((RadioGroup) radioGrpLungAbs).getCheckedRadioButtonId()) {
+                case R.id.radioBtnSlowLungAbs:
+                    return ((EditText) editTxtIsoName).getText().toString() + "s";
+                case R.id.radioBtnMediumLungAbs:
+                    return ((EditText) editTxtIsoName).getText().toString() + "m";
+                case R.id.radioBtnFastLungAbs:
+                    return ((EditText) editTxtIsoName).getText().toString() + "f";
+            }
+        } else { return ((EditText) editTxtIsoName).getText().toString(); }
+        return null;
+    }
+    
+    /**
+     * Helper function to get whether the short/long lived additional info section is enabled
+     * 
+     * @return whether the short/long lived additional info section is enabled
+     */
+    public boolean isShortLongEnabled() { return isShortLongEnabled; }
+    
+    /**
+     * Helper function to get whether the lung absorption additional info section is enabled
+     *
+     * @return whether the lung absorption additional info section is enabled
+     */
+    public boolean isLungAbsEnabled() { return isLungAbsEnabled; }
+    
     /**
      * Helper function to show or hide the additional info section asking about the isotope's halflife
      * NOTE: this section should only be enabled if the isotope has two halflives and a distinction
@@ -349,30 +390,11 @@ public class AddDialogueView extends BaseActivity<AddPresenter> {
     public CheckBox getChckBoxSameNSF() { return ((CheckBox) chckBoxSameNSF);}
 
     /**
-     * Getter function to get the isotope's database search name including any additional information
-     *
-     * @return the isotope's database search name
+     * Getter function to get the isotope's name from the isotope name edit text
+     * 
+     * @return the isotope's name from the isotope name edit text
      */
-    public String getIsoName() {
-        if(isShortLongEnabled) {
-            switch (((RadioGroup) radioGrpShortLong).getCheckedRadioButtonId()) {
-                case R.id.radioBtnShortLived:
-                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoShortTxt);
-                case R.id.radioBtnLongLived:
-                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoLongTxt);
-            }
-        } else if (isLungAbsEnabled) {
-            switch (((RadioGroup) radioGrpLungAbs).getCheckedRadioButtonId()) {
-                case R.id.radioBtnSlowLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "s";
-                case R.id.radioBtnMediumLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "m";
-                case R.id.radioBtnFastLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "f";
-            }
-        } else { return ((EditText) editTxtIsoName).getText().toString(); }
-        return null;
-    }
+    public String getName() { return ((EditText) editTxtIsoName).getText().toString(); }
 
     /**
      * Getter function to get the isotope's initial activity from the initial activity editText
@@ -382,12 +404,50 @@ public class AddDialogueView extends BaseActivity<AddPresenter> {
     public float getInitialActivity() { return Float.parseFloat(((EditText) editTxtInitialActivity).getText().toString()); }
 
     /**
+     * Getter function to get whether the isotope is short or long lived from the additional info section
+     *
+     * @return the whether the isotope is short or long lived from the additional info section
+     */
+    public String getShortLong() { 
+        if(isShortLongEnabled) {
+            switch(((RadioGroup) radioGrpShortLong).getCheckedRadioButtonId()) {
+                case R.id.radioBtnShortLived: return radioBtnShortLived.getText().toString();
+                case R.id.radioBtnLongLived: return radioBtnLongLived.getText().toString();
+                default: return "";
+            }
+        } else return "";
+    }
+
+    /**
+     * Getter function to get the isotope's lung absorption from the additional info section
+     *
+     * @return the isotope's lung absorption from the additional info section
+     */
+    public String getLungAbs() {
+        if(isLungAbsEnabled) {
+            switch(((RadioGroup) radioGrpLungAbs).getCheckedRadioButtonId()) {
+                case R.id.radioBtnSlowLungAbs: return radioBtnSlowLungAbs.getText().toString();
+                case R.id.radioBtnMediumLungAbs: return radioBtnMediumLungAbs.getText().toString();
+                case R.id.radioBtnFastLungAbs: return radioBtnFastLungAbs.getText().toString();
+                default: return "";
+            }
+        } else return "";
+    }
+
+    /**
      * Getter function to get the isotope's mass from the mass editText
      *
      * @return the isotope's mass
      */
     public float getMass() { return Float.parseFloat(((EditText) editTxtMass).getText().toString()); }
-
+    
+    /**
+     * Getter function to get the isotope's mass unit name from the mass unit name spinner
+     *
+     * @return the isotope's mass unit (grams or liters)
+     */
+    public String getMassUnit() { return  spinnerMassUnits_Name.getSelectedItem().toString(); }
+    
     /**
      * Getter function to get the isotope's nature from the nature spinner
      *

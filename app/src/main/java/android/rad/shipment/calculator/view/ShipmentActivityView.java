@@ -11,12 +11,16 @@ import android.rad.shipment.calculator.utils.IsotopeAdapter;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 
 public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
     // Declaring variables
     private static IsotopeAdapter isotopeAdapter;
+    private ProgressBar loading;
+    private View menuBtn;
+    private View addBtn;
     private View calculateBtn;
 
     @NonNull @Override
@@ -37,8 +41,9 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
         setContentView(R.layout.shipment_layout);  // showing the shipment page
 
         // getting all the views from the shipment page that need to be programmed
-        View menuBtn = findViewById(R.id.imgViewMenuBtn);
-        View addBtn = findViewById(R.id.imgViewAddBtn);
+        loading = findViewById(R.id.loading);
+        menuBtn = findViewById(R.id.imgViewMenuBtn);
+        addBtn = findViewById(R.id.imgViewAddBtn);
         ListView listView = findViewById(R.id.listView);
         calculateBtn = findViewById(R.id.btnCalculate);
 
@@ -49,6 +54,7 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
         listView.setAdapter(isotopeAdapter);
 
         disableCalculateButton();  // initializing the calculate button to be disabled
+        hideLoading();  // initializing the loading progress bar to be hidden
 
         // creating custom Change and Click listeners
         OnListChanged onListChanged = new OnListChanged();
@@ -81,6 +87,16 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
         calculateBtn.setEnabled(false);
         calculateBtn.setVisibility(View.INVISIBLE);
     }
+
+    /**
+     * Helper function to show the loading progress bar on the shipment page
+     */
+    public void showLoading() { loading.setVisibility(View.VISIBLE); }
+
+    /**
+     * Helper function to hide the loading progress bar on the shipment page
+     */
+    public void hideLoading() { loading.setVisibility(View.INVISIBLE); }
 
     /*///////////////////////////////////////// GETTERS //////////////////////////////////////////*/
 
