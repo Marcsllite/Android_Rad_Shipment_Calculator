@@ -1,6 +1,7 @@
 package android.rad.shipment.calculator.presenter;
 
 import android.content.Intent;
+import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
 import android.rad.shipment.calculator.view.AddDialogueView;
 import android.rad.shipment.calculator.view.EditDialogueView;
@@ -34,14 +35,14 @@ public class ShipmentPresenter extends BasePresenter {
      * Listener function that is called when the calculate button is clicked 
      */
     public void onCalculateButtonClicked() {
-        mView.showToast("User clicked the calculate button");
+
     }
 
     /**
      * Listener function that is called when the list is modified
      */
     public void onListChanged(){
-        if(ShipmentActivityView.getIsotopeAdapter().isEmpty()) mView.disableCalculateButton();
+        if(BaseActivity.getShipment().isEmpty()) mView.disableCalculateButton();
         else mView.enableCalculateButton();
     }
 

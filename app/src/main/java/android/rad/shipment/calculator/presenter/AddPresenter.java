@@ -46,7 +46,7 @@ public class AddPresenter extends BasePresenter {
         // if the checkBox was ever checked when adding an isotope to the shipment
         if(BaseActivity.getShipment().getMassConsistent()) {
             // get the value from the isotope where the checkBox was last checked
-            mView.getEditTxtMass().setText(Float.toString(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
+            mView.getEditTxtMass().setText(Float.toString(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
 
             // make sure the units are in microCuries (unit value gets saved to in Isotope object)
             mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.microIndex));
@@ -68,7 +68,7 @@ public class AddPresenter extends BasePresenter {
             int natureIndex = 0, stateIndex = 0, formIndex = 0;
 
             // setting the nature index based on hte previous isotope's value
-            switch(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentNSFIndex()).get_Nature()) {
+            switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_Nature()) {
                 case "Regular":
                     natureIndex = 0;
                     break;
@@ -81,7 +81,7 @@ public class AddPresenter extends BasePresenter {
             }
 
             // setting the state index based on hte previous isotope's value
-            switch(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentNSFIndex()).get_State()) {
+            switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_State()) {
                 case "Solid":
                     natureIndex = 0;
                     break;
@@ -94,7 +94,7 @@ public class AddPresenter extends BasePresenter {
             }
 
             // setting the form index based on hte previous isotope's value
-            switch(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentNSFIndex()).get_Form()) {
+            switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_Form()) {
                 case "Special":
                     natureIndex = 0;
                     break;
@@ -322,15 +322,14 @@ public class AddPresenter extends BasePresenter {
      * Listener function that is called when the consistent mass checkBox is clicked
      */
     public void onChckBoxSameMassClicked() {
-        mView.showToast("User clicked the consistent mass checkbox");
         if(mView.getChckBoxSameMass().isChecked()) {
             if (BaseActivity.getShipment().getMassConsistent()) {
-                mView.getEditTxtMass().setText(Float.toString(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
+                mView.getEditTxtMass().setText(Float.toString(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
                 mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.microIndex));
                 mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.curieIndex));
             } else {
                 BaseActivity.getShipment().setMassConsistent();
-                BaseActivity.getShipment().setConsistentMassIndex(ShipmentActivityView.getIsotopeAdapter().getCount());
+                BaseActivity.getShipment().setConsistentMassIndex(BaseActivity.getShipment().getSize());
             }
         }
     }
@@ -339,12 +338,11 @@ public class AddPresenter extends BasePresenter {
      * Listener function that is called when the consistent nature/state/form checkBox is clicked
      */
     public void onChckBoxSameNSFClicked() {
-        mView.showToast("User clicked the the consistent nature, state, form checkbox");
         if(mView.getChckBoxSameNSF().isChecked()) {
             if (BaseActivity.getShipment().getNSFConsistent()) {
                 int natureIndex = 0, stateIndex = 0, formIndex = 0;
 
-                switch(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentNSFIndex()).get_Nature()) {
+                switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_Nature()) {
                     case "Regular":
                         natureIndex = 0;
                         break;
@@ -356,7 +354,7 @@ public class AddPresenter extends BasePresenter {
                         break;
                 }
 
-                switch(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentNSFIndex()).get_State()) {
+                switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_State()) {
                     case "Solid":
                         natureIndex = 0;
                         break;
@@ -368,7 +366,7 @@ public class AddPresenter extends BasePresenter {
                         break;
                 }
 
-                switch(ShipmentActivityView.getIsotopeAdapter().getItem(BaseActivity.getShipment().getConsistentNSFIndex()).get_Form()) {
+                switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_Form()) {
                     case "Special":
                         natureIndex = 0;
                         break;
@@ -382,7 +380,7 @@ public class AddPresenter extends BasePresenter {
                 mView.getSpinnerForm().setSelection(formIndex);
             } else {
                 BaseActivity.getShipment().setNSFConsistent();
-                BaseActivity.getShipment().setConsistentNSFIndex(ShipmentActivityView.getIsotopeAdapter().getCount());
+                BaseActivity.getShipment().setConsistentNSFIndex(BaseActivity.getShipment().getSize());
             }
         }
     }
@@ -399,7 +397,7 @@ public class AddPresenter extends BasePresenter {
         if(isValidForm()) {
             Isotope isotope = new Isotope(mView.getIsoName(), convertToMicroCurie(mView.getInitialActivity()), convertToBase(mView.getMass(), mView.getSpinnerMassUnits_SI().getSelectedItemPosition()), mView.getNature(), mView.getState(), mView.getForm());  // creating a new isotope
             if(!BaseActivity.getShipment().isInShipment(isotope) && isValidForm()) {
-                ShipmentActivityView.getIsotopeAdapter().add(isotope);
+                BaseActivity.getShipment().addIsotopes(isotope);
                 mView.leaveActivity();
             } else { mView.setError(mView.getEditTxtIsoName(), "Isotope already in Shipment"); }
         }

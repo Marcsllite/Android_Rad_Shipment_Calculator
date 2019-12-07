@@ -48,6 +48,8 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
         isotopeAdapter = new IsotopeAdapter(this, BaseActivity.getShipment().getIsotopes());
         listView.setAdapter(isotopeAdapter);
 
+        disableCalculateButton();  // initializing the calculate button to be disabled
+
         // creating custom Change and Click listeners
         OnListChanged onListChanged = new OnListChanged();
         OnShipmentButtonsClicked onShipmentButtonsClicked = new OnShipmentButtonsClicked();

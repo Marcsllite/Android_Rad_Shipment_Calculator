@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.database.ShipmentCalculatorLocalDB;
 import android.rad.shipment.calculator.database.dao.A1Dao;
 import android.rad.shipment.calculator.database.dao.A2Dao;
@@ -40,6 +42,7 @@ public abstract class  BaseActivity<Presenter extends BasePresenter> extends App
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        showToast("onCreate was called");
         super.onCreate(savedInstanceState);
         mPresenter = createPresenter(this);
         mPresenter.onCreate(savedInstanceState);
@@ -47,30 +50,35 @@ public abstract class  BaseActivity<Presenter extends BasePresenter> extends App
 
     @Override
     public void onResume() {
+        showToast("onResume was called");
         super.onResume();
         mPresenter.onResume();
     }
 
     @Override
     public void onDestroy() {
+        showToast("onDestroy was called");
         super.onDestroy();
         mPresenter.onDestroy();
     }
 
     @Override
     public void onSaveInstanceState(final Bundle outState) {
+        showToast("onSaveInstanceState was called");
         super.onSaveInstanceState(outState);
         mPresenter.onSaveInstanceState(outState);
     }
 
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
+        showToast("onActivityResult was called");
         super.onActivityResult(requestCode, resultCode, data);
         mPresenter.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void onPause() {
+        showToast("onPause was called");
         super.onPause();
         mPresenter.onPause();
     }
@@ -181,4 +189,23 @@ public abstract class  BaseActivity<Presenter extends BasePresenter> extends App
         @Override protected void onPostExecute(Void result) {
         }
     }
+
+//    public static class WaitScreen extends Activity {
+//        private Runnable task = new Runnable() {
+//            public void run() {
+//                Toast.makeText(getApplicationContext(), "Spinner complete!", Toast.LENGTH_LONG).show();
+//                Intent i = new Intent("emergency.app.NEWACTIVITY");
+//                startActivity(i);
+//            }
+//        };
+//
+//        @Override
+//        protected void onCreate(Bundle savedInstanceState) {
+//            super.onCreate(savedInstanceState);
+//            setContentView(R.layout.waitscreen);
+//
+//            Handler handler = new Handler();
+//            handler.postDelayed(task, 5000);
+//        }
+//    }
 }
