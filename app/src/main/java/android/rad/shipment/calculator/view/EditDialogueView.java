@@ -88,7 +88,7 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
         setupSpinners();
         ((EditText) editTxtIsoName).setText(BaseActivity.getShipment().get(_index).get_Name());  // get name
         ((EditText) editTxtInitialActivity).setText(Float.toString(BaseActivity.getShipment().get(_index).get_A0()));  // get initial activity
-        if("".equals(BaseActivity.getShipment().get(_index).get_ShortLong())) {  // get short long
+        if(!"".equals(BaseActivity.getShipment().get(_index).get_ShortLong())) {  // get short long
             switch(BaseActivity.getShipment().get(_index).get_ShortLong()) {
                 case "Short Lived":
                     radioBtnShortLived.toggle();
@@ -98,7 +98,7 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
                     break;
             }
         }
-        if("".equals(BaseActivity.getShipment().get(_index).get_LungAbs())) {  // get lung abs
+        if(!"".equals(BaseActivity.getShipment().get(_index).get_LungAbs())) {  // get lung abs
             switch(BaseActivity.getShipment().get(_index).get_LungAbs()) {
                 case "Slow Lung Absorption":
                     radioBtnSlowLungAbs.toggle();
