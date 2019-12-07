@@ -145,6 +145,20 @@ public class Isotope {
      * @param form the new form of this isotope
      */
     public void set_Form(String form) { _Form = form; }
+
+    /**
+     * Setter function to set if this is the isotope with the longer half life or the shorter one
+     *
+     * @param shortLong if this is the isotope with the longer half life or the shorter one
+     */
+    public void set_ShortLong(String shortLong) { _ShortLong = shortLong; }
+
+    /**
+     * Setter function to set this isotope's lung absorption rate (slow/medium/fast)
+     *
+     * @param lungAbs the new lung absorption rate for this isotope (slow/medium/fast)
+     */
+    public void set_LungAbs(String lungAbs) { _LungAbs = lungAbs; }
     
     /*/////////////////////////////////////////////////// GETTERS ////////////////////////////////////////////////////*/
 

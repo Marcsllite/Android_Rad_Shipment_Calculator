@@ -419,8 +419,8 @@ public class EditPresenter extends BasePresenter {
                     mView.getState(),
                     mView.getForm());  // creating a new isotope
 
-            if(mView.isShortLongEnabled())  isotope.set_MassUnit(mView.getShortLong());  // creating a new isotope
-            else if(mView.isLungAbsEnabled()) isotope.set_MassUnit(mView.getLungAbs());  // creating a new isotope
+            if(mView.isShortLongEnabled())  isotope.set_ShortLong(mView.getShortLong());  // creating a new isotope
+            else if(mView.isLungAbsEnabled()) isotope.set_LungAbs(mView.getLungAbs());  // creating a new isotope
 
             BaseActivity.getShipment().updateIsotope(mView.getIndex(), isotope);
         }
