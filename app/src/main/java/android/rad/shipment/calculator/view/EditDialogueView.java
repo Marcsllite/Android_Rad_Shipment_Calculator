@@ -85,13 +85,33 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
         View btnEdit = findViewById(R.id.btnEdit);
 
         // initializing views
-        setupSpinners();  // setting up spinner values and default selection
-        // setting checked state of checkboxes
-        ((CheckBox) chckBoxSameMass).setChecked(mPresenter.initChckBoxSameMass());
-        ((CheckBox) chckBoxSameNSF).setChecked(mPresenter.initChckBoxSameNSF());
-        // making sure additional info is hidden
-        enableShortLong(false);
-        enableLungAbs(false);
+        setupSpinners();
+        ((EditText) editTxtIsoName).setText(BaseActivity.getShipment().get(_index).get_Name());  // get name
+        ((EditText) editTxtInitialActivity).setText(Float.toString(BaseActivity.getShipment().get(_index).get_A0()));  // get initial activity
+        if("".equals(BaseActivity.getShipment().get(_index).get_ShortLong())) {  // get short long
+            switch(BaseActivity.getShipment().get(_index).get_ShortLong()) {
+                case "Short Lived":
+                    radioBtnShortLived.toggle();
+                    break;
+                case "Long Lived":
+                    radioBtnLongLived.toggle();
+                    break;
+            }
+        }
+        if("".equals(BaseActivity.getShipment().get(_index).get_LungAbs())) {  // get lung abs
+            switch(BaseActivity.getShipment().get(_index).get_LungAbs()) {
+                case "Slow Lung Absorption":
+                    radioBtnSlowLungAbs.toggle();
+                    break;
+                case "Medium Lung Absorption":
+                    radioBtnMediumLungAbs.toggle();
+                    break;
+                case "Fast Lung Absorption":
+                    radioBtnFastLungAbs.toggle();
+                    break;
+            }
+        }
+        ((EditText) editTxtMass).setText(Float.toString(BaseActivity.getShipment().get(_index).get_Mass()));  // get mass
 
         // creating custom listeners
         OnSpinnerItemSelected onSpinnerItemSelected = new OnSpinnerItemSelected();
@@ -155,36 +175,46 @@ public class EditDialogueView extends BaseActivity<EditPresenter> {
         spinnerA0Units_SI.setSelection(getResources().getInteger(R.integer.microIndex));
         spinnerA0Units_Name.setSelection(getResources().getInteger(R.integer.curieIndex));
         spinnerMassUnits_SI.setSelection(getResources().getInteger(R.integer.baseIndex));
-        spinnerMassUnits_Name.setSelection(getResources().getInteger(R.integer.gramsIndex));
-        spinnerNature.setSelection(getResources().getInteger(R.integer.regularIndex));
-        spinnerState.setSelection(getResources().getInteger(R.integer.solidIndex));
-        spinnerForm.setSelection(getResources().getInteger(R.integer.normalIndex));
-    }
+        switch(BaseActivity.getShipment().get(_index).get_MassUnit()){
+            case "grams":
+                spinnerMassUnits_Name.setSelection(getResources().getInteger(R.integer.gramsIndex));
+                break;
+            case "liters":
+                spinnerMassUnits_Name.setSelection(getResources().getInteger(R.integer.litersIndex));
+                break;
+        }
+        switch(BaseActivity.getShipment().get(_index).get_Nature()) {
+            case "Regular":
+                spinnerNature.setSelection(getResources().getInteger(R.integer.regularIndex));
+                break;
+            case "Instrument":
+                spinnerNature.setSelection(getResources().getInteger(R.integer.instrumentIndex));
+                break;
+            case "Article":
+                spinnerNature.setSelection(getResources().getInteger(R.integer.articleIndex));
+                break;
+        }
 
-    /**
-     * Helper function to get the isotope's database search name including any additional information
-     *
-     * @return the isotope's database search name
-     */
-    public String getDBName() {
-        if(isShortLongEnabled) {
-            switch (((RadioGroup) radioGrpShortLong).getCheckedRadioButtonId()) {
-                case R.id.radioBtnShortLived:
-                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoShortTxt);
-                case R.id.radioBtnLongLived:
-                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoLongTxt);
-            }
-        } else if (isLungAbsEnabled) {
-            switch (((RadioGroup) radioGrpLungAbs).getCheckedRadioButtonId()) {
-                case R.id.radioBtnSlowLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "s";
-                case R.id.radioBtnMediumLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "m";
-                case R.id.radioBtnFastLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "f";
-            }
-        } else { return ((EditText) editTxtIsoName).getText().toString(); }
-        return null;
+        switch(BaseActivity.getShipment().get(_index).get_State()) {
+            case "Solid":
+                spinnerState.setSelection(getResources().getInteger(R.integer.solidIndex));
+                break;
+            case "Liquid":
+                spinnerState.setSelection(getResources().getInteger(R.integer.liquidIndex));
+                break;
+            case "Gas":
+                spinnerState.setSelection(getResources().getInteger(R.integer.gasIndex));
+                break;
+        }
+
+        switch(BaseActivity.getShipment().get(_index).get_Form()) {
+            case "Special":
+                spinnerForm.setSelection(getResources().getInteger(R.integer.specialIndex));
+                break;
+            case "Normal":
+                spinnerForm.setSelection(getResources().getInteger(R.integer.normalIndex));
+                break;
+        }
     }
 
     /**

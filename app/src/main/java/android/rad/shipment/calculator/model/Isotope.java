@@ -13,7 +13,7 @@ public class Isotope {
     private String _Nature;                 // the nature (regular, special) of the isotope
     private String _State;                  // the state (solid, liquid, gas) of the isotope
     private String _Form;                   // the form (normal, special) of the isotope
-    private String _LongShort;              // for isotopes with different half lives
+    private String _ShortLong;              // for isotopes with different half lives
     private String _LungAbs;                  // the lung absorption speed if the isotope is Uranium (f = fast, m = medium, s = slow)
 
     private int _IsotopeClass;              // Classification of isotope as an integer
@@ -41,7 +41,7 @@ public class Isotope {
         _Form = form;
 
         _LungAbs = "";
-        _LongShort = "";
+        _ShortLong = "";
         _IsotopeClass = defaultVal;
     }
 
@@ -57,7 +57,7 @@ public class Isotope {
         _Nature = newIso._Nature;
         _State = newIso._State;
         _Form = newIso._Form;
-        _LongShort = newIso._LongShort;
+        _ShortLong = newIso._ShortLong;
         _LungAbs = newIso._LungAbs;
         _IsotopeClass = newIso._IsotopeClass;
     } 
@@ -209,7 +209,7 @@ public class Isotope {
      *
      * @return if this is the isotope with the longer half life or the shorter one
      */
-    public String get_LongShort() { return _LongShort; }
+    public String get_ShortLong() { return _ShortLong; }
 
     /**
      * Getter function to get this isotope's lung absorption rate (slow/medium/fast)

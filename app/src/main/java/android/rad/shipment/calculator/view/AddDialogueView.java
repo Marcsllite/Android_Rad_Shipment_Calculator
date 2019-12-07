@@ -155,32 +155,6 @@ public class AddDialogueView extends BaseActivity<AddPresenter> {
         spinnerState.setSelection(getResources().getInteger(R.integer.solidIndex));
         spinnerForm.setSelection(getResources().getInteger(R.integer.normalIndex));
     }
-
-    /**
-     * Helper function to get the isotope's database search name including any additional information
-     *
-     * @return the isotope's database search name
-     */
-    public String getDBName() {
-        if(isShortLongEnabled) {
-            switch (((RadioGroup) radioGrpShortLong).getCheckedRadioButtonId()) {
-                case R.id.radioBtnShortLived:
-                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoShortTxt);
-                case R.id.radioBtnLongLived:
-                    return ((EditText) editTxtIsoName).getText().toString() + getString(R.string.isoLongTxt);
-            }
-        } else if (isLungAbsEnabled) {
-            switch (((RadioGroup) radioGrpLungAbs).getCheckedRadioButtonId()) {
-                case R.id.radioBtnSlowLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "s";
-                case R.id.radioBtnMediumLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "m";
-                case R.id.radioBtnFastLungAbs:
-                    return ((EditText) editTxtIsoName).getText().toString() + "f";
-            }
-        } else { return ((EditText) editTxtIsoName).getText().toString(); }
-        return null;
-    }
     
     /**
      * Helper function to get whether the short/long lived additional info section is enabled

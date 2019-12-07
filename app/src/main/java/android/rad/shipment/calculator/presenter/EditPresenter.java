@@ -326,8 +326,15 @@ public class EditPresenter extends BasePresenter {
         if(mView.getChckBoxSameMass().isChecked()) {
             if (BaseActivity.getShipment().getMassConsistent()) {
                 mView.getEditTxtMass().setText(Float.toString(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
-                mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.microIndex));
-                mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.curieIndex));
+                mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.baseIndex));
+                switch(mView.getMassUnit()){
+                    case "grams":
+                        mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.gramsIndex));
+                        break;
+                    case "liters":
+                        mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.litersIndex));
+                        break;
+                }
             } else {
                 BaseActivity.getShipment().setMassConsistent();
                 BaseActivity.getShipment().setConsistentMassIndex(mView.getIndex());
@@ -357,22 +364,22 @@ public class EditPresenter extends BasePresenter {
 
                 switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_State()) {
                     case "Solid":
-                        natureIndex = 0;
+                        stateIndex = 0;
                         break;
                     case "Liquid":
-                        natureIndex = 1;
+                        stateIndex = 1;
                         break;
                     case "Gas":
-                        natureIndex = 2;
+                        stateIndex = 2;
                         break;
                 }
 
                 switch(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentNSFIndex()).get_Form()) {
                     case "Special":
-                        natureIndex = 0;
+                        formIndex = 0;
                         break;
                     case "Normal":
-                        natureIndex = 1;
+                        formIndex = 1;
                         break;
                 }
 

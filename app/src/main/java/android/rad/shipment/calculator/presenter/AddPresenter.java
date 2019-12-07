@@ -324,8 +324,15 @@ public class AddPresenter extends BasePresenter {
     public void onChckBoxSameMassClicked() {
         if(mView.getChckBoxSameMass().isChecked() && BaseActivity.getShipment().getMassConsistent()) {
             mView.getEditTxtMass().setText(Float.toString(BaseActivity.getShipment().get(BaseActivity.getShipment().getConsistentMassIndex()).get_Mass()));
-            mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.microIndex));
-            mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.curieIndex));
+            mView.getSpinnerMassUnits_SI().setSelection(mView.getResources().getInteger(R.integer.baseIndex));
+            switch(mView.getMassUnit()){
+                case "grams":
+                    mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.gramsIndex));
+                    break;
+                case "liters":
+                    mView.getSpinnerMassUnits_Name().setSelection(mView.getResources().getInteger(R.integer.litersIndex));
+                    break;
+            }
         }
     }
 
