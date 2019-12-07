@@ -23,7 +23,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * Helper class to read the database data from the csv files located in the res folder
+ * NOTE: does not skip first line of csv file which contains the column names
+ *       this must be removed before using this class
+ */
 public class CSVData {
+    /**
+     * Helper function to get the A1 table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static A1[] getA1Data(Context context) {
         ArrayList<A1> ret = null;
 
@@ -50,6 +60,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new A1[0]);
     }
 
+    /**
+     * Helper function to get the A2 table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static A2[] getA2Data(Context context) {
         ArrayList<A2> ret = null;
 
@@ -76,6 +91,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new A2[0]);
     }
 
+    /**
+     * Helper function to get the Decay Constant table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static DecayConstant[] getDecayConstantData(Context context) {
         ArrayList<DecayConstant> ret = null;
 
@@ -102,6 +122,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new DecayConstant[0]);
     }
 
+    /**
+     * Helper function to get the Exempt Concentration table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static ExemptConcentration[] getExemptConcentrationData(Context context) {
         ArrayList<ExemptConcentration> ret = null;
 
@@ -128,6 +153,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new ExemptConcentration[0]);
     }
 
+    /**
+     * Helper function to get the Exempt Limit table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static ExemptLimit[] getExemptLimitData(Context context) {
         ArrayList<ExemptLimit> ret = null;
 
@@ -154,6 +184,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new ExemptLimit[0]);
     }
 
+    /**
+     * Helper function to get the HalfLife table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static HalfLife[] getHalfLifeData(Context context) {
         ArrayList<HalfLife> ret = null;
 
@@ -180,6 +215,12 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new HalfLife[0]);
     }
 
+    /**
+     * Helper function to get the Instruments & Articles Limited Limit table data
+     * from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static IALimitedLimit[] getIALimitedLimitData(Context context) {
         ArrayList<IALimitedLimit> ret = null;
 
@@ -206,6 +247,12 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new IALimitedLimit[0]);
     }
 
+    /**
+     * Helper function to get the Instruments & Articles Package Limit table data
+     * from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static IAPackageLimit[] getIAPackageLimitData(Context context) {
         ArrayList<IAPackageLimit> ret = null;
 
@@ -232,6 +279,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new IAPackageLimit[0]);
     }
 
+    /**
+     * Helper function to get the Valid Isotopes table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static Isotopes[] getIsotopesData(Context context) {
         ArrayList<Isotopes> ret = null;
 
@@ -258,6 +310,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new Isotopes[0]);
     }
 
+    /**
+     * Helper function to get the Licensing Limit table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static LicensingLimit[] getLicensingLimitData(Context context) {
         ArrayList<LicensingLimit> ret = null;
 
@@ -284,6 +341,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new LicensingLimit[0]);
     }
 
+    /**
+     * Helper function to get the Limited Limit table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static LimitedLimit[] getLimitedLimitData(Context context) {
         ArrayList<LimitedLimit> ret = null;
 
@@ -310,6 +372,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new LimitedLimit[0]);
     }
 
+    /**
+     * Helper function to get the Reportable Quantity table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static ReportableQuantity[] getReportableQuantityData(Context context) {
         ArrayList<ReportableQuantity> ret = null;
 
@@ -336,6 +403,11 @@ public class CSVData {
         return (ret == null)? null : ret.toArray(new ReportableQuantity[0]);
     }
 
+    /**
+     * Helper function to get the Short/Long Lived table data from its corresponding csv file
+     *
+     * @param context the application context to open the csv file as an input stream
+     */
     public static ShortLong[] getShortLongData(Context context) {
         ArrayList<ShortLong> ret = null;
 
