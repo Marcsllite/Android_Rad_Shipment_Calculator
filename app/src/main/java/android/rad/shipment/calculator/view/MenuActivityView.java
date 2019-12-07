@@ -18,7 +18,7 @@ public class MenuActivityView extends BaseActivity<MenuPresenter> {
 
         setContentView(R.layout.menu_layout);  // showing the menu page
 
-        // getting all the views from the men page that need to be programmed
+        // getting all the views from the menu page that need to be programmed
         final View logo = findViewById(R.id.imgViewColorLogo);
         final View shipmentBtn = findViewById(R.id.btnShipment);
         final View referenceBtn = findViewById(R.id.btnReference);
@@ -32,9 +32,11 @@ public class MenuActivityView extends BaseActivity<MenuPresenter> {
         shipmentBtn.setOnClickListener(onMenuButtonsClicked);
     }
 
+    /*/////////////////////////////////////// LISTENERS //////////////////////////////////////////*/
+
     /**
-     * Custom onclick listener to call the correct presenter method when
-     * each individual menu page view is interacted with
+     * Custom View.onClickListener to call the correct presenter function when
+     * any clickable view on the menu page is interacted with
      */
     private class OnMenuButtonsClicked implements View.OnClickListener {
         @Override public void onClick(final View view) {

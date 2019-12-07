@@ -83,9 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayoutAddInfoTop"
-            android:paddingBottom="10dp"
+            android:background="#00000000"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <RadioGroup
                 android:id="@+id/radioGrpShortLong"
@@ -114,9 +115,9 @@
 
             <RadioGroup
                 android:id="@+id/radioGrpLungAbs"
-                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
                 <RadioButton
                     android:id="@+id/radioBtnSlowLungAbs"

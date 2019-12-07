@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/lightGrey">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -54,7 +55,7 @@
             android:layout_below="@+id/editTextInitialActivity"/>
 
         <LinearLayout
-            android:id="@+id/linearLayoutAddInfoTop"
+            android:id="@+id/linearLayoutEditInfoTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -70,7 +71,7 @@
                 android:text="@string/additionalInfoText"/>
 
             <View
-                android:id="@+id/dividerAddInfoTop"
+                android:id="@+id/dividerEditInfoTop"
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_height="2dp"
@@ -78,13 +79,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayoutAddInfoMiddle"
+            android:id="@+id/linearLayoutEditInfoMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/linearLayoutAddInfoTop"
-            android:paddingBottom="10dp"
+            android:layout_below="@+id/linearLayoutEditInfoTop"
+            android:background="#00000000"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="10dp">
 
             <RadioGroup
                 android:id="@+id/radioGrpShortLong"
@@ -96,7 +98,7 @@
                     android:id="@+id/radioBtnShortLived"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:text="@string/shortLong_1"
                     android:textColor="@color/darkColor"
                     android:textColorHighlight="@color/umlBlue" />
@@ -105,31 +107,23 @@
                     android:id="@+id/radioBtnLongLived"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:text="@string/shortLong_2"
                     android:textColor="@color/darkColor"
                     android:textColorHighlight="@color/umlBlue" />
             </RadioGroup>
 
-            <View
-                android:id="@+id/dividerAddInfoMiddle"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:background="@color/defaultGrey" />
-
             <RadioGroup
                 android:id="@+id/radioGrpLungAbs"
-                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
                 <RadioButton
                     android:id="@+id/radioBtnSlowLungAbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:text="@string/lungAbs_1"
                     android:textColor="@color/darkColor"
                     android:textColorHighlight="@color/umlBlue" />
@@ -138,7 +132,7 @@
                     android:id="@+id/radioBtnMediumLungAbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:text="@string/lungAbs_2"
                     android:textColor="@color/darkColor"
                     android:textColorHighlight="@color/umlBlue" />
@@ -147,7 +141,7 @@
                     android:id="@+id/radioBtnFastLungAbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:text="@string/lungAbs_3"
                     android:textColor="@color/darkColor"
                     android:textColorHighlight="@color/umlBlue" />
@@ -155,11 +149,11 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/dividerAddInfoBottom"
+            android:id="@+id/dividerEditInfoBottom"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/defaultGrey"
-            android:layout_below="@+id/linearLayoutAddInfoMiddle"
+            android:layout_below="@+id/linearLayoutEditInfoMiddle"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"/>
 
@@ -170,7 +164,7 @@
             android:hint="@string/massPrompt"
             android:importantForAutofill="no"
             android:inputType="number"
-            android:layout_below="@+id/dividerAddInfoBottom"
+            android:layout_below="@+id/dividerEditInfoBottom"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/spinnerMassUnits_SI"
@@ -197,20 +191,21 @@
 
         <CheckBox
             android:id="@+id/chckBoxSameMass"
-            android:layout_below="@+id/editTxtMass"
-            android:paddingBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sameMassChckBox"
+            android:layout_below="@+id/editTxtMass"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="@string/sameMassChckBox"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/txtViewNature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:layout_below="@+id/chckBoxSameMass"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -232,8 +227,7 @@
             android:id="@+id/txtViewState"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="20dp"
             android:layout_below="@+id/txtViewNature"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -255,8 +249,7 @@
             android:id="@+id/txtViewForm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
+            android:paddingTop="20dp"
             android:layout_below="@+id/txtViewState"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
@@ -276,16 +269,18 @@
 
         <CheckBox
             android:id="@+id/chckBoxSameNSF"
-            android:layout_below="@+id/txtViewForm"
-            android:paddingBottom="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/sameNSFChckBox"
+            android:layout_below="@+id/txtViewForm"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"/>
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/sameNSFChckBox"
+            android:textSize="16sp" />
 
         <LinearLayout
-            android:id="@+id/linearLayoutAddButtons"
+            android:id="@+id/linearLayoutEditButtons"
             android:layout_below="@+id/chckBoxSameNSF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -320,8 +315,6 @@
                 style="?android:attr/buttonBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
                 android:background="@color/umlBlue"
                 android:text="@string/editBtn"
                 android:textColor="@color/trueWhite" />

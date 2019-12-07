@@ -15,18 +15,31 @@ import androidx.annotation.Nullable;
 
 public class ReferencePresenter  extends BasePresenter {
 
-    private final ReferenceActivityView mView;
-    private final TaskExecutor mTaskExecutor;
-    private final ShipmentCalculatorDataSource mShipmentCalculatorDB;
+    private final ReferenceActivityView mView;  // connection to the reference activity view
+    private final TaskExecutor mTaskExecutor;  // runs tasks in the background
+    private final ShipmentCalculatorDataSource mShipmentCalculatorDB;  // data connection to the database
 
+    /**
+     * Constructor to make a reference presenter attached to the given reference activity view
+     *
+     * @param view the reference activity view that this presenter will be affecting
+     * @param taskExecutor the taskExecutor to run background tasks (like database queries)
+     * @param db the data connection to the database
+     */
     public ReferencePresenter(@NonNull final ReferenceActivityView view, @NonNull final TaskExecutor taskExecutor, ShipmentCalculatorDataSource db){
         mTaskExecutor = taskExecutor;
         mView = view;
         mShipmentCalculatorDB = db;
     }
 
+    /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
+
+    /**
+     * Listener function that is called when the menu button is clicked
+     */
     public void onMenuButtonClicked() { mView.leaveActivity(); }
 
+    /*////////////////////////////////////////// TASKS ///////////////////////////////////////////*/
     private class FetchA1Task implements AppTask<Float> {
 
         private final String mAbbr;

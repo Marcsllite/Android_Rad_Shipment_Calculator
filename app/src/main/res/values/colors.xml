@@ -6,4 +6,6 @@
     <color name="darkColor">#232323</color>
     <color name="trueWhite">#fff</color>
     <color name="trueBlack">#ff000000</color>
+    <color name="invalidAdditionalInfo">#61921818</color>
+    <color name="transparent">#00000000</color>
 </resources>

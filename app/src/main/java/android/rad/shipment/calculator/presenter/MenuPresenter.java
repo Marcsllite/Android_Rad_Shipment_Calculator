@@ -21,21 +21,21 @@ public class MenuPresenter extends BasePresenter {
 
     /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
     /**
-     * Helper function that is called when the logo on the menu page is clicked
+     * Listener function that is called when the logo on the menu page is clicked
      */
     public void onLogoClicked() {
         mView.launchBrowser(mView.getString(R.string.umlURL));
     }
 
     /**
-     * Helper function that is called when the Shipment textView on the menu page is clicked
+     * Listener function that is called when the Shipment textView on the menu page is clicked
      */
     public void onShipmentButtonClicked() {
         mView.launchActivity(mView.getApplicationContext(), ShipmentActivityView.class);
     }
 
     /**
-     * Helper function that is called when the Reference textView on the menu page is clicked
+     * Listener function that is called when the Reference textView on the menu page is clicked
      */
     public void onReferenceButtonClicked() {
         mView.launchActivity(mView.getApplicationContext(), ReferenceActivityView.class);
