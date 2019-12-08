@@ -12,6 +12,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 public class ReferencePresenter  extends BasePresenter {
@@ -43,29 +44,26 @@ public class ReferencePresenter  extends BasePresenter {
     public void onReferenceQuery(String query) { mTaskExecutor.async(new FetchIsotopeInfoTask(query));}
 
     /*////////////////////////////////////////// TASKS ///////////////////////////////////////////*/
-    private class FetchIsotopeInfoTask implements AppTask<Void> {
+    private class FetchIsotopeInfoTask implements AppTask<LiveData<List<Isotopes>>> {
         private final String mQuery;
 
         public FetchIsotopeInfoTask(String query) { mQuery = query; }
 
         @Override
-        public Void execute() {
-            mShipmentCalculatorDB.searchIsotope(mQuery)
-                .observe(mView, new Observer<List<Isotopes>>() {
-                    @Override public void onChanged(@Nullable List<Isotopes> isotopes) {
-                        if (isotopes == null) return;
-
-                        SearchViewAdapter adapter = new SearchViewAdapter(mView.getApplicationContext(), isotopes);
-                        mView.setListViewAdapter(adapter);
-                    }
-                }
-            );
-            return null;
-        }
+        public LiveData<List<Isotopes>> execute() { return mShipmentCalculatorDB.searchIsotope(mQuery) }
 
         @Override
-        public void onPostExecute(@Nullable Void result) {
+        public void onPostExecute(@Nullable LiveData<List<Isotopes>> result) {
             mView.showToast("Done Searching");
+            result.observe(mView, new Observer<List<Isotopes>>() {
+                        @Override public void onChanged(@Nullable List<Isotopes> isotopes) {
+                            if (isotopes == null) return;
+
+                            SearchViewAdapter adapter = new SearchViewAdapter(mView.getApplicationContext(), isotopes);
+                            mView.setListViewAdapter(adapter);
+                        }
+                    }
+            );
         }
     }
 }
