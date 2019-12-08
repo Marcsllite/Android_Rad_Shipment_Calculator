@@ -121,4 +121,10 @@
     <string name="SD_Isotopes">Isotopes</string>
     <string name="SD_Mass">Mass:</string>
     <string name="noResults">No Results Found</string>
+    <string name="II_A1">A1:</string>
+    <string name="II_A2">A2:</string>
+    <string name="II_ExemptCon">Exempt Concentration:</string>
+    <string name="II_ExemptLim">Exempt Limit:</string>
+    <string name="II_LicLim">License Limit:</string>
+    <string name="II_RQ">Reportable Quantity:</string>
 </resources>

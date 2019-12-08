@@ -1,11 +1,13 @@
 package android.rad.shipment.calculator.presenter;
 
+import android.content.Intent;
 import android.rad.shipment.calculator.base.BasePresenter;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
 import android.rad.shipment.calculator.database.tables.Isotopes;
 import android.rad.shipment.calculator.task.AppTask;
 import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.utils.SearchViewAdapter;
+import android.rad.shipment.calculator.view.EditDialogueView;
 import android.rad.shipment.calculator.view.ReferenceActivityView;
 
 import java.util.List;
@@ -43,24 +45,38 @@ public class ReferencePresenter  extends BasePresenter {
     
     public void onReferenceQuery(String query) { mTaskExecutor.async(new FetchIsotopeInfoTask(query));}
 
+    /**
+     * Listener function that is called when a list item is clicked
+     *
+     * @param index the index of the item that was clicked
+     */
+    public void onSearchIsotopeClicked(int index){
+        Intent intent = new Intent(mView.getApplicationContext(), EditDialogueView.class);
+        intent.putExtra("index", index);
+
+        mView.startActivity(intent);
+    }
+
     /*////////////////////////////////////////// TASKS ///////////////////////////////////////////*/
     private class FetchIsotopeInfoTask implements AppTask<LiveData<List<Isotopes>>> {
         private final String mQuery;
 
-        public FetchIsotopeInfoTask(String query) { mQuery = "%"+query+"%"; }
+        public FetchIsotopeInfoTask(String query) { mQuery = (query == null || "".equals(query))? "" : "%"+query+"%"; }
 
         @Override
         public LiveData<List<Isotopes>> execute() { return mShipmentCalculatorDB.searchIsotope(mQuery); }
 
         @Override
         public void onPostExecute(@Nullable LiveData<List<Isotopes>> result) {
-            mView.showToast("Done Searching");
+            assert result != null;
             result.observe(mView, new Observer<List<Isotopes>>() {
                         @Override public void onChanged(@Nullable List<Isotopes> isotopes) {
                             if (isotopes == null) return;
 
-                            SearchViewAdapter adapter = new SearchViewAdapter(mView.getApplicationContext(), isotopes);
-                            mView.setListViewAdapter(adapter);
+                            if(isotopes.size() > 0) {
+                                SearchViewAdapter adapter = new SearchViewAdapter(mView.getApplicationContext(), isotopes);
+                                mView.setListViewAdapter(adapter);
+                            } else { mView.setListViewAdapter(null); }
                         }
                     }
             );
