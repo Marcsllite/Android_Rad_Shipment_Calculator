@@ -27,7 +27,6 @@ public class ShipmentPresenter extends BasePresenter {
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mView.showToast("Ship onCreate");
     }
 
     @Override

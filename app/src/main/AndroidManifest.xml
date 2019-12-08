@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".view.ReferenceActivityView"/>
         <activity android:name=".view.ShipmentActivityView"/>
+        <activity android:name=".view.ResultsActivityView"/>
         <activity android:name=".view.AddDialogueView"
             android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
         <activity android:name=".view.EditDialogueView"
