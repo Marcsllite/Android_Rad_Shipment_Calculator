@@ -97,4 +97,16 @@
         <item>grams</item>\
         <item>liters</item>
     </string-array>
+
+    <string name="DII_Name">Name:</string>
+    <string name="DII_A0">Initial Activity</string>
+    <string name="DII_AToday">Activity Today</string>
+    <string name="DII_Halflife">Half-Life (days):</string>
+    <string name="DII_DecayConst">Decay Constant (d-1):</string>
+    <string name="DII_DPM">DPM:</string>
+    <string name="DII_Classification">Classification:</string>
+    <string name="DII_RQ">Reportable Quantity?</string>
+    <string name="DII_LicLimPer">Licensing Limit %:</string>
+    <string name="DII_ActivityPer">Activity Limit %:</string>
+    <string name="resultsText">Results</string>
 </resources>
