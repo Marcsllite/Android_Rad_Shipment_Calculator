@@ -4,36 +4,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
-import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
-import android.rad.shipment.calculator.database.tables.ShortLong;
-import android.rad.shipment.calculator.task.AppTask;
-import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.view.AddDialogueView;
 import android.rad.shipment.calculator.view.DateDialogueView;
 import android.rad.shipment.calculator.view.EditDialogueView;
+import android.rad.shipment.calculator.view.ResultsActivityView;
 import android.rad.shipment.calculator.view.ShipmentActivityView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.util.List;
-
 public class ShipmentPresenter extends BasePresenter {
     private final ShipmentActivityView mView;  // connection to the reference activity view
-    private final TaskExecutor mTaskExecutor;  // runs tasks in the background
-    private final ShipmentCalculatorDataSource mShipmentCalculatorDB;  // data connection to the database
 
     /**
-     * Constructor to make an add presenter attached to the given add dialogue view
+     * Constructor to make an shipment presenter attached to the given shipment presenter view
      *
-     * @param view the add dialogue view that this presenter will be affecting
-     * @param taskExecutor the taskExecutor to run background tasks (like database queries)
-     * @param db the data connection to the database
+     * @param view the shipment activity view that this presenter will be affecting
      */
-    public ShipmentPresenter(@NonNull final ShipmentActivityView view, @NonNull final TaskExecutor taskExecutor, ShipmentCalculatorDataSource db){
-        mTaskExecutor = taskExecutor;
-        mView = view;
-        mShipmentCalculatorDB = db;
+    public ShipmentPresenter(@NonNull final ShipmentActivityView view){ mView = view;
     }
 
     @Override
@@ -68,7 +56,7 @@ public class ShipmentPresenter extends BasePresenter {
     public void onCalculateButtonClicked() {
         mView.showLoading();
         if(BaseActivity.getShipment().get_ReferenceDate() == null ) mView.launchActivity(mView.getApplicationContext(), DateDialogueView.class);
-        else mTaskExecutor.async(new CalculateTask());
+        else mView.launchActivity(mView.getApplicationContext(), ResultsActivityView.class);
     }
 
     /**
@@ -89,28 +77,5 @@ public class ShipmentPresenter extends BasePresenter {
         intent.putExtra("index", index);
 
         mView.startActivity(intent);
-    }
-
-    /*////////////////////////////////////////// TASKS ///////////////////////////////////////////*/
-
-    /**
-     * Custom task that calculates the classification of the shipment
-     */
-    private class CalculateTask implements AppTask<Void> {
-        /**
-         * Constructor for the calculate task
-         */
-        CalculateTask() { }
-
-        @Override
-        public Void execute() {
-           return null;
-        }
-
-        @Override
-        public void onPostExecute(Void result) {
-            mView.hideLoading();
-            mView.showToast("Done Calculating");
-        }
     }
 }

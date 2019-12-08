@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imgViewMenuBtn"
+                android:id="@+id/imgViewBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -34,7 +34,7 @@
                 android:paddingTop="@dimen/searchBar_edge_margin"
                 android:paddingEnd="@dimen/searchBar_edge_margin"
                 android:paddingBottom="@dimen/searchBar_edge_margin"
-                app:srcCompat="@drawable/ic_grey_menu_lines" />
+                app:srcCompat="@drawable/grey_arrow" />
 
             <View
                 android:id="@+id/divider"
