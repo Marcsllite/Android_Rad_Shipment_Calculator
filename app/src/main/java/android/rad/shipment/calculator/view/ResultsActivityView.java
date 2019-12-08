@@ -10,14 +10,13 @@ import android.rad.shipment.calculator.task.AppTaskExecutor;
 import android.rad.shipment.calculator.utils.DetailedIsotopeAdapter;
 import android.rad.shipment.calculator.utils.NonScrollListView;
 import android.view.View;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 
 public class ResultsActivityView extends BaseActivity<ResultsPresenter> {
     // Declaring variables
     private DetailedIsotopeAdapter detailedIsotopeAdapter;
-    private ProgressBar loading;
+//    private ProgressBar loading;
     private NonScrollListView nonScrollListView;
     private View backBtn;
 
@@ -29,18 +28,18 @@ public class ResultsActivityView extends BaseActivity<ResultsPresenter> {
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.reference_layout);  // showing the reference page
+        setContentView(R.layout.results_layout);  // showing the reference page
 
         // getting all the views from the reference page that need to be programmed
         backBtn = findViewById(R.id.imgViewBack);
-        loading = findViewById(R.id.loading);
-//        nonScrollListView = findViewById(R.id.nonScrollListView);
+//        loading = findViewById(R.id.loading);
+        nonScrollListView = findViewById(R.id.nonScrollListView);
 
         // linking the isotopeAdapter to the Shipment's arraylist of isotopes
         detailedIsotopeAdapter = new DetailedIsotopeAdapter(this, BaseActivity.getShipment().getIsotopes());
         nonScrollListView.setAdapter(detailedIsotopeAdapter);
 
-        hideLoading();  // initializing the loading progress bar to be hidden
+//        hideLoading();  // initializing the loading progress bar to be hidden
 
         // creating custom click listeners
         OnResultsButtonsClicked onResultsButtonsClicked = new OnResultsButtonsClicked();
@@ -53,15 +52,15 @@ public class ResultsActivityView extends BaseActivity<ResultsPresenter> {
 
     /*///////////////////////////////////////// HELPERS //////////////////////////////////////////*/
 
-    /**
-     * Helper function to show the loading progress bar on the shipment page
-     */
-    public void showLoading() { loading.setVisibility(View.VISIBLE); }
-
-    /**
-     * Helper function to hide the loading progress bar on the shipment page
-     */
-    public void hideLoading() { loading.setVisibility(View.INVISIBLE); }
+//    /**
+//     * Helper function to show the loading progress bar on the shipment page
+//     */
+//    public void showLoading() { loading.setVisibility(View.VISIBLE); }
+//
+//    /**
+//     * Helper function to hide the loading progress bar on the shipment page
+//     */
+//    public void hideLoading() { loading.setVisibility(View.INVISIBLE); }
 
     /*/////////////////////////////////////// LISTENERS //////////////////////////////////////////*/
 

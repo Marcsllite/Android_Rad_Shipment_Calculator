@@ -34,7 +34,7 @@ public class DetailedIsotopeAdapter extends ArrayAdapter<Isotope> {
 
 
     public DetailedIsotopeAdapter(Context context, ArrayList<Isotope> isotopes) {
-        super(context, R.layout.isotope_item, isotopes);
+        super(context, R.layout.detailed_isotope_item, isotopes);
     }
 
     @Override public View getView(int position, View convertView, ViewGroup parent) {

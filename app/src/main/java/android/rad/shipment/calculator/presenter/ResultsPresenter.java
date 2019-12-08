@@ -28,7 +28,7 @@ public class ResultsPresenter extends BasePresenter {
     }
 
     public void calculateShipment() {
-        mView.showLoading();
+//        mView.showLoading();
         mTaskExecutor.async(new CalculateTask());
     }
 
@@ -57,7 +57,7 @@ public class ResultsPresenter extends BasePresenter {
 
         @Override
         public void onPostExecute(Void result) {
-            mView.hideLoading();
+//            mView.hideLoading();
             mView.showToast("Done Calculating");
         }
     }
