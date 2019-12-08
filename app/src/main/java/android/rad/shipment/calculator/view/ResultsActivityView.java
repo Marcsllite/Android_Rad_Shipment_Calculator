@@ -36,6 +36,10 @@ public class ResultsActivityView extends BaseActivity<ResultsPresenter> {
         loading = findViewById(R.id.loading);
 //        nonScrollListView = findViewById(R.id.nonScrollListView);
 
+        // linking the isotopeAdapter to the Shipment's arraylist of isotopes
+        detailedIsotopeAdapter = new DetailedIsotopeAdapter(this, BaseActivity.getShipment().getIsotopes());
+        nonScrollListView.setAdapter(detailedIsotopeAdapter);
+
         // creating custom click listeners
         OnResultsButtonsClicked onResultsButtonsClicked = new OnResultsButtonsClicked();
 
