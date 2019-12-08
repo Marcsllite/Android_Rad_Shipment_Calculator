@@ -348,7 +348,7 @@
                 android:background="@color/darkColor" />
 
             <android.rad.shipment.calculator.utils.NonScrollListView
-                android:id="@+id/listView"
+                android:id="@+id/nonScrollListView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:dividerHeight="1dp"
