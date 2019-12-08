@@ -47,10 +47,10 @@ public class ReferencePresenter  extends BasePresenter {
     private class FetchIsotopeInfoTask implements AppTask<LiveData<List<Isotopes>>> {
         private final String mQuery;
 
-        public FetchIsotopeInfoTask(String query) { mQuery = query; }
+        public FetchIsotopeInfoTask(String query) { mQuery = "%"+query+"%"; }
 
         @Override
-        public LiveData<List<Isotopes>> execute() { return mShipmentCalculatorDB.searchIsotope(mQuery) }
+        public LiveData<List<Isotopes>> execute() { return mShipmentCalculatorDB.searchIsotope(mQuery); }
 
         @Override
         public void onPostExecute(@Nullable LiveData<List<Isotopes>> result) {

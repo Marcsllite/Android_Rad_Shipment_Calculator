@@ -46,7 +46,7 @@ public class SearchViewAdapter extends ArrayAdapter<Isotopes> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        String name = isotope.getName().toUpperCase() + "(" + isotope.getAbbr() + ")";
+        String name = isotope.getName().toUpperCase() + " (" + isotope.getAbbr() + ")";
         
         // Populate the data from the data object via the viewHolder object
         // into the template view.
