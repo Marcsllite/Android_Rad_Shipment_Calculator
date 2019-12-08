@@ -8,7 +8,6 @@ import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.utils.SearchViewAdapter;
 import android.rad.shipment.calculator.view.ReferenceActivityView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -52,13 +51,12 @@ public class ReferencePresenter  extends BasePresenter {
         @Override
         public Void execute() {
             mShipmentCalculatorDB.searchIsotope(mQuery)
-                .observe(mView.getApplicationContext(), new Observer<ArrayList<Isotopes>>() {
-                    @Override public void onChanged(@Nullable ArrayList<Isotopes> isotopes) {
+                .observe(mView, new Observer<List<Isotopes>>() {
+                    @Override public void onChanged(@Nullable List<Isotopes> isotopes) {
                         if (isotopes == null) return;
 
                         SearchViewAdapter adapter = new SearchViewAdapter(mView.getApplicationContext(), isotopes);
-
-                        listView.setAdapter(adapter);
+                        mView.setListViewAdapter(adapter);
                     }
                 }
             );

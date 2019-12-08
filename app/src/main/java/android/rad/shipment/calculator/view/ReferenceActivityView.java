@@ -7,12 +7,19 @@ import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
 import android.rad.shipment.calculator.presenter.ReferencePresenter;
 import android.rad.shipment.calculator.task.AppTaskExecutor;
+import android.rad.shipment.calculator.utils.SearchViewAdapter;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 
 public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
+    // Declaring variables
+    private View menuBtn;
+    private SearchView searchView;
+    private ListView listView;
+
     @NonNull @Override
     protected ReferencePresenter createPresenter(@NonNull Context context) {
         // creating the connection to the database
@@ -31,8 +38,9 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
         setContentView(R.layout.reference_layout);  // showing the reference page
 
         // getting all the views from the reference page that need to be programmed
-        final View menuBtn = findViewById(R.id.imgViewMenuBtn);
-        final SearchView searchView = findViewById(R.id.searchView);
+        menuBtn = findViewById(R.id.imgViewMenuBtn);
+        searchView = findViewById(R.id.searchView);
+        listView = findViewById(R.id.listView);
 
         // creating custom listeners
         OnReferenceQueryListener onReferenceQueryListener = new OnReferenceQueryListener();
@@ -43,7 +51,7 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
         searchView.setOnQueryTextListener(onReferenceQueryListener);
     }
 
-    public initListView
+    public void setListViewAdapter(SearchViewAdapter searchViewAdapter) { listView.setAdapter(searchViewAdapter); }
 
     /*/////////////////////////////////////// LISTENERS //////////////////////////////////////////*/
 
