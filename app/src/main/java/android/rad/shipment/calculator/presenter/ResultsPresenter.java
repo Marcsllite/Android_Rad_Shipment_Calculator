@@ -27,6 +27,11 @@ public class ResultsPresenter extends BasePresenter {
         mShipmentCalculatorDB = db;
     }
 
+    public void calculateShipment() {
+        mView.showLoading();
+        mTaskExecutor.async(new CalculateTask());
+    }
+
     /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
 
     /**

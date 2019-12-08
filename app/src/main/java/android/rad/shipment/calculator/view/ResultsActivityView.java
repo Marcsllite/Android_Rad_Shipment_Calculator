@@ -40,11 +40,15 @@ public class ResultsActivityView extends BaseActivity<ResultsPresenter> {
         detailedIsotopeAdapter = new DetailedIsotopeAdapter(this, BaseActivity.getShipment().getIsotopes());
         nonScrollListView.setAdapter(detailedIsotopeAdapter);
 
+        hideLoading();  // initializing the loading progress bar to be hidden
+
         // creating custom click listeners
         OnResultsButtonsClicked onResultsButtonsClicked = new OnResultsButtonsClicked();
 
         // adding custom onClick listeners to the views
         backBtn.setOnClickListener(onResultsButtonsClicked);
+
+        mPresenter.calculateShipment(); // calculating the shipment and adding the data to the results page
     }
 
     /*///////////////////////////////////////// HELPERS //////////////////////////////////////////*/
