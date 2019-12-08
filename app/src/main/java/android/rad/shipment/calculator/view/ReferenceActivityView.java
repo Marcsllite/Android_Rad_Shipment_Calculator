@@ -42,6 +42,8 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
 
+        listView.setEmptyView(findViewById(R.id.txtViewNoResults));
+
         // creating custom listeners
         OnReferenceQueryListener onReferenceQueryListener = new OnReferenceQueryListener();
         OnReferenceButtonsClicked onReferenceButtonsClicked = new OnReferenceButtonsClicked();
