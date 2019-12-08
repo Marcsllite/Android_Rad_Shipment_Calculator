@@ -109,4 +109,14 @@
     <string name="DII_LicLimPer">Licensing Limit %:</string>
     <string name="DII_ActivityPer">Activity Limit %:</string>
     <string name="resultsText">Results</string>
+    <string name="shipment_data">Shipment Data</string>
+    <string name="SD_D0">Initial Date:</string>
+    <string name="SD_nature">Nature:</string>
+    <string name="SD_state">State:</string>
+    <string name="SD_form">Form:</string>
+    <string name="SD_LicExempt">License Exempt:</string>
+    <string name="SD_ActivityLim">Activity Limit:</string>
+    <string name="SD_ActivityCon">ActivityCon</string>
+    <string name="SD_LicPer">License %:</string>
+    <string name="SD_Isotopes">Isotopes</string>
 </resources>

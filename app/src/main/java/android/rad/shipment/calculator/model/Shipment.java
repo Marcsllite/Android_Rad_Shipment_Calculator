@@ -3,12 +3,10 @@ package android.rad.shipment.calculator.model;
 import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.view.ShipmentActivityView;
 
-import androidx.annotation.Nullable;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
+
+import androidx.annotation.Nullable;
 
 public class Shipment {
     // Declaring variables
