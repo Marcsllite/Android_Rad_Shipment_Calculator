@@ -1,7 +1,5 @@
 package android.rad.shipment.calculator.presenter;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
@@ -12,12 +10,10 @@ import android.rad.shipment.calculator.task.AppTask;
 import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.utils.Conversions;
 import android.rad.shipment.calculator.view.EditDialogueView;
-import android.rad.shipment.calculator.view.ShipmentActivityView;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class EditPresenter extends BasePresenter {
     private final EditDialogueView mView;  // connection to the reference activity view
@@ -36,6 +32,7 @@ public class EditPresenter extends BasePresenter {
         mTaskExecutor = taskExecutor;
         mView = view;
         mShipmentCalculatorDB = db;
+        isValidIso = true;
     }
 
     /*///////////////////////////////////////// HELPERS //////////////////////////////////////////*/

@@ -66,14 +66,24 @@
             android:focusable="true" />
     </LinearLayout>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="1dp"
+            android:padding="10dp"/>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/txtViewNoResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/noResults" />
 
-    </ScrollView>
+    </RelativeLayout>
 
 </LinearLayout>

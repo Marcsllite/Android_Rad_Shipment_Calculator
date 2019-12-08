@@ -5,6 +5,8 @@ import android.rad.shipment.calculator.database.tables.ShortLong;
 
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
+
 /**
  * Access point for managing user data.
  */
@@ -12,6 +14,8 @@ public interface IShipmentCalculatorDataSource {
 
     // Isotopes getters
     List<Isotopes> getAllValidIsos();
+
+    LiveData<List<Isotopes>> searchIsotope(String searchText);
 
     String getAbbr(String name);
 

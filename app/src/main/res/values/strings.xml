@@ -120,4 +120,5 @@
     <string name="SD_LicPer">License %:</string>
     <string name="SD_Isotopes">Isotopes</string>
     <string name="SD_Mass">Mass:</string>
+    <string name="noResults">No Results Found</string>
 </resources>

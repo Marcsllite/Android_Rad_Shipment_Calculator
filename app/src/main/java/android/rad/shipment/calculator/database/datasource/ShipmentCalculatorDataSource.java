@@ -20,6 +20,8 @@ import android.rad.shipment.calculator.database.tables.ShortLong;
 
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
+
 public class ShipmentCalculatorDataSource implements IShipmentCalculatorDataSource {
 
     ShipmentCalculatorLocalDB mShipmentCalculatorDB;
@@ -57,6 +59,8 @@ public class ShipmentCalculatorDataSource implements IShipmentCalculatorDataSour
     public ShipmentCalculatorLocalDB getInstance() { return mShipmentCalculatorDB; }
 
     @Override public List<Isotopes> getAllValidIsos() { return mIsotopesDao.loadAllIsotopes(); }
+
+    @Override public LiveData<List<Isotopes>> searchIsotope(String searchText) { return mIsotopesDao.searchIsotope(searchText); }
 
     @Override public String getAbbr(String name) { return mIsotopesDao.loadIsotopeAbbr(name); }
 

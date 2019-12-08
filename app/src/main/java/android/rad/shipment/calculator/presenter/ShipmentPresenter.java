@@ -62,6 +62,7 @@ public class ShipmentPresenter extends BasePresenter {
      * Listener function that is called when the list is modified
      */
     public void onListChanged(){
+        mView.showToast("List Size: " + BaseActivity.getShipment().getSize());
         if(BaseActivity.getShipment().isEmpty()) mView.disableCalculateButton();
         else mView.enableCalculateButton();
     }

@@ -46,7 +46,7 @@ public class DetailedIsotopeAdapter extends ArrayAdapter<Isotope> {
             // If there's no view to re-use, inflate a brand new view for row
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            convertView = inflater.inflate(R.layout.isotope_item, parent, false);
+            convertView = inflater.inflate(R.layout.detailed_isotope_item, parent, false);
 
             viewHolder.txtViewName = convertView.findViewById(R.id.txtViewName);
             viewHolder.txtViewA0 = convertView.findViewById(R.id.txtViewA0);
