@@ -10,7 +10,7 @@ import android.rad.shipment.calculator.task.AppTaskExecutor;
 import android.rad.shipment.calculator.utils.SearchViewAdapter;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.SearchView;
+import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
 
