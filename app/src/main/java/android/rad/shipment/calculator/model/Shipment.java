@@ -5,12 +5,16 @@ import android.rad.shipment.calculator.view.ShipmentActivityView;
 
 import androidx.annotation.Nullable;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Shipment {
     // Declaring variables
     private final ArrayList<Isotope> isotopes;
     private final int defaultInt = R.integer.defaultInt;
+    private Date _D0;        // the reference date for the shipment
     private boolean isMassConsistent, isNSFConsistent;      // variables to know if the user wants
                                                             // the same mass and nature/state/form
                                                             // values as the last added isotope
@@ -39,6 +43,7 @@ public class Shipment {
         consistentNSFIndex = defaultInt;
 
         _ShipmentClass = defaultInt;
+        _D0 = null;
     }
 
     /**
@@ -56,11 +61,12 @@ public class Shipment {
         addIsotopes(isotopes);
 
         _ShipmentClass = defaultInt;
+        _D0 = null;
     }
 
     @Override public int hashCode() {
         final int prime = 31;
-        int result = prime * 1;
+        int result = prime;
 
         for (Isotope iso: isotopes) { result += iso.hashCode(); }
 
@@ -269,6 +275,13 @@ public class Shipment {
      */
     public int get_ShipmentClass() { return _ShipmentClass; }
 
+    /**
+     * Getter function to get this shipment's reference date
+     *
+     * @return the reference date for the shipment
+     */
+    public Date get_ReferenceDate() { return _D0; }
+
     /*///////////////////////////////////////// SETTERS //////////////////////////////////////////*/
     /**
      * Setter function to set the isotopes in the shipment
@@ -326,4 +339,11 @@ public class Shipment {
      * @param shipmentClass the new classification of this shipment as an integer
      */
     public void set_ShipmentClass(int shipmentClass) { _ShipmentClass = shipmentClass; }
+
+    /**
+     * Setter function to set this shipment's reference date
+     *
+     * @param D0 the new reference date for the shipment
+     */
+    public void set_ReferenceDate(Date D0) { _D0 = D0; }
 }

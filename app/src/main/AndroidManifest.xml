@@ -28,6 +28,8 @@
             android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
         <activity android:name=".view.EditDialogueView"
             android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+        <activity android:name=".view.DateDialogueView"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
     </application>
 
 </manifest>

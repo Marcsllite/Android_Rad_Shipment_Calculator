@@ -7,6 +7,7 @@ import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
 import android.rad.shipment.calculator.presenter.ShipmentPresenter;
+import android.rad.shipment.calculator.task.AppTaskExecutor;
 import android.rad.shipment.calculator.utils.IsotopeAdapter;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,7 +33,7 @@ public class ShipmentActivityView extends BaseActivity<ShipmentPresenter> {
         new initDBAsyncTask(this, db.getInstance()).execute();
 
         // returning a presenter where all the business logic for this activity will reside
-        return new ShipmentPresenter(this);
+        return new ShipmentPresenter(this, new AppTaskExecutor(this), db);
     }
 
     @Override protected void onCreate(Bundle savedInstanceState) {

@@ -61,6 +61,8 @@
     <string name="lungAbs_3">Fast Lung Absorption</string>
 
     <string name="baseSi">----</string>
+    <string name="okayBtn">Okay</string>
+    <string name="dateTitle">Reference Date</string>
 
     <string-array name="Units_SI">
         <item>Yotta (Y)</item>
