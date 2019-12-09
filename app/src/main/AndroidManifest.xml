@@ -31,6 +31,8 @@
             android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
         <activity android:name=".view.DateDialogueView"
             android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+        <activity android:name=".view.IsoInfoDialogueView"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
     </application>
 
 </manifest>

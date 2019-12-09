@@ -18,7 +18,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 public class ReferencePresenter  extends BasePresenter {
-
     private final ReferenceActivityView mView;  // connection to the reference activity view
     private final TaskExecutor mTaskExecutor;  // runs tasks in the background
     private final ShipmentCalculatorDataSource mShipmentCalculatorDB;  // data connection to the database
@@ -43,25 +42,25 @@ public class ReferencePresenter  extends BasePresenter {
      */
     public void onMenuButtonClicked() { mView.leaveActivity(); }
     
-    public void onReferenceQuery(String query) { mTaskExecutor.async(new FetchIsotopeInfoTask(query));}
+    public void onReferenceQuery(String query) { mTaskExecutor.async(new FetchIsotopeNameTask(query));}
 
     /**
      * Listener function that is called when a list item is clicked
      *
-     * @param index the index of the item that was clicked
+     * @param abbr the abbreviation of the isotope that was clicked
      */
-    public void onSearchIsotopeClicked(int index){
+    public void onSearchIsotopeClicked(String abbr){
         Intent intent = new Intent(mView.getApplicationContext(), EditDialogueView.class);
-        intent.putExtra("index", index);
+        intent.putExtra("abbr", abbr);
 
         mView.startActivity(intent);
     }
 
     /*////////////////////////////////////////// TASKS ///////////////////////////////////////////*/
-    private class FetchIsotopeInfoTask implements AppTask<LiveData<List<Isotopes>>> {
+    private class FetchIsotopeNameTask implements AppTask<LiveData<List<Isotopes>>> {
         private final String mQuery;
 
-        public FetchIsotopeInfoTask(String query) { mQuery = (query == null || "".equals(query))? "" : "%"+query+"%"; }
+        public FetchIsotopeNameTask(String query) { mQuery = (query == null || "".equals(query))? "" : "%"+query+"%"; }
 
         @Override
         public LiveData<List<Isotopes>> execute() { return mShipmentCalculatorDB.searchIsotope(mQuery); }
