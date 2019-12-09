@@ -8,12 +8,15 @@ import java.util.Date;
 
 import androidx.annotation.Nullable;
 
+import static java.lang.Math.pow;
+
 public class Shipment {
     // Declaring variables
     private final ArrayList<Isotope> isotopes;
     private final int defaultInt = R.integer.defaultInt;
     private Date _D0;        // the reference date for the shipment
     private boolean isRQ;
+    private boolean isLicExempt;
     private boolean isMassConsistent, isNSFConsistent;      // variables to know if the user wants
                                                             // the same mass and nature/state/form
                                                             // values as the last added isotope
@@ -106,20 +109,20 @@ public class Shipment {
         // Getting shipment limit percentage and shipment concentration and shipment licencing exemption
         for (Isotope iso: isotopes) {
             pLimit += iso.get_ActivityPer();  // adding each isotipe's percentage of the activity limit
-            pCon += iter->second.CToday * 37000;  // adding each isotope's concentration today (in Bq)
+            pCon += (iso.get_AToday()/iso.get_Mass()) * 37000;  // adding each isotope's concentration today (in Bq)
             pAToday += iso.get_AToday() * 37000;  // adding each isotope's activity today (in Bq)
-            lFrac += (iso.get_AToday() * 37000) / ((iter->second.licLim * 1000) * 37000);  // isotope activity in Bq / (1000 * licensing limit) in Bq
+            lFrac += (iso.get_AToday() * 37000) / ((iso.get_LicensingLimit() * 1000) * 37000);  // isotope activity in Bq / (1000 * licensing limit) in Bq
         }
 
         // calculating package limits for Exempt, Excepted, Type A Classification
         for (Isotope iso: isotopes) {
-            iter->second.aCon = (iter->second.CToday * 37000) / pCon;  // fraction of activity concentration of isotope (Bq)
-            iter->second.aFrac = (iter->second.Atoday * 37000) / pAToday;  // fraction of activity of isotope (Bq)
-            aCon += iter->second.aCon / iter->second.exCon;  // fraction of activity concentration of isotope (Bq) / Exempt concentration limit (Bq/g)
-            aFracEx += iter->second.aFrac / iter->second.exLim;  // fraction of activity of isotope (Bq) / Exempt Activity limit (Bq)
-            aFracLim += iter->second.aFrac / (iter->second.ALim * pow(10.0, 12.0));  // package activity limit for Excepted Classification
-            typeALim += (iter->second.Atoday * 37000) / (iter->second.ALim * 1e+12); // converting Activity today to Bq then dividing by A1 or A2 converted to Bq
-            pRQ += iter->second.RQFrac;  // sum(individual nuclide activity (in microCi) / individual nuclide reportable quantity (in microCi))
+            iso.set_ActivityCon((iso.get_AToday()/iso.get_Mass() * 37000) / pCon);  // fraction of activity concentration of isotope (Bq)
+            iso.set_ActivityFrac((iso.get_AToday() * 37000) / pAToday);  // fraction of activity of isotope (Bq)
+            aCon += iso.get_ActivityCon() / iso.get_ExemptConcentration();  // fraction of activity concentration of isotope (Bq) / Exempt concentration limit (Bq/g)
+            aFracEx += iso.get_ActivityFrac() / iso.get_ExemptLimit();  // fraction of activity of isotope (Bq) / Exempt Activity limit (Bq)
+            aFracLim += iso.get_ActivityFrac() / (iso.get_AValue() * pow(10.0, 12.0));  // package activity limit for Excepted Classification
+            typeALim += (iso.get_AToday() * 37000) / (iso.get_AValue() * 1e+12); // converting Activity today to Bq then dividing by A1 or A2 converted to Bq
+            pRQ += iso.get_RQFrac();  // sum(individual nuclide activity (in microCi) / individual nuclide reportable quantity (in microCi))
         }
 
         if (pRQ < 1) {  // finding out if package is a reportable quantity
@@ -140,64 +143,26 @@ public class Shipment {
             }
         }
 
-        if (lFrac > 1) {  // checking if shipment is exempt from licensing
-            retVal = "Shipment exempt from licensing?: No\n";
-        } else {
-            retVal = "Shipment exempt from licensing?: Yes\n";
-        }
-
-        if (isRQ) {
-            retVal.append("Shipemnt Reportable Quantity?: Yes\n");
-        } else {
-            retVal.append("Shipemnt Reportable Quantity?: No\n");
-        }
+        // checking if shipment is exempt from licensing
+        isLicExempt = !(lFrac > 1);
 
         switch (hClass) {
             case 0:
                 _ShipmentClass = 0;  // saving the shipment class
-                retVal.append("Shipment Classification: Exempt:\n\tShipment Activity Limit: ");
-                retVal.append(std::to_string(aFracEx));
-                retVal.append(" Bq (Actual Activity: " + std::to_string(pAToday) + ")\n\tShipment Activity Concentration Limit: ");
-                retVal.append(std::to_string(aCon));
-                retVal.append(" Bq/g (Actual Concentraion: " + std::to_string(pCon) + ")\n\tShipment License Percentage: ");
-                retVal.append(std::to_string(lFrac * 100) + "%\n");
-                return retVal;
-            break;
+                return "Exempt";
             case 1:
-                _ShipmentClass = 1;  // saving the shipment class
-                retVal.append("Shipment Classification: Excepted:\n\tShipment Activity Limit: ");
-                retVal.append(std::to_string(aFracLim));
-                retVal.append(" Bq (Actual Activity: " + std::to_string(pAToday) + ")\n\tShipment License Percentage: ");
-                retVal.append(std::to_string(lFrac * 100) + "%\n");
-                return retVal;
-            break;
+                return "Excepted";
             case 2:
                 _ShipmentClass = 2;  // saving the shipment class
-                retVal.append("Shipment Classification: Type A:\n\tShipment Activity: ");
-                retVal.append(std::to_string(pAToday));
-                retVal.append(")\n\tShipment License Percentage: ");
-                retVal.append(std::to_string(lFrac * 100) + "%\n");
-                return retVal;
-            break;
+                return "Type A";
             case 4:
                 _ShipmentClass = 4;  // saving the shipment class
-                retVal.append("Shipment Classification: Tyep B:\n\tShipment Activity: ");
-                retVal.append(std::to_string(pAToday));
-                retVal.append(")\n\tShipment License Percentage: ");
-                retVal.append(std::to_string(lFrac * 100) + "%\n");
-                return retVal;
-            break;
+                return "Tyep B";
             case 8:
                 _ShipmentClass = 8;  // saving the shipment class
-                retVal.append("Shipment Classification: Type B: Highway Route Control:\n\tShipment Activity: ");
-                retVal.append(std::to_string(pAToday));
-                retVal.append(")\n\tShipment License Percentage: ");
-                retVal.append(std::to_string(lFrac * 100) + "%\n");
-                return retVal;
-            break;
+                return "Type B: Highway Route Control";
             default:
-                return "FindClass: Error finding Shipment Classification.\n";
-            break;
+                return "Invalid Classification.\n";
         }
     }
 
@@ -392,6 +357,10 @@ public class Shipment {
      */
     public Date get_ReferenceDate() { return _D0; }
 
+    public String get_D0() { return _D0.toString(); }
+
+    public String get_isLicenseExempt() { return (isLicExempt)? "Yes": "No"; }
+
     /*///////////////////////////////////////// SETTERS //////////////////////////////////////////*/
     /**
      * Setter function to set the isotopes in the shipment
@@ -456,4 +425,20 @@ public class Shipment {
      * @param D0 the new reference date for the shipment
      */
     public void set_ReferenceDate(Date D0) { _D0 = D0; }
+
+    public boolean isRQ() {
+        return isRQ;
+    }
+
+    public void setRQ(boolean RQ) {
+        isRQ = RQ;
+    }
+
+    public boolean isLicExempt() {
+        return isLicExempt;
+    }
+
+    public void setLicExempt(boolean licExempt) {
+        isLicExempt = licExempt;
+    }
 }

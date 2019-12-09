@@ -47,6 +47,9 @@ public class ResultsPresenter extends BasePresenter {
      * Custom task that calculates the classification of the shipment
      */
     private class CalculateTask implements AppTask<Void> {
+
+        private String sClass, MASS, NATURE, STATE, FORM;
+
         /**
          * Constructor for the calculate task
          */
@@ -55,25 +58,41 @@ public class ResultsPresenter extends BasePresenter {
         @Override
         public Void execute() {
             // finding classification of isotopes in shipment
-            boolean lim;
             for (Isotope iso: BaseActivity.getShipment().getIsotopes()) {
-                if (iso.exemptClass()) {
+                if (iso.exemptClass(mShipmentCalculatorDB.getExemptLimit(iso.get_DBName()),
+                        mShipmentCalculatorDB.getExemptConcentration(iso.get_DBName()))) {
                     iso.set_IsotopeClass(0);
-                }
-                else {
-                    if (lim = iso.limitedClass())
+                } else {
+                    if (iso.limitedClass(mShipmentCalculatorDB.getA1(iso.get_DBName()),
+                            mShipmentCalculatorDB.getA2(iso.get_DBName()),
+                                    mShipmentCalculatorDB.getIALimitedMultiplier(iso.get_State(), iso.get_Form()),
+                                            mShipmentCalculatorDB.getLimitedLimit(iso.get_State(), iso.get_Form())))
                         iso.set_IsotopeClass(1);
-                    else if (iso.typeAClass() && !lim)
+                    else if (iso.typeAClass(mShipmentCalculatorDB.getA1(iso.get_DBName()),
+                            mShipmentCalculatorDB.getA2(iso.get_DBName())))
                         iso.set_IsotopeClass(2);
-                    else if (iso.HRCQClass())
+                    else if (iso.HRCQClass(mShipmentCalculatorDB.getA1(iso.get_DBName()),
+                            mShipmentCalculatorDB.getA2(iso.get_DBName())))
                         iso.set_IsotopeClass(8);
-                    else if (iso.typeBClass())
+                    else if (iso.typeBClass(mShipmentCalculatorDB.getA1(iso.get_DBName()),
+                            mShipmentCalculatorDB.getA2(iso.get_DBName())))
                         iso.set_IsotopeClass(4);
                 }
+
+                iso.set_RQFrac((float) (iso.get_AToday()/(mShipmentCalculatorDB.getReportableQuantity(iso.get_DBName())* 1000000.0))); // saving each isotope's RQFrac
+                iso.set_ExemptLimit(mShipmentCalculatorDB.getExemptLimit(iso.get_DBName()));// saving each isotope's exempt limit
+                iso.set_ExemptConcentration(mShipmentCalculatorDB.getExemptConcentration(iso.get_DBName()));// saving each isotope's exempt concetraion
+                iso.set_LicensingLimit(mShipmentCalculatorDB.getLicensingLimit(iso.get_DBName()));// saving each isotope's licensing limit
+
+                MASS = Float.toString(iso.get_Mass());
+                        NATURE = iso.get_Nature();
+                        STATE = iso.get_State();
+                                FORM = iso.get_Form();
+
             }
 
             // finding the classification of the shipment
-            sClassOut = findClass();
+            sClass = BaseActivity.getShipment().findClass();
 
             return null;
         }
@@ -81,7 +100,14 @@ public class ResultsPresenter extends BasePresenter {
         @Override
         public void onPostExecute(Void result) {
 //            mView.hideLoading();
-            mView.showToast("Done Calculating");
+            mView.setTxtViewD0(BaseActivity.getShipment().get_D0());
+            mView.setTxtViewMass(MASS);
+            mView.setTxtViewNature(NATURE);
+            mView.setTxtViewState(STATE);
+            mView.setTxtViewForm(FORM);
+
+            mView.setTxtViewLicExempt(BaseActivity.getShipment().get_isLicenseExempt());
+            mView.setTxtViewClass(sClass);
         }
     }
 }

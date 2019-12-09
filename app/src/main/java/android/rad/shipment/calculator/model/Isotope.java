@@ -28,7 +28,14 @@ public class Isotope {
     private boolean _RQ;                    //
     private float _LicLimPer;               //
     private float _ActivityPer;             //
-    private float _ConcentrationPer;             //
+    private float _ConcentrationPer;        //
+    private float _ActivityCon;
+    private float _ActivityFrac;
+    private float _AValue;
+    private float _RQFrac;
+    private float _ExemptLimit;
+    private float _ExemptConcentration;
+    private float _LicensingLimit;
 
     private int _IsotopeClass;              // Classification of isotope as an integer
                                             // (0 = Exempt, 1 = Excepted, 2 = Type A, 4 = Type B, 8 = Type B: Highway Route Control)
@@ -162,7 +169,7 @@ public class Isotope {
      *
      * @return this isotope's decays per minute
      */
-    public float getDPM() throws IllegalStateException { return get_AToday() * DPM; }
+    public float get_DPM() throws IllegalStateException { return get_AToday() * DPM; }
 
     public boolean exemptClass(float exemptLim, float exemptCon) {
         // Declaring variabels
@@ -199,6 +206,8 @@ public class Isotope {
         if ("Special".equals(_Form)) A = A1;
         else A = A2;
 
+        _AValue = A;
+
         // Getting limit multiplier based on nature
         if ("Regular".equals(_Nature)) multiplier = LimLim;
         else multiplier = IALimLim;
@@ -227,6 +236,8 @@ public class Isotope {
         if ("Special".equals(_Form)) A = A1;
         else A = A2;
 
+        _AValue = A;
+
         // converting A0 to TBq
         convertedA = Conversions.baseToTera(Conversions.CiToBq(Conversions.MicroToBase(get_AToday())));
 
@@ -246,6 +257,8 @@ public class Isotope {
         if ("Special".equals(_Form)) A = A1;
         else A = A2;
 
+        _AValue = A;
+
         // converting A0 to TBq
         convertedA = Conversions.baseToTera(Conversions.CiToBq(Conversions.MicroToBase(get_AToday())));
 
@@ -262,6 +275,8 @@ public class Isotope {
         if ("Special".equals(_Form)) A = A1;
         else A = A2;
 
+        _AValue = A;
+
         // Getting HRCQ limit (whichever is the least of (3000 * A1 or A2) and (1000 TBq))
         if ((3000 * A) < hrcqLim) {
             hrcqLim = 3000 * A;
@@ -277,26 +292,6 @@ public class Isotope {
         percent = convertedA / hrcqLim;  // percentage of the hrcq limit
         // Activity is under limit
         return !(convertedA <= hrcqLim);
-    }
-
-    public int getClass() {
-        // finding classification of isotopes in shipment
-        boolean lim;
-
-        if (exemptClass(iter->first)) {
-            iter->second.isoClass = 0;
-        }
-        else {
-            if (lim = limitedClass(iter->first))
-                iter->second.isoClass = 1;
-            else if (typeAClass(iter->first) && lim == false)
-                iter->second.isoClass = 2;
-            else if (HRCQClass(iter->first))
-                iter->second.isoClass = 8;
-            else if (typeBClass(iter->first))
-                iter->second.isoClass = 4;
-        }
-
     }
 
     /*/////////////////////////////////////////////////// SETTERS ////////////////////////////////////////////////////*/
@@ -470,8 +465,6 @@ public class Isotope {
 
     public float get_DecayConst() { return _DecayConst; }
 
-    public float get_DPM() { return _DPM; }
-
     public boolean get_RQ() { return _RQ; }
 
     public float get_LicLimPer() { return _LicLimPer; }
@@ -509,5 +502,65 @@ public class Isotope {
             case 8: return "Type B: Highway Route Control";
             default: return "Invalid Classification";
         }
+    }
+
+    public float get_ConcentrationPer() {
+        return _ConcentrationPer;
+    }
+
+    public void set_ConcentrationPer(float _ConcentrationPer) {
+        this._ConcentrationPer = _ConcentrationPer;
+    }
+
+    public float get_ActivityCon() {
+        return _ActivityCon;
+    }
+
+    public void set_ActivityCon(float _ActivityCon) {
+        this._ActivityCon = _ActivityCon;
+    }
+
+    public float get_ActivityFrac() {
+        return _ActivityFrac;
+    }
+
+    public void set_ActivityFrac(float _ActivityFrac) {
+        this._ActivityFrac = _ActivityFrac;
+    }
+
+    public float get_AValue() {
+        return _AValue;
+    }
+
+    public float get_RQFrac() {
+        return _RQFrac;
+    }
+
+    public void set_RQFrac(float _RQFrac) {
+        this._RQFrac = _RQFrac;
+    }
+
+    public float get_ExemptLimit() {
+        return _ExemptLimit;
+    }
+
+    public void set_ExemptLimit(float _ExemptLimit) {
+        this._ExemptLimit = _ExemptLimit;
+    }
+
+    public float get_ExemptConcentration() {
+        return _ExemptConcentration;
+    }
+
+    public void set_ExemptConcentration(float _ExemptConcentration) {
+        this._ExemptConcentration = _ExemptConcentration;
+    }
+
+    public float get_LicensingLimit() {
+        return _LicensingLimit;
+    }
+
+    public void set_LicensingLimit(float _LicensingLimit) {
+        this._LicensingLimit = _LicensingLimit;
     }
 }
