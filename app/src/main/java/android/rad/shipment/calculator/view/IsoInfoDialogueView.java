@@ -61,7 +61,7 @@ public class IsoInfoDialogueView extends BaseActivity<IsoInfoPresenter> {
         setContentView(R.layout.iso_info_dialogue);  // showing the isotope info dialogue
 
         // getting the abbr of selected isotope in list (passed through launching intent)
-        _abbr = getIntent().getStringExtra("index");
+        _abbr = getIntent().getStringExtra("abbr");
 
         // getting all the views from the add dialogue that need to be programmed
         txtViewName = findViewById(R.id.txtViewName);

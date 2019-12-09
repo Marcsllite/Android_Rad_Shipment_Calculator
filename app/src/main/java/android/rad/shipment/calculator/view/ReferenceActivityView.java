@@ -67,8 +67,9 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
      */
     private class OnSearchIsotopeClicked implements AdapterView.OnItemClickListener {
         @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
             // passing the abbreviation of the clicked list item
-            mPresenter.onSearchIsotopeClicked(((Isotopes)adapterView.getItemAtPosition(i)).getAbbr());
+            mPresenter.onSearchIsotopeClicked(((Isotopes)adapterView.getAdapter().getItem(i)).getAbbr());
         }
     }
 
