@@ -65,7 +65,8 @@ public class IsoInfoDialogueView extends BaseActivity<IsoInfoPresenter> {
 
         // getting all the views from the add dialogue that need to be programmed
         txtViewName = findViewById(R.id.txtViewName);
-        
+
+        linearLayoutNormal = findViewById(R.id.linearLayoutNormal);
         txtViewA1 = findViewById(R.id.txtViewA1);
         txtViewA2 = findViewById(R.id.txtViewA2);
         txtViewDecayConst = findViewById(R.id.txtViewDecayConst);
@@ -75,6 +76,7 @@ public class IsoInfoDialogueView extends BaseActivity<IsoInfoPresenter> {
         txtViewLicLim = findViewById(R.id.txtViewLicLim);
         txtViewRQ = findViewById(R.id.txtViewRQ);
 
+        linearLayoutShortHalfLife = findViewById(R.id.linearLayoutShortHalfLife);
         txtViewA1Short = findViewById(R.id.txtViewA1Short);
         txtViewA2Short = findViewById(R.id.txtViewA2Short);
         txtViewDecayConstShort = findViewById(R.id.txtViewDecayConstShort);
@@ -84,6 +86,7 @@ public class IsoInfoDialogueView extends BaseActivity<IsoInfoPresenter> {
         txtViewLicLimShort = findViewById(R.id.txtViewLicLimShort);
         txtViewRQShort = findViewById(R.id.txtViewRQShort);
 
+        linearLayoutLongHalfLife = findViewById(R.id.linearLayoutLongHalfLife);
         txtViewA1Long = findViewById(R.id.txtViewA1Long);
         txtViewA2Long = findViewById(R.id.txtViewA2Long);
         txtViewDecayConstLong = findViewById(R.id.txtViewDecayConstLong);
