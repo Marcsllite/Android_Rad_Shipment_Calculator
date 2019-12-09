@@ -47,12 +47,14 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
         listView.setEmptyView(findViewById(R.id.txtViewNoResults));
 
         // creating custom listeners
+        OnSearchIsotopeClicked onSearchIsotopeClicked = new OnSearchIsotopeClicked();
         OnReferenceQueryListener onReferenceQueryListener = new OnReferenceQueryListener();
         OnReferenceButtonsClicked onReferenceButtonsClicked = new OnReferenceButtonsClicked();
 
         // adding custom onClick listeners to the views
         menuBtn.setOnClickListener(onReferenceButtonsClicked);
         searchView.setOnQueryTextListener(onReferenceQueryListener);
+        listView.setOnItemClickListener(onSearchIsotopeClicked);
     }
 
     public void setListViewAdapter(SearchViewAdapter searchViewAdapter) { listView.setAdapter(searchViewAdapter); }

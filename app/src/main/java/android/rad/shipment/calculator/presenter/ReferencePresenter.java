@@ -7,7 +7,7 @@ import android.rad.shipment.calculator.database.tables.Isotopes;
 import android.rad.shipment.calculator.task.AppTask;
 import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.utils.SearchViewAdapter;
-import android.rad.shipment.calculator.view.EditDialogueView;
+import android.rad.shipment.calculator.view.IsoInfoDialogueView;
 import android.rad.shipment.calculator.view.ReferenceActivityView;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class ReferencePresenter  extends BasePresenter {
      * @param abbr the abbreviation of the isotope that was clicked
      */
     public void onSearchIsotopeClicked(String abbr){
-        Intent intent = new Intent(mView.getApplicationContext(), EditDialogueView.class);
+        Intent intent = new Intent(mView.getApplicationContext(), IsoInfoDialogueView.class);
         intent.putExtra("abbr", abbr);
 
         mView.startActivity(intent);
