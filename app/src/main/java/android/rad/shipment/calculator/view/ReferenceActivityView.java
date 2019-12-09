@@ -5,14 +5,16 @@ import android.os.Bundle;
 import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
+import android.rad.shipment.calculator.database.tables.Isotopes;
 import android.rad.shipment.calculator.presenter.ReferencePresenter;
 import android.rad.shipment.calculator.task.AppTaskExecutor;
 import android.rad.shipment.calculator.utils.SearchViewAdapter;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import androidx.appcompat.widget.SearchView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 
 public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
     // Declaring variables
@@ -56,6 +58,17 @@ public class ReferenceActivityView extends BaseActivity<ReferencePresenter> {
     public void setListViewAdapter(SearchViewAdapter searchViewAdapter) { listView.setAdapter(searchViewAdapter); }
 
     /*/////////////////////////////////////// LISTENERS //////////////////////////////////////////*/
+
+    /**
+     * Custom AdapterView.onItemClickListener to call the presenter function when an isotope in the
+     * reference page's list view is clicked
+     */
+    private class OnSearchIsotopeClicked implements AdapterView.OnItemClickListener {
+        @Override public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            // passing the abbreviation of the clicked list item
+            mPresenter.onSearchIsotopeClicked(((Isotopes)adapterView.getItemAtPosition(i)).getAbbr());
+        }
+    }
 
     private class OnReferenceQueryListener implements SearchView.OnQueryTextListener {
         /**

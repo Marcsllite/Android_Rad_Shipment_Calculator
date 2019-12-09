@@ -116,6 +116,8 @@ public class IsoInfoPresenter extends BasePresenter {
         @Override
         public void onPostExecute(@Nullable Void result) {
             // setting values
+            mView.setTxtViewName(_isoName);
+
             if(isShortLong) {
                 mView.enableShortLong();
                 
