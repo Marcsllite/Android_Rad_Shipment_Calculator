@@ -1,10 +1,16 @@
 package android.rad.shipment.calculator.model;
 
 import android.rad.shipment.calculator.R;
+import android.rad.shipment.calculator.base.BaseActivity;
+import android.rad.shipment.calculator.utils.Conversions;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class Isotope {
     // Declaring Variables
     transient private int defaultVal = R.integer.defaultInt;
+    transient private final float DPM = (float)2.22e+6;
     private String _Name;                   // The name of the isotope
     private String _DBName;                 // The database search name of the isotope (including short/long or lung absorption)
     private float _A0;                      // Initial Activity (microCuries) of isotope
@@ -22,6 +28,7 @@ public class Isotope {
     private boolean _RQ;                    //
     private float _LicLimPer;               //
     private float _ActivityPer;             //
+    private float _ConcentrationPer;             //
 
     private int _IsotopeClass;              // Classification of isotope as an integer
                                             // (0 = Exempt, 1 = Excepted, 2 = Type A, 4 = Type B, 8 = Type B: Highway Route Control)
@@ -118,6 +125,180 @@ public class Isotope {
                 other._Form.equals(this._Form);
     }
 
+    /*///////////////////////////////////////// HELPERS //////////////////////////////////////////*/
+
+    /**
+     * Helper function to get this isotope's decay date
+     *
+     * @return the decay date of this isotope
+     */
+    public Date getDecayDate(float decayConst) {
+        float multiplier = DPM / 500;
+        Date decayDate = BaseActivity.getShipment().get_ReferenceDate();
+        Calendar c = Calendar.getInstance();
+        c.setTime(decayDate);
+        c.add(Calendar.DATE, (int) (Math.log(get_A0() * multiplier) / decayConst));
+        decayDate = c.getTime();
+
+        return decayDate;
+    }
+
+    /**
+     * Helper function to get this isotope's current Activity in microCuries
+     *
+     * @return the current activity of this isotope
+     */
+    public float get_AToday() {
+        Date now =  new Date();
+        long diff = BaseActivity.getShipment().get_ReferenceDate().getTime() - now.getTime();
+
+        long days = diff / (24 * 60 * 60 * 1000);
+
+        return get_A0() * (float)Math.exp(-get_HalfLife() * days);
+    }
+
+    /**
+     * Helper function to get this isotope's decays per minute
+     *
+     * @return this isotope's decays per minute
+     */
+    public float getDPM() throws IllegalStateException { return get_AToday() * DPM; }
+
+    public boolean exemptClass(float exemptLim, float exemptCon) {
+        // Declaring variabels
+        float convertedA, percent = 0;
+
+        // cout << "\n### Testing for exempt classification ###\n";
+
+        //converting microCurie to Bq
+        convertedA = Conversions.CiToBq(Conversions.MicroToBase(get_AToday()));
+
+        // checking if isotope exceeds limit
+        if (convertedA > exemptLim) return false;
+        else {
+            _ActivityPer = convertedA / exemptLim;
+
+            percent = (convertedA / _Mass);
+
+            if (percent > exemptCon) return false;
+            else {
+                _ConcentrationPer = convertedA / _Mass;
+                return true;
+            }
+        }
+    }
+
+    public boolean limitedClass(float A1, float A2, float IALimLim, float LimLim) {
+        // Declaring variables
+        float limit, multiplier, A, convertedA;
+
+        // converting A0 to TBq
+        convertedA = Conversions.baseToTera(Conversions.CiToBq(Conversions.MicroToBase(get_AToday())));
+
+        // Getting A1 or A2 based on form
+        if ("Special".equals(_Form)) A = A1;
+        else A = A2;
+
+        // Getting limit multiplier based on nature
+        if ("Regular".equals(_Nature)) multiplier = LimLim;
+        else multiplier = IALimLim;
+
+
+        // calculating limit and saving it
+        if ("Regular".equals(_Nature) && "Liquid".equals(_State) && "Tritiated".equals(_Form))
+            limit = multiplier;
+        else limit = A * multiplier;
+
+//        isos[name].limLim = limit;
+
+        // checking if isotope exceeds limit
+        if (convertedA > limit) return false;
+        else {
+            _ActivityPer = convertedA / limit;
+           return true;
+        }
+    }
+
+    public boolean typeAClass(float A1, float A2) {
+        // Declaring variables
+        float A, convertedA;
+
+        // Getting A1 or A2 based on form
+        if ("Special".equals(_Form)) A = A1;
+        else A = A2;
+
+        // converting A0 to TBq
+        convertedA = Conversions.baseToTera(Conversions.CiToBq(Conversions.MicroToBase(get_AToday())));
+
+        // Checking if isotope is type A
+        if (convertedA > A) return false;
+        else {
+//            isos[name].limPer = convertedA / A;
+            return true;
+        }
+    }
+
+    public boolean typeBClass(float A1, float A2) {
+        // Declaring variables
+        float A, convertedA;
+
+        // Getting A1 or A2 based on form
+        if ("Special".equals(_Form)) A = A1;
+        else A = A2;
+
+        // converting A0 to TBq
+        convertedA = Conversions.baseToTera(Conversions.CiToBq(Conversions.MicroToBase(get_AToday())));
+
+        // Checking if isotope is type B
+        return !(convertedA <= A);
+    }
+
+    public boolean HRCQClass(float A1, float A2) {
+        // Declaring variables
+        float A, convertedA, percent,
+                hrcqLim = 1000; // hrcqLim is in TBq
+
+        // Getting A1 or A2 based on form
+        if ("Special".equals(_Form)) A = A1;
+        else A = A2;
+
+        // Getting HRCQ limit (whichever is the least of (3000 * A1 or A2) and (1000 TBq))
+        if ((3000 * A) < hrcqLim) {
+            hrcqLim = 3000 * A;
+        }
+
+        // saving HRCQ limit
+//        isos[name].hrcqLim = hrcqLim;
+
+        // converting A0 to TBq
+        convertedA = Conversions.baseToTera(Conversions.CiToBq(Conversions.MicroToBase(get_AToday())));
+
+        // Checking if isotope is a highway route control quantity
+        percent = convertedA / hrcqLim;  // percentage of the hrcq limit
+        // Activity is under limit
+        return !(convertedA <= hrcqLim);
+    }
+
+    public int getClass() {
+        // finding classification of isotopes in shipment
+        boolean lim;
+
+        if (exemptClass(iter->first)) {
+            iter->second.isoClass = 0;
+        }
+        else {
+            if (lim = limitedClass(iter->first))
+                iter->second.isoClass = 1;
+            else if (typeAClass(iter->first) && lim == false)
+                iter->second.isoClass = 2;
+            else if (HRCQClass(iter->first))
+                iter->second.isoClass = 8;
+            else if (typeBClass(iter->first))
+                iter->second.isoClass = 4;
+        }
+
+    }
+
     /*/////////////////////////////////////////////////// SETTERS ////////////////////////////////////////////////////*/
     /**
      * Setter function to set this isotope's name
@@ -139,13 +320,6 @@ public class Isotope {
      * @param A0 the new initial activity of the isotope in microCi
      */
     public void set_A0(float A0) { _A0 = A0; }
-
-    /**
-     * Setter function to set this isotope's current activity in microCi
-     *
-     * @param AToday the new current activity of the isotope in microCi
-     */
-    public void set_AToday(float AToday) { _AToday = AToday; }
 
     /**
      * Setter function to set this isotope's mass in grams for solids and liters for liquids
@@ -242,13 +416,6 @@ public class Isotope {
      * @return the initial activity of this isotope in microCi
      */
     public float get_A0() { return _A0; }
-
-    /**
-     * Getter function to get this isotope's current activity in microCi
-     *
-     * @return the current activity of this isotope in microCi
-     */
-    public float get_AToday() { return _AToday; }
 
     /**
      * Getter function to get this isotope's mass in grams for solids and liters for liquids

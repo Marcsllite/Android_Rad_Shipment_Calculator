@@ -13,6 +13,7 @@ public class Shipment {
     private final ArrayList<Isotope> isotopes;
     private final int defaultInt = R.integer.defaultInt;
     private Date _D0;        // the reference date for the shipment
+    private boolean isRQ;
     private boolean isMassConsistent, isNSFConsistent;      // variables to know if the user wants
                                                             // the same mass and nature/state/form
                                                             // values as the last added isotope
@@ -88,6 +89,117 @@ public class Shipment {
     }
 
     /*///////////////////////////////////////// HELPERS //////////////////////////////////////////*/
+
+    public String findClass() {
+        int hClass = 0;
+        float pLimit = 0, pCon = 0, aCon = 0, pAToday = 0, pRQ = 0,
+                aFracEx = 0, aFracLim = 0, aFracA = 0, aFracB = 0,
+                aFracHRCQ = 0, lFrac = 0, pLicLimit = 0, typeALim = 0;
+        String retVal;
+
+        // Getting highest Classification between all of the isotopes in the shipment
+        for (Isotope iso: isotopes) {
+            if (iso.get_IsotopeClass() > hClass)
+                hClass = iso.get_IsotopeClass();
+        }
+
+        // Getting shipment limit percentage and shipment concentration and shipment licencing exemption
+        for (Isotope iso: isotopes) {
+            pLimit += iso.get_ActivityPer();  // adding each isotipe's percentage of the activity limit
+            pCon += iter->second.CToday * 37000;  // adding each isotope's concentration today (in Bq)
+            pAToday += iso.get_AToday() * 37000;  // adding each isotope's activity today (in Bq)
+            lFrac += (iso.get_AToday() * 37000) / ((iter->second.licLim * 1000) * 37000);  // isotope activity in Bq / (1000 * licensing limit) in Bq
+        }
+
+        // calculating package limits for Exempt, Excepted, Type A Classification
+        for (Isotope iso: isotopes) {
+            iter->second.aCon = (iter->second.CToday * 37000) / pCon;  // fraction of activity concentration of isotope (Bq)
+            iter->second.aFrac = (iter->second.Atoday * 37000) / pAToday;  // fraction of activity of isotope (Bq)
+            aCon += iter->second.aCon / iter->second.exCon;  // fraction of activity concentration of isotope (Bq) / Exempt concentration limit (Bq/g)
+            aFracEx += iter->second.aFrac / iter->second.exLim;  // fraction of activity of isotope (Bq) / Exempt Activity limit (Bq)
+            aFracLim += iter->second.aFrac / (iter->second.ALim * pow(10.0, 12.0));  // package activity limit for Excepted Classification
+            typeALim += (iter->second.Atoday * 37000) / (iter->second.ALim * 1e+12); // converting Activity today to Bq then dividing by A1 or A2 converted to Bq
+            pRQ += iter->second.RQFrac;  // sum(individual nuclide activity (in microCi) / individual nuclide reportable quantity (in microCi))
+        }
+
+        if (pRQ < 1) {  // finding out if package is a reportable quantity
+            isRQ = false;
+        } else {
+            isRQ = true;
+        }
+
+        aCon = 1 / aCon;  // Exempt Activity Concentration Limit for Package
+        aFracEx = 1 / aFracEx;  // Exempt activity limit for Package
+        aFracLim = 1 / aFracLim;  // Excepted activity limit for Package
+
+        if (pLimit > 1 || typeALim > 1) {  // if package limit or typeALim is greater than 1 then move to next classification
+            if (hClass == 0)
+                hClass = 1;
+            else {
+                hClass = hClass << 1;
+            }
+        }
+
+        if (lFrac > 1) {  // checking if shipment is exempt from licensing
+            retVal = "Shipment exempt from licensing?: No\n";
+        } else {
+            retVal = "Shipment exempt from licensing?: Yes\n";
+        }
+
+        if (isRQ) {
+            retVal.append("Shipemnt Reportable Quantity?: Yes\n");
+        } else {
+            retVal.append("Shipemnt Reportable Quantity?: No\n");
+        }
+
+        switch (hClass) {
+            case 0:
+                _ShipmentClass = 0;  // saving the shipment class
+                retVal.append("Shipment Classification: Exempt:\n\tShipment Activity Limit: ");
+                retVal.append(std::to_string(aFracEx));
+                retVal.append(" Bq (Actual Activity: " + std::to_string(pAToday) + ")\n\tShipment Activity Concentration Limit: ");
+                retVal.append(std::to_string(aCon));
+                retVal.append(" Bq/g (Actual Concentraion: " + std::to_string(pCon) + ")\n\tShipment License Percentage: ");
+                retVal.append(std::to_string(lFrac * 100) + "%\n");
+                return retVal;
+            break;
+            case 1:
+                _ShipmentClass = 1;  // saving the shipment class
+                retVal.append("Shipment Classification: Excepted:\n\tShipment Activity Limit: ");
+                retVal.append(std::to_string(aFracLim));
+                retVal.append(" Bq (Actual Activity: " + std::to_string(pAToday) + ")\n\tShipment License Percentage: ");
+                retVal.append(std::to_string(lFrac * 100) + "%\n");
+                return retVal;
+            break;
+            case 2:
+                _ShipmentClass = 2;  // saving the shipment class
+                retVal.append("Shipment Classification: Type A:\n\tShipment Activity: ");
+                retVal.append(std::to_string(pAToday));
+                retVal.append(")\n\tShipment License Percentage: ");
+                retVal.append(std::to_string(lFrac * 100) + "%\n");
+                return retVal;
+            break;
+            case 4:
+                _ShipmentClass = 4;  // saving the shipment class
+                retVal.append("Shipment Classification: Tyep B:\n\tShipment Activity: ");
+                retVal.append(std::to_string(pAToday));
+                retVal.append(")\n\tShipment License Percentage: ");
+                retVal.append(std::to_string(lFrac * 100) + "%\n");
+                return retVal;
+            break;
+            case 8:
+                _ShipmentClass = 8;  // saving the shipment class
+                retVal.append("Shipment Classification: Type B: Highway Route Control:\n\tShipment Activity: ");
+                retVal.append(std::to_string(pAToday));
+                retVal.append(")\n\tShipment License Percentage: ");
+                retVal.append(std::to_string(lFrac * 100) + "%\n");
+                return retVal;
+            break;
+            default:
+                return "FindClass: Error finding Shipment Classification.\n";
+            break;
+        }
+    }
 
     /**
      * Helper function to reset if the user clicked both the consistent mass or consistent nature/state/form

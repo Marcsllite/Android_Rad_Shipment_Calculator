@@ -1,7 +1,9 @@
 package android.rad.shipment.calculator.presenter;
 
+import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
+import android.rad.shipment.calculator.model.Isotope;
 import android.rad.shipment.calculator.task.AppTask;
 import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.view.ResultsActivityView;
@@ -31,7 +33,7 @@ public class ResultsPresenter extends BasePresenter {
 //        mView.showLoading();
         mTaskExecutor.async(new CalculateTask());
     }
-
+    
     /*//////////////////////////////////////// LISTENERS /////////////////////////////////////////*/
 
     /**
@@ -52,6 +54,27 @@ public class ResultsPresenter extends BasePresenter {
 
         @Override
         public Void execute() {
+            // finding classification of isotopes in shipment
+            boolean lim;
+            for (Isotope iso: BaseActivity.getShipment().getIsotopes()) {
+                if (iso.exemptClass()) {
+                    iso.set_IsotopeClass(0);
+                }
+                else {
+                    if (lim = iso.limitedClass())
+                        iso.set_IsotopeClass(1);
+                    else if (iso.typeAClass() && !lim)
+                        iso.set_IsotopeClass(2);
+                    else if (iso.HRCQClass())
+                        iso.set_IsotopeClass(8);
+                    else if (iso.typeBClass())
+                        iso.set_IsotopeClass(4);
+                }
+            }
+
+            // finding the classification of the shipment
+            sClassOut = findClass();
+
             return null;
         }
 
