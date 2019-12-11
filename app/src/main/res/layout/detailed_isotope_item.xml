@@ -2,7 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lightGrey"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp">
 
     <LinearLayout
         android:id="@+id/linearLayoutName"
@@ -16,7 +20,7 @@
             android:text="@string/DII_Name"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewName"
@@ -40,7 +44,7 @@
             android:text="@string/DII_A0"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewA0"
@@ -64,7 +68,7 @@
             android:text="@string/DII_AToday"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewAToday"
@@ -88,7 +92,7 @@
             android:text="@string/DII_Halflife"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewHalfLife"
@@ -112,7 +116,7 @@
             android:text="@string/DII_DecayConst"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewDecayConst"
@@ -136,7 +140,7 @@
             android:text="@string/DII_DPM"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewDPM"
@@ -160,7 +164,7 @@
             android:text="@string/DII_Name"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewClass"
@@ -184,7 +188,7 @@
             android:text="@string/DII_RQ"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewRQ"
@@ -208,7 +212,7 @@
             android:text="@string/DII_LicLimPer"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewLicLimPer"
@@ -232,7 +236,7 @@
             android:text="@string/DII_ActivityPer"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewActivityPer"

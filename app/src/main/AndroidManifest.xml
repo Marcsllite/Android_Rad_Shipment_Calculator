@@ -26,13 +26,13 @@
         <activity android:name=".view.ShipmentActivityView"/>
         <activity android:name=".view.ResultsActivityView"/>
         <activity android:name=".view.AddDialogueView"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+            android:theme="@style/DialogTheme"/>
         <activity android:name=".view.EditDialogueView"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+            android:theme="@style/DialogTheme"/>
         <activity android:name=".view.DateDialogueView"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+            android:theme="@style/DialogTheme"/>
         <activity android:name=".view.IsoInfoDialogueView"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.MinWidth"/>
+            android:theme="@style/DialogTheme"/>
     </application>
 
 </manifest>

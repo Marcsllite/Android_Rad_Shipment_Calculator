@@ -50,7 +50,8 @@ public class IsotopeAdapter extends ArrayAdapter<Isotope> {
         }
 
         // \u00B5 = µ
-        String info = ((int)isotope.get_A0()) + "\u00B5Ci";
+        assert isotope != null;
+        String info = (isotope.get_A0()) + "\u00B5Ci";
 
         // Populate the data from the data object via the viewHolder object
         // into the template view.
