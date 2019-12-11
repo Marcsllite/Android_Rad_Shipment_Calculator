@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/darkColor">
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="87dp"
+            android:gravity="start"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgViewMenuBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingTop="@dimen/searchBar_edge_margin"
+                android:paddingBottom="@dimen/searchBar_edge_margin"
+                android:clickable="true"
+                android:contentDescription="@string/menuLines_ContentDescript"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_grey_menu_lines" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/vertical_divider_spacing"
+                android:layout_marginBottom="@dimen/vertical_divider_spacing"
+                android:background="@color/defaultGrey" />
+
+            <TextView
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="@dimen/searchBar_edge_margin"
+                android:paddingLeft="@dimen/searchBar_edge_margin"
+                android:paddingEnd="@dimen/searchBar_edge_margin"
+                android:paddingRight="@dimen/searchBar_edge_margin"
+                android:background="#0000"
+                android:text="@string/referenceBtnText"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/umlBlue"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/searchBar_edge_margin"
+            android:layout_marginRight="@dimen/searchBar_edge_margin"
+            android:background="@color/trueWhite"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtViewMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/normal_vertical_spacing"
+            android:text="@string/menuText_port"
+            android:textAlignment="center"
+            android:textColor="@color/defaultGrey"
+            android:textSize="24sp"
+            app:drawableTopCompat="@drawable/ic_color_umass_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dividerHeight="1dp"
+            android:padding="10dp"
+            android:divider="@color/defaultGrey"/>
+
+        <TextView
+            android:id="@+id/txtViewNoResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/noResults" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -2,20 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.rad.shipment.calculator">
 
+    <supports-screens
+        android:xlargeScreens="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true" />
+
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher_uml_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_uml_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".view.MenuActivityView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.ReferenceActivityView"/>
+        <activity android:name=".view.ShipmentActivityView"/>
+        <activity android:name=".view.ResultsActivityView"/>
+        <activity android:name=".view.AddDialogueView"
+            android:theme="@style/DialogTheme"/>
+        <activity android:name=".view.EditDialogueView"
+            android:theme="@style/DialogTheme"/>
+        <activity android:name=".view.DateDialogueView"
+            android:theme="@style/DialogTheme"/>
+        <activity android:name=".view.IsoInfoDialogueView"
+            android:theme="@style/DialogTheme"/>
     </application>
 
 </manifest>

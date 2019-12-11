@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="umlBlue">#0469B1</color>
+    <color name="defaultGrey">#8a8a8a</color>
+    <color name="lightGrey">#dadada</color>
+    <color name="darkColor">#232323</color>
+    <color name="trueWhite">#fff</color>
+    <color name="trueBlack">#ff000000</color>
+    <color name="invalidAdditionalInfo">#61921818</color>
+    <color name="transparent">#00000000</color>
 </resources>
