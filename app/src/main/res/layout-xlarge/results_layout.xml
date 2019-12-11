@@ -57,19 +57,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shipment_data"
-                android:textColor="@color/darkColor" />
+                android:textColor="@color/defaultGrey" />
 
             <View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/darkColor" />
+                android:background="@color/defaultGrey" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,7 +111,7 @@
 
                 <TextView
                     android:id="@+id/txtViewMass"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -132,7 +134,7 @@
 
                 <TextView
                     android:id="@+id/txtViewNature"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -155,7 +157,7 @@
 
                 <TextView
                     android:id="@+id/txtViewState"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -178,7 +180,7 @@
 
                 <TextView
                     android:id="@+id/txtViewForm"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -201,7 +203,7 @@
 
                 <TextView
                     android:id="@+id/txtViewLicExempt"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -224,7 +226,7 @@
 
                 <TextView
                     android:id="@+id/txtViewClass"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -247,7 +249,7 @@
 
                 <TextView
                     android:id="@+id/txtViewActivityLim"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -270,7 +272,7 @@
 
                 <TextView
                     android:id="@+id/txtViewActivityCon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -293,7 +295,7 @@
 
                 <TextView
                     android:id="@+id/txtViewLicPer"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
                     android:textColor="@color/defaultGrey"
@@ -305,19 +307,20 @@
                 android:id="@+id/divider4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/darkColor" />
+                android:background="@color/defaultGrey" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/SD_Isotopes" />
+                android:text="@string/SD_Isotopes"
+                android:textColor="@color/defaultGrey"/>
 
             <View
                 android:id="@+id/divider5"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/darkColor" />
+                android:background="@color/defaultGrey" />
 
             <android.rad.shipment.calculator.utils.NonScrollListView
                 android:id="@+id/nonScrollListView"

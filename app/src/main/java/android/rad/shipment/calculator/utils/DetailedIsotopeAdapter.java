@@ -73,9 +73,9 @@ public class DetailedIsotopeAdapter extends ArrayAdapter<Isotope> {
         // Populate the data from the data object via the viewHolder object
         // into the template view.
         viewHolder.txtViewName.setText(isotope.get_Name().toUpperCase());
-        viewHolder.txtViewA0.setText(Float.toString(isotope.get_A0()));
-        viewHolder.txtViewAToday.setText(Float.toString(isotope.get_AToday()));
-        viewHolder.txtViewHalfLife.setText(Float.toString(isotope.get_HalfLife()));
+        viewHolder.txtViewA0.setText(A0);
+        viewHolder.txtViewAToday.setText(AToday);
+        viewHolder.txtViewHalfLife.setText(HalfLife);
         viewHolder.txtViewDecayConst.setText(Float.toString(isotope.get_DecayConst()));
         viewHolder.txtViewDPM.setText(Float.toString(isotope.get_DPM()));
         viewHolder.txtViewClass.setText(isotope.get_StringIsotopeClass());

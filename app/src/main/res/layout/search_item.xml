@@ -14,5 +14,6 @@
         android:layout_alignParentLeft="true"
         android:text="AU-198"
         android:textColor="@color/darkColor"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="normal" />
 </RelativeLayout>
