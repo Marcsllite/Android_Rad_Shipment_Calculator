@@ -2,21 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/lightGrey">
 
     <LinearLayout
         android:id="@+id/linearLayoutName"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/DII_Name"
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault"
             android:textColor="@color/darkColor"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/txtViewName"
@@ -35,7 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
 
             <LinearLayout
                 android:id="@+id/linearLayoutNormal"
@@ -55,11 +61,11 @@
                         android:text="@string/II_A1"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewA1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -79,11 +85,11 @@
                         android:text="@string/II_A2"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewA2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -103,11 +109,11 @@
                         android:text="@string/DII_DecayConst"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewDecayConst"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -127,11 +133,11 @@
                         android:text="@string/II_ExemptCon"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewExemptCon"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -151,11 +157,11 @@
                         android:text="@string/II_ExemptLim"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewExemptLim"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -175,11 +181,11 @@
                         android:text="@string/DII_Halflife"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewHalfLife"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -199,11 +205,11 @@
                         android:text="@string/II_LicLim"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewLicLim"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -223,11 +229,11 @@
                         android:text="@string/II_RQ"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewRQ"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -245,18 +251,18 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/darkColor" />
+                    android:background="@color/defaultGrey" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/shortHalfLife"
-                    android:textColor="@color/darkColor" />
+                    android:textColor="@color/defaultGrey" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/darkColor" />
+                    android:background="@color/defaultGrey"/>
 
                 <LinearLayout
                     android:id="@+id/linearLayoutA1Short"
@@ -270,11 +276,11 @@
                         android:text="@string/II_A1"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewA1Short"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -294,11 +300,11 @@
                         android:text="@string/II_A2"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewA2Short"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -318,11 +324,11 @@
                         android:text="@string/DII_DecayConst"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewDecayConstShort"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -342,11 +348,11 @@
                         android:text="@string/II_ExemptCon"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewExemptConShort"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -366,11 +372,11 @@
                         android:text="@string/II_ExemptLim"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewExemptLimShort"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -390,11 +396,11 @@
                         android:text="@string/DII_Halflife"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewHalfLifeShort"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -414,11 +420,11 @@
                         android:text="@string/II_LicLim"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewLicLimShort"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -438,11 +444,11 @@
                         android:text="@string/II_RQ"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewRQShort"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -460,18 +466,18 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/darkColor" />
+                    android:background="@color/defaultGrey" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/longHalfLife"
-                    android:textColor="@color/darkColor" />
+                    android:textColor="@color/defaultGrey" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/darkColor" />
+                    android:background="@color/defaultGrey" />
 
                 <LinearLayout
                     android:id="@+id/linearLayoutA1Long"
@@ -485,11 +491,11 @@
                         android:text="@string/II_A1"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewA1Long"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -509,11 +515,11 @@
                         android:text="@string/II_A2"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewA2Long"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -533,11 +539,11 @@
                         android:text="@string/DII_DecayConst"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewDecayConstLong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -557,11 +563,11 @@
                         android:text="@string/II_ExemptCon"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewExemptConLong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -581,11 +587,11 @@
                         android:text="@string/II_ExemptLim"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewExemptLimLong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -605,11 +611,11 @@
                         android:text="@string/DII_Halflife"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewHalfLifeLong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -629,11 +635,11 @@
                         android:text="@string/II_LicLim"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewLicLimLong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"
@@ -653,11 +659,11 @@
                         android:text="@string/II_RQ"
                         android:textColor="@color/darkColor"
                         android:textSize="24sp"
-                        android:textStyle="bold" />
+                        android:textStyle="normal" />
 
                     <TextView
                         android:id="@+id/txtViewRQLong"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:textColor="@color/defaultGrey"

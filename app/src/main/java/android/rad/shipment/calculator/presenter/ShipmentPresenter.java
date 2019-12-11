@@ -21,16 +21,14 @@ public class ShipmentPresenter extends BasePresenter {
      *
      * @param view the shipment activity view that this presenter will be affecting
      */
-    public ShipmentPresenter(@NonNull final ShipmentActivityView view){ mView = view;
-    }
+    public ShipmentPresenter(@NonNull final ShipmentActivityView view){ mView = view; }
 
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void onResume() {
+    @Override public void onResume() {
         super.onResume();
         mView.hideLoading();
     }
