@@ -3,8 +3,10 @@ package android.rad.shipment.calculator.model;
 import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.view.ShipmentActivityView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import androidx.annotation.Nullable;
 
@@ -111,7 +113,7 @@ public class Shipment {
             pLimit += iso.get_ActivityPer();  // adding each isotipe's percentage of the activity limit
             pCon += (iso.get_AToday()/iso.get_Mass()) * 37000;  // adding each isotope's concentration today (in Bq)
             pAToday += iso.get_AToday() * 37000;  // adding each isotope's activity today (in Bq)
-            lFrac += (iso.get_AToday() * 37000) / ((iso.get_LicensingLimit() * 1000) * 37000);  // isotope activity in Bq / (1000 * licensing limit) in Bq
+            lFrac += (iso.get_AToday() * 37000) / ((iso.get_LicensingLim() * 1000) * 37000);  // isotope activity in Bq / (1000 * licensing limit) in Bq
         }
 
         // calculating package limits for Exempt, Excepted, Type A Classification

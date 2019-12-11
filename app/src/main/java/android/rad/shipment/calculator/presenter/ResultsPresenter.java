@@ -1,5 +1,6 @@
 package android.rad.shipment.calculator.presenter;
 
+import android.rad.shipment.calculator.R;
 import android.rad.shipment.calculator.base.BaseActivity;
 import android.rad.shipment.calculator.base.BasePresenter;
 import android.rad.shipment.calculator.database.datasource.ShipmentCalculatorDataSource;
@@ -9,6 +10,11 @@ import android.rad.shipment.calculator.task.TaskExecutor;
 import android.rad.shipment.calculator.view.ResultsActivityView;
 
 import androidx.annotation.NonNull;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class ResultsPresenter extends BasePresenter {
 
@@ -82,7 +88,7 @@ public class ResultsPresenter extends BasePresenter {
                 iso.set_RQFrac((float) (iso.get_AToday()/(mShipmentCalculatorDB.getReportableQuantity(iso.get_DBName())* 1000000.0))); // saving each isotope's RQFrac
                 iso.set_ExemptLimit(mShipmentCalculatorDB.getExemptLimit(iso.get_DBName()));// saving each isotope's exempt limit
                 iso.set_ExemptConcentration(mShipmentCalculatorDB.getExemptConcentration(iso.get_DBName()));// saving each isotope's exempt concetraion
-                iso.set_LicensingLimit(mShipmentCalculatorDB.getLicensingLimit(iso.get_DBName()));// saving each isotope's licensing limit
+                iso.set_LicensingLim(mShipmentCalculatorDB.getLicensingLimit(iso.get_DBName()));// saving each isotope's licensing limit
 
                 MASS = Float.toString(iso.get_Mass());
                         NATURE = iso.get_Nature();
@@ -100,6 +106,9 @@ public class ResultsPresenter extends BasePresenter {
         @Override
         public void onPostExecute(Void result) {
 //            mView.hideLoading();
+
+
+
             mView.setTxtViewD0(BaseActivity.getShipment().get_D0());
             mView.setTxtViewMass(MASS);
             mView.setTxtViewNature(NATURE);

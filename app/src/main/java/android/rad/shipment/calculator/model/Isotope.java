@@ -22,8 +22,6 @@ public class Isotope {
     private String _Form;                   // the form (normal, special) of the isotope
     private String _ShortLong;              // for isotopes with different half lives
     private String _LungAbs;                // the lung absorption speed if the isotope is Uranium (f = fast, m = medium, s = slow)
-    private float _HalfLife;                //
-    private float _DecayConst;              //
     private float _DPM;                     //
     private boolean _RQ;                    //
     private float _LicLimPer;               //
@@ -33,9 +31,19 @@ public class Isotope {
     private float _ActivityFrac;
     private float _AValue;
     private float _RQFrac;
-    private float _ExemptLimit;
-    private float _ExemptConcentration;
-    private float _LicensingLimit;
+
+    // Database Information
+    private float _A1;                      //
+    private float _A2;                      //
+    private float _DecayConst;              //
+    private float _ExemptConcentration;     //
+    private float _ExemptLimit;             //
+    private float _HalfLife;                //
+    private float _IALimLim;                //
+    private float _IAPackageLim;            //
+    private float _LicensingLim;            //
+    private float _LimitedLim;              //
+    private float _ReportableQuan;          //
 
     private int _IsotopeClass;              // Classification of isotope as an integer
                                             // (0 = Exempt, 1 = Excepted, 2 = Type A, 4 = Type B, 8 = Type B: Highway Route Control)
@@ -556,11 +564,11 @@ public class Isotope {
         this._ExemptConcentration = _ExemptConcentration;
     }
 
-    public float get_LicensingLimit() {
-        return _LicensingLimit;
+    public float get_LicensingLim() {
+        return _LicensingLim;
     }
 
-    public void set_LicensingLimit(float _LicensingLimit) {
-        this._LicensingLimit = _LicensingLimit;
+    public void set_LicensingLim(float _LicensingLim) {
+        this._LicensingLim = _LicensingLim;
     }
 }
