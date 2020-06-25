@@ -1,8 +1,9 @@
-package android.rad.shipment.calculator;
+package android.rad.shipment.calculator.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.rad.shipment.calculator.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android_Rad_Shipment_Calculator</string>
+    <string name="divider_bullet">•</string>
 </resources>

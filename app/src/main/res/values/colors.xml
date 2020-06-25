@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!--
+    https://material.io/resources/color/#!/?view.left=1&view.right=1&primary.color=0067B1&secondary.color=727272&primary.text.color=ffffff
+    -->
+    <color name="colorPrimary">#0067b1</color>
+    <color name="colorPrimaryLight">#5594e3</color>
+    <color name="colorPrimaryDark">#003d81</color>
+
+    <color name="onPrimary">@android:color/white</color>
+    <color name="onPrimaryLight">@android:color/black</color>
+    <color name="onPrimaryDark">@android:color/white</color>
+
+    <color name="colorSecondary">#727272</color>
+    <color name="colorSecondaryLight">#a0a0a0</color>
+    <color name="colorSecondaryDark">#474747</color>
+
+    <color name="onSecondary">@android:color/white</color>
+    <color name="onSecondaryLight">@android:color/black</color>
+    <color name="onSecondaryDark">@android:color/white</color>
+
+    <color name="colorSurface">@android:color/white</color>
+    <color name="colorBackground">@android:color/white</color>
+    <color name="colorError">#B00020</color>
+
+    <color name="onSurface">@android:color/black</color>
+    <color name="onBackground">@android:color/black</color>
+    <color name="onError">@android:color/white</color>
 </resources>

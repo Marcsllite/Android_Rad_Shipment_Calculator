@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/isotope_item_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@color/colorBackground"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_atom" />
+
+    <TextView
+        android:id="@+id/isotope_item_number"
+        style="@style/AppTheme.Subheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/isotope_item_image"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="-2dp"
+        android:layout_toRightOf="@+id/isotope_item_image"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorSecondaryDark"
+        tools:text="89" />
+
+    <TextView
+        android:id="@+id/isotope_item_name_divider"
+        style="@style/AppTheme.TextDivider"
+        android:layout_alignTop="@+id/isotope_item_image"
+        android:layout_toRightOf="@+id/isotope_item_number"
+        android:text="@string/divider_bullet"
+        android:textColor="@color/colorSecondaryLight"/>
+
+    <TextView
+        android:id="@+id/isotope_item_name"
+        style="@style/AppTheme.Subheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/isotope_item_image"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="-2dp"
+        android:layout_toRightOf="@+id/isotope_item_name_divider"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorSecondaryDark"
+        tools:text="Actinium-255" />
+    
+    <TextView
+        android:id="@+id/isotope_item_half_life"
+        style="@style/AppTheme.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/isotope_item_name"
+        android:layout_below="@+id/isotope_item_name"
+        android:textColor="@color/colorSecondary"
+        tools:text="Half Life:" />
+
+    <TextView
+        android:id="@+id/isotope_item_half_life_value"
+        style="@style/AppTheme.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_alignTop="@+id/isotope_item_half_life"
+        android:layout_toRightOf="@+id/isotope_item_half_life"
+        android:textColor="@color/colorSecondary"
+        tools:text="9.920" />
+
+    <TextView
+        android:id="@+id/isotope_item_mass_unit"
+        style="@style/AppTheme.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_alignTop="@+id/isotope_item_half_life"
+        android:layout_toRightOf="@+id/isotope_item_half_life_value"
+        android:textColor="@color/colorSecondary"
+        tools:text="days" />
+
+</RelativeLayout>
